@@ -1,286 +1,204 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="Drop exclusivo de STREETHYPE. Novedades en streetwear y sneakers.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Drop Exclusivo | STREETHYPE</title>
   
-  <!-- CDN Bootstrap 5 para el diseño visual tipo Dashboard -->
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
-  <!-- CDN de Iconos de Bootstrap -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
-
-  <!-- Tus estilos originales (no alterados) -->
+  <!-- Tus hojas de estilo originales -->
   <link rel="stylesheet" href="../css/inicio.css">
   <link rel="stylesheet" href="css/nuevos_estilos.css">
-  
-  <style>
-    /* Estilos mínimos integrados para asegurar el efecto Dashboard sin tocar tus CSS */
-    body { background-color: #f8f9fa; font-family: 'Helvetica Neue', Arial, sans-serif; }
-    .sidebar { position: sticky; top: 100px; }
-    .hero-bg {
-      background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('https://techwear-australia.com/cdn/shop/files/reflective-jacket-black-model-wearing-style.jpg?v=1705734314&width=1946') center/cover;
-    }
-    .hover-scale { transition: transform 0.3s ease; }
-    .hover-scale:hover { transform: translateY(-5px); }
-    /* Ajuste para que los links ancla scrollen con un offset del header */
-    html { scroll-behavior: smooth; scroll-padding-top: 100px; }
-  </style>
 </head>
 <body>
 
-  <!-- Navegación Principal Flotante -->
-  <header class="site-header bg-white shadow-sm sticky-top border-bottom border-dark border-3">
-    <div class="container-fluid px-4 py-3 d-flex justify-content-between align-items-center">
-      <a class="brand text-decoration-none text-dark fw-bolder fs-4 d-flex align-items-center gap-2" href="../index.html">
-        <span class="brand__mark bg-black text-white px-2 py-1 rounded-1 fs-6">SH</span>
-        <span>STREET<span class="text-secondary">HYPE</span></span>
-      </a>
-      
-      <nav class="d-none d-md-flex gap-4 fw-bold">
-        <a href="#hero" class="text-dark text-decoration-none hover-scale">Inicio</a>
-        <a href="#novedades" class="text-dark text-decoration-none hover-scale">Lookbook</a>
-        <a href="#productos" class="text-dark text-decoration-none hover-scale">Reservas</a>
-      </nav>
+  <!-- Barra superior de anuncios -->
+  <div class="top-banner">
+    <p><strong>🔥 STOCK ULTRA LIMITADO | ENVÍO GRATIS A TODO EL PERÚ 🔥</strong></p>
+  </div>
 
-      <!-- Botón de regreso principal -->
-      <a href="../index.html" class="btn btn-outline-dark fw-bold rounded-pill px-4 shadow-sm">
-        <i class="bi bi-arrow-left me-2"></i>Volver a la tienda
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header__inner">
+      <a class="brand" href="../index.html" aria-label="Volver a STREETHYPE">
+        <span class="brand__mark">SH</span>
+        <span>STREET<strong>HYPE</strong></span>
       </a>
+      <nav class="nav-principal">
+        <a href="#hero">Inicio</a>
+        <a href="#lookbook">Lookbook</a>
+        <a href="#productos">Reservas</a>
+      </nav>
+      <a href="../index.html" class="button button--secondary btn-volver">← Volver a la tienda</a>
     </div>
   </header>
 
-  <main class="container-fluid px-4 py-5" id="contenido">
-    <div class="row g-5">
+  <!-- Contenedor principal con diseño de panel (Dashboard) -->
+  <div class="layout-dashboard container">
+    
+    <!-- Panel Lateral (Sidebar) -->
+    <aside class="sidebar">
+      <p class="etiqueta-pequena">Colección Actual</p>
+      <h2><strong>SEASON DROP 01</strong></h2>
+      <hr>
+      <nav class="sidebar-nav">
+        <ul>
+          <li><a href="#hero">⚡ Resumen Drop</a></li>
+          <li><a href="#stats">📊 Hype Stats</a></li>
+          <li><a href="#lookbook">📸 Lookbook Visual</a></li>
+          <li><a href="#productos">🛒 Reservar Ahora</a></li>
+        </ul>
+      </nav>
+      <div class="info-box">
+        <p><strong>Atención:</strong> El stock es ultra limitado. Asegura tu talla en la sección de reservas.</p>
+      </div>
+    </aside>
+
+    <!-- Contenido Principal -->
+    <main class="contenido-principal">
       
-      <!-- Panel Lateral (Sidebar estilo Campus Grid) -->
-      <aside class="col-xl-2 col-lg-3 d-none d-lg-block sidebar">
-        <div class="bg-white p-4 rounded-4 shadow-sm border">
-          <p class="text-uppercase text-muted fw-bold mb-1" style="font-size: 0.8rem;">Colección Actual</p>
-          <h2 class="fs-4 fw-bolder mb-4">SEASON DROP 01</h2>
-          <nav aria-label="Secciones del panel">
-            <ul class="list-unstyled d-flex flex-column gap-3 mb-4 fw-bold">
-              <li><a class="text-decoration-none text-dark d-flex align-items-center gap-2 hover-scale" href="#hero"><i class="bi bi-lightning-charge-fill"></i> Resumen Drop</a></li>
-              <li><a class="text-decoration-none text-muted d-flex align-items-center gap-2 hover-scale" href="#progreso"><i class="bi bi-bar-chart-fill"></i> Hype Stats</a></li>
-              <li><a class="text-decoration-none text-muted d-flex align-items-center gap-2 hover-scale" href="#novedades"><i class="bi bi-images"></i> Lookbook Visual</a></li>
-              <li><a class="text-decoration-none text-muted d-flex align-items-center gap-2 hover-scale" href="#productos"><i class="bi bi-box-seam-fill"></i> Reservar Ahora</a></li>
-            </ul>
-          </nav>
-          <div class="bg-light p-3 rounded-3 border">
-            <strong class="d-block mb-1"><i class="bi bi-info-circle-fill me-2"></i>Atención</strong>
-            <p class="text-muted small m-0">El stock es ultra limitado. Asegura tu talla en la sección de reservas.</p>
+      <!-- Sección Hero + Contador -->
+      <section id="hero" class="hero-dashboard">
+        <div class="hero-texto">
+          <p class="eyebrow"><em>SNEAK PEEK VISUAL</em></p>
+          <h1><strong>LA CALLE EN MOVIMIENTO.</strong></h1>
+          <p>Siluetas sobredimensionadas, detalles reflectantes y comodidad técnica. Explora las texturas de la nueva temporada.</p>
+          <div class="hero-botones">
+            <a href="#productos" class="button btn-primario">Reservar Anticipado</a>
+            <a href="#lookbook" class="button btn-secundario">Ver Galería</a>
           </div>
         </div>
-      </aside>
-
-      <!-- Contenido Principal -->
-      <div class="col-xl-10 col-lg-9">
         
-        <!-- Hero Dashboard con Gráficos (Sin Video) -->
-        <section id="hero" class="hero-bg text-white rounded-5 shadow-lg mb-5 overflow-hidden position-relative">
-          <div class="row g-0">
-            <div class="col-md-7 p-5 p-lg-5 d-flex flex-column justify-content-center">
-              <p class="text-uppercase text-light fw-bold letter-spacing-1 mb-2">Sneak Peek Visual</p>
-              <h1 class="display-3 fw-black mb-4" style="font-weight: 900;">LA CALLE EN MOVIMIENTO.</h1>
-              <p class="fs-5 mb-5 text-light opacity-75">
-                Siluetas sobredimensionadas, detalles reflectantes y comodidad técnica. Explora las texturas de la nueva temporada.
-              </p>
-              
-              <!-- Botones funcionales del Hero -->
-              <div class="d-flex gap-3 flex-wrap">
-                <a class="btn btn-light btn-lg rounded-pill fw-bold px-4 hover-scale" href="#productos">Reservar Anticipado</a>
-                <a class="btn btn-outline-light btn-lg rounded-pill fw-bold px-4 hover-scale" href="#novedades">Ver Galería</a>
-              </div>
-            </div>
-            <!-- Contador superpuesto -->
-            <div class="col-md-5 d-flex align-items-end justify-content-end p-4">
-               <div class="bg-black bg-opacity-75 p-3 rounded-4 border border-secondary shadow-lg text-center backdrop-blur">
-                 <p class="text-white-50 fw-bold mb-2 small">EL DROP SE LIBERA EN:</p>
-                 <div id="countdown" class="d-flex gap-2 justify-content-center fs-5 fw-light text-white">
-                   <div><b id="dias" class="d-block fs-3 fw-bold">00</b> <span class="small text-uppercase">Días</span></div><span class="fs-3">:</span>
-                   <div><b id="horas" class="d-block fs-3 fw-bold">00</b> <span class="small text-uppercase">Hrs</span></div><span class="fs-3">:</span>
-                   <div><b id="minutos" class="d-block fs-3 fw-bold">00</b> <span class="small text-uppercase">Min</span></div><span class="fs-3">:</span>
-                   <div><b id="segundos" class="d-block fs-3 fw-bold">00</b> <span class="small text-uppercase">Seg</span></div>
-                 </div>
-               </div>
-            </div>
+        <div class="hero-contador">
+          <p><strong>EL DROP SE LIBERA EN:</strong></p>
+          <div id="countdown" class="countdown text-grande">
+            <span><b id="dias">00</b> <em>Días</em></span> : 
+            <span><b id="horas">00</b> <em>Hrs</em></span> : 
+            <span><b id="minutos">00</b> <em>Min</em></span> : 
+            <span><b id="segundos">00</b> <em>Seg</em></span>
           </div>
-        </section>
+        </div>
+      </section>
 
-        <!-- Métricas / Stats de la Colección -->
-        <section id="progreso" class="row g-4 mb-5">
-          <div class="col-md-4">
-            <div class="bg-white p-4 rounded-4 shadow-sm border h-100 hover-scale">
-              <p class="text-muted fw-bold mb-1 text-uppercase small">Hype Level</p>
-              <p class="display-5 fw-bolder mb-2 text-danger">98 %</p>
-              <div class="progress" style="height: 10px;">
-                <div class="progress-bar bg-danger" role="progressbar" style="width: 98%" aria-valuenow="98" aria-valuemin="0" aria-valuemax="100"></div>
-              </div>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="bg-white p-4 rounded-4 shadow-sm border h-100 hover-scale">
-              <p class="text-muted fw-bold mb-1 text-uppercase small">Piezas Exclusivas</p>
-              <p class="display-5 fw-bolder mb-2">3 de 5</p>
-              <p class="text-muted small m-0"><i class="bi bi-clock-history"></i> Dos diseños ocultos hasta el drop.</p>
-            </div>
-          </div>
-          <div class="col-md-4">
-            <div class="bg-dark text-white p-4 rounded-4 shadow-sm border h-100 hover-scale">
-              <p class="text-white-50 fw-bold mb-1 text-uppercase small">Próximo Evento</p>
-              <p class="display-6 fw-bolder mb-2">Pop-Up Store</p>
-              <p class="text-light small m-0">Av. Central - 15 de Septiembre.</p>
-            </div>
-          </div>
-        </section>
+      <!-- Sección de Estadísticas con barra de progreso nativa HTML -->
+      <section id="stats" class="stats-grid">
+        <article class="stat-card">
+          <p class="etiqueta-pequena">HYPE LEVEL</p>
+          <h2><strong>98 %</strong></h2>
+          <!-- Etiqueta HTML pura para barras de progreso -->
+          <progress value="98" max="100"></progress>
+        </article>
+        
+        <article class="stat-card">
+          <p class="etiqueta-pequena">PIEZAS EXCLUSIVAS</p>
+          <h2><strong>3 de 5</strong></h2>
+          <p><em>Dos diseños ocultos hasta el drop.</em></p>
+        </article>
+        
+        <article class="stat-card oscura">
+          <p class="etiqueta-pequena">PRÓXIMO EVENTO</p>
+          <h2><strong>Pop-Up Store</strong></h2>
+          <p>Av. Central - 15 de Septiembre.</p>
+        </article>
+      </section>
 
-        <!-- Lookbook Visual (Grid de Imágenes) -->
-        <section id="novedades" class="mb-5 bg-white p-5 rounded-5 shadow-sm border">
-          <div class="d-flex justify-content-between align-items-end mb-4 border-bottom pb-3">
-            <div>
-              <p class="text-uppercase text-muted fw-bold mb-1" style="font-size: 0.85rem;">Editorial</p>
-              <h2 class="display-6 fw-bolder m-0">Lookbook Visual</h2>
+      <!-- Sección Lookbook (Galería) -->
+      <section id="lookbook" class="lookbook-section">
+        <p class="etiqueta-pequena">Editorial</p>
+        <h2><strong>Lookbook Visual</strong></h2>
+        <hr>
+        <div class="lookbook-grid">
+          <figure class="lookbook-item">
+            <img src="https://static.vecteezy.com/system/resources/previews/055/419/371/large_2x/urban-fashion-model-in-olive-cargo-pants-and-jacket-graffiti-alley-background-e-commerce-editorial-photo.jpg" alt="Urbano">
+            <figcaption><strong>Táctico Urbano</strong></figcaption>
+          </figure>
+          <figure class="lookbook-item">
+            <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F10%2Fj-cole-puma-rs-dreamer-lime-green-nods-to-time-squares-neon-lights-3.jpg?q=90&w=800&cbr=1&fit=max" alt="Neon">
+            <figcaption><strong>Neón & Asfalto</strong></figcaption>
+          </figure>
+          <figure class="lookbook-item">
+            <img src="https://media.istockphoto.com/id/2161831582/photo/portrait-of-luxury-modern-woman-in-new-york-city.jpg?s=612x612&w=0&k=20&c=Xa9jp15HVew7wxFRYxXTJB6bl-rNBCFbj2JFV8miPzo=" alt="Texturas">
+            <figcaption><strong>Siluetas Neutras</strong></figcaption>
+          </figure>
+        </div>
+      </section>
+
+      <!-- Sección de Productos -->
+      <section id="productos" class="panel-productos">
+        <p class="etiqueta-pequena">Lanzamientos</p>
+        <h2><strong>Próximas Entregas</strong></h2>
+        <br>
+        
+        <div class="resource-grid">
+          <article class="resource-card">
+            <div class="card-image-wrapper">
+              <img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hoodie Reflex">
             </div>
-            <a class="btn btn-outline-dark rounded-pill fw-bold px-4" href="#hero">Ir arriba <i class="bi bi-arrow-up"></i></a>
-          </div>
+            <h4><strong>Hoodie Reflex</strong></h4>
+            <p>Detalles reflectantes 3M. Algodón pesado.</p>
+            <button class="button btn-reserva" data-producto="Hoodie Reflex">Reservar S/ 259</button>
+          </article>
           
-          <div class="row g-4">
-            <div class="col-md-6">
-              <div class="rounded-4 overflow-hidden shadow-sm h-100 position-relative hover-scale">
-                 <img src="https://static.vecteezy.com/system/resources/previews/055/419/371/large_2x/urban-fashion-model-in-olive-cargo-pants-and-jacket-graffiti-alley-background-e-commerce-editorial-photo.jpg" alt="Urban Cargo Editorial" class="w-100 h-100 object-fit-cover">
-                 <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-50 text-white p-3 backdrop-blur">
-                   <span class="badge bg-light text-dark mb-1">Concepto</span>
-                   <h4 class="m-0 fs-5">Táctico Urbano</h4>
-                 </div>
-              </div>
+          <article class="resource-card card-destacada">
+            <mark class="tag-hot">🔥 HOT</mark>
+            <div class="card-image-wrapper">
+              <img src="https://images.pexels.com/photos/1478442/pexels-photo-1478442.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sneakers Volt">
             </div>
-            <div class="col-md-6">
-              <div class="row g-4 h-100">
-                <div class="col-12 h-50">
-                  <div class="rounded-4 overflow-hidden shadow-sm h-100 position-relative hover-scale">
-                    <img src="https://image-cdn.hypb.st/https%3A%2F%2Fhypebeast.com%2Fimage%2F2021%2F10%2Fj-cole-puma-rs-dreamer-lime-green-nods-to-time-squares-neon-lights-3.jpg?q=90&w=800&cbr=1&fit=max" alt="Sneakers Neon" class="w-100 h-100 object-fit-cover">
-                    <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-50 text-white p-3 backdrop-blur">
-                      <span class="badge bg-danger mb-1">Detalle</span>
-                      <h4 class="m-0 fs-6">Neón & Asfalto</h4>
-                    </div>
-                  </div>
-                </div>
-                <div class="col-12 h-50">
-                  <div class="rounded-4 overflow-hidden shadow-sm h-100 position-relative hover-scale">
-                    <img src="https://media.istockphoto.com/id/2161831582/photo/portrait-of-luxury-modern-woman-in-new-york-city.jpg?s=612x612&w=0&k=20&c=Xa9jp15HVew7wxFRYxXTJB6bl-rNBCFbj2JFV8miPzo=" alt="Urban Streetwear" class="w-100 h-100 object-fit-cover">
-                    <div class="position-absolute bottom-0 start-0 w-100 bg-black bg-opacity-50 text-white p-3 backdrop-blur">
-                      <span class="badge bg-primary mb-1">Texturas</span>
-                      <h4 class="m-0 fs-6">Siluetas Neutras</h4>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        <!-- Productos y Reserva (Igual a tu requerimiento con estilo mejorado) -->
-        <section id="productos" class="panel-productos bg-light p-5 rounded-5 shadow-inner border border-2">
-          <div class="d-flex justify-content-between align-items-center mb-4">
-            <div>
-              <p class="text-uppercase text-muted fw-bold mb-1" style="font-size: 0.85rem;">Lanzamientos</p>
-              <h2 class="display-6 fw-bolder m-0">Próximas Entregas</h2>
-            </div>
-            <span class="badge bg-dark text-white px-3 py-2 rounded-pill fs-6 shadow-sm"><i class="bi bi-lock-fill me-1"></i> Stock Limitado</span>
-          </div>
+            <h4><strong>Sneakers Volt</strong></h4>
+            <p>Edición ultra limitada. Suela con cámara de aire.</p>
+            <button class="button btn-reserva btn-oscura" data-producto="Sneakers Volt">Reservar S/ 520</button>
+          </article>
           
-          <div class="resource-grid row g-4">
-            <!-- Producto 1 -->
-            <article class="resource-card col-md-4">
-              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-scale position-relative">
-                <div class="card-image-wrapper ratio ratio-1x1 bg-white">
-                  <img src="https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hoodie Reflex" class="w-100 h-100 object-fit-cover">
-                </div>
-                <div class="card-body d-flex flex-column p-4 text-center">
-                  <h4 class="fw-bolder fs-4 mb-2">Hoodie Reflex</h4>
-                  <p class="text-muted small flex-grow-1">Detalles reflectantes 3M. Algodón pesado de 400gsm.</p>
-                  <button class="button btn-reserva btn btn-dark w-100 rounded-pill py-2 fw-bold" data-producto="Hoodie Reflex">Reservar S/ 259</button>
-                </div>
-              </div>
-            </article>
-            
-            <!-- Producto 2 -->
-            <article class="resource-card col-md-4">
-              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-scale position-relative">
-                <span class="position-absolute top-0 end-0 m-3 badge bg-danger text-white fs-6 shadow z-1">HOT</span>
-                <div class="card-image-wrapper ratio ratio-1x1 bg-white">
-                  <img src="https://images.pexels.com/photos/1478442/pexels-photo-1478442.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Sneakers Volt" class="w-100 h-100 object-fit-cover">
-                </div>
-                <div class="card-body d-flex flex-column p-4 text-center">
-                  <h4 class="fw-bolder fs-4 mb-2">Sneakers Volt</h4>
-                  <p class="text-muted small flex-grow-1">Edición ultra limitada. Suela con cámara de aire expuesta.</p>
-                  <button class="button btn-reserva btn btn-dark w-100 rounded-pill py-2 fw-bold" data-producto="Sneakers Volt">Reservar S/ 520</button>
-                </div>
-              </div>
-            </article>
-            
-            <!-- Producto 3 -->
-            <article class="resource-card col-md-4">
-              <div class="card h-100 border-0 shadow-sm rounded-4 overflow-hidden hover-scale position-relative">
-                <div class="card-image-wrapper ratio ratio-1x1 bg-white">
-                  <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cargo Pants" class="w-100 h-100 object-fit-cover">
-                </div>
-                <div class="card-body d-flex flex-column p-4 text-center">
-                  <h4 class="fw-bolder fs-4 mb-2">Cargo Pants</h4>
-                  <p class="text-muted small flex-grow-1">Múltiples bolsillos tácticos y ajuste oversize relajado.</p>
-                  <button class="button btn-reserva btn btn-dark w-100 rounded-pill py-2 fw-bold" data-producto="Cargo Pants">Reservar S/ 199</button>
-                </div>
-              </div>
-            </article>
-          </div>
-        </section>
+          <article class="resource-card">
+            <div class="card-image-wrapper">
+              <img src="https://images.pexels.com/photos/1598505/pexels-photo-1598505.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Cargo Pants">
+            </div>
+            <h4><strong>Cargo Pants</strong></h4>
+            <p>Múltiples bolsillos y ajuste oversize.</p>
+            <button class="button btn-reserva" data-producto="Cargo Pants">Reservar S/ 199</button>
+          </article>
+        </div>
+      </section>
 
-      </div>
-    </div>
-  </main>
-
-  <footer class="site-footer bg-dark text-white py-4 mt-5">
-    <div class="container d-flex justify-content-between align-items-center">
-      <p class="m-0 text-white-50 small fw-bold">STREETHYPE © 2026 · Moda Urbana</p>
-      <a href="#contenido" class="text-white text-decoration-none small fw-bold"><i class="bi bi-arrow-up-circle-fill me-1"></i> Volver arriba</a>
-    </div>
-  </footer>
-
-  <!-- Botones flotantes extra (Asesor y Volver Index) -->
-  <div class="position-fixed bottom-0 end-0 m-4 d-flex flex-column gap-3 z-3">
-    <a href="../index.html" class="btn btn-light rounded-circle shadow-lg d-flex justify-content-center align-items-center hover-scale border" style="width: 50px; height: 50px;" title="Volver al Index">
-      <i class="bi bi-house-door-fill fs-4 text-dark"></i>
-    </a>
-    <a href="#" id="btn-chat" class="btn btn-dark rounded-pill px-4 py-3 shadow-lg text-decoration-none fw-bold hover-scale">
-      <i class="bi bi-chat-dots-fill me-2"></i>Asesor
-    </a>
+    </main>
   </div>
 
-  <!-- Modales intactos en tu lógica -->
-  <div id="reserva-modal" class="modal-overlay position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 justify-content-center align-items-center z-3" style="display: none; align-items: center; justify-content: center;">
-    <div class="modal-content bg-white p-5 rounded-4 shadow-lg text-center" style="max-width: 450px; width: 90%;">
-      <h3 id="modal-titulo" class="fw-bolder fs-3 mb-3">Confirmar Reserva</h3>
-      <p class="text-muted mb-4">Asegura tu <strong id="modal-producto-nombre" class="text-dark bg-light px-2 py-1 rounded"></strong> antes del drop.</p>
+  <!-- Pie de página -->
+  <footer class="site-footer">
+    <p>STREETHYPE &copy; 2026 · Moda Urbana</p>
+    <a href="#hero"><strong>↑ Volver arriba</strong></a>
+  </footer>
+
+  <!-- GRUPO DE BOTONES FLOTANTES -->
+  <div class="contenedor-flotante">
+    <a href="../index.html" class="btn-flotante-pequeno" title="Ir al Inicio">🏠</a>
+    <a href="#" class="btn-flotante" id="btn-chat">💬 Asesor</a>
+  </div>
+
+  <!-- Modal de Reserva (sin estilos en línea) -->
+  <div id="reserva-modal" class="modal-overlay">
+    <div class="modal-content text-center">
+      <h3 id="modal-titulo"><strong>Confirmar Reserva</strong></h3>
+      <p>Asegura tu <mark id="modal-producto-nombre"></mark> antes del drop.</p>
       <form id="form-reserva">
-        <input type="email" placeholder="Tu correo electrónico" required class="modal-input form-control form-control-lg text-center rounded-pill mb-4 border-2 shadow-sm">
-        <div class="modal-actions d-flex gap-3 justify-content-center">
-          <button type="button" class="btn btn-outline-dark rounded-pill px-4 fw-bold" id="btn-cerrar-modal">Cancelar</button>
-          <button type="submit" class="btn btn-dark rounded-pill px-4 fw-bold shadow">Confirmar</button>
+        <input type="email" placeholder="Tu correo electrónico" required class="modal-input">
+        <div class="modal-actions">
+          <button type="button" class="button button--secondary" id="btn-cerrar-modal">Cancelar</button>
+          <button type="submit" class="button btn-confirmar">Confirmar</button>
         </div>
       </form>
     </div>
   </div>
 
-  <div id="chat-modal" class="modal-overlay position-fixed top-0 start-0 w-100 h-100 bg-dark bg-opacity-75 justify-content-center align-items-center z-3" style="display: none; align-items: center; justify-content: center;">
-    <div class="modal-content bg-white p-5 rounded-4 shadow-lg text-center" style="max-width: 400px; width: 90%;">
-      <h3 class="fw-bolder fs-3 mb-3"><i class="bi bi-headset text-primary me-2"></i>Soporte</h3>
-      <p class="text-muted mb-4">Nuestro equipo está ajustando los últimos detalles. Déjanos tu duda.</p>
-      <button type="button" class="btn btn-dark rounded-pill w-100 py-3 fw-bold shadow" id="btn-cerrar-chat">Entendido</button>
+  <!-- Modal de Chat (sin estilos en línea) -->
+  <div id="chat-modal" class="modal-overlay">
+    <div class="modal-content text-center">
+      <h3><strong>🎧 Soporte STREETHYPE</strong></h3>
+      <p>Nuestro equipo está ajustando los últimos detalles. Déjanos tu duda.</p>
+      <button type="button" class="button" id="btn-cerrar-chat">Entendido</button>
     </div>
   </div>
 
-  <!-- Tus scripts originales intactos -->
+  <!-- Tus scripts -->
   <script src="../js/inicio.js"></script>
   <script src="js/nuevos_scripts.js"></script>
   

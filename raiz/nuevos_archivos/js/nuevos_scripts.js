@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+
     /* ==========================================
        1. LÓGICA DEL TEMPORIZADOR (COUNTDOWN)
        ========================================== */
@@ -63,7 +63,7 @@ document.addEventListener('DOMContentLoaded', () => {
         e.preventDefault();
         const producto = productoNombreSpan.innerText;
         modalReserva.classList.remove('activo');
-        
+
         // Usamos una pequeña alerta visual rápida
         setTimeout(() => {
             alert(`¡Reserva confirmada para: ${producto}! Revisa tu correo.`);

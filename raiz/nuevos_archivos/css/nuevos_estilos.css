@@ -87,3 +87,255 @@
 .modal-actions button {
   flex: 1;
 }
+
+/* ==================================================
+   NUEVOS ESTILOS EXTRAÍDOS DEL HTML (Buenas Prácticas)
+   ================================================== */
+
+/* Botón de volver en el header */
+.btn-volver {
+  color: var(--color-ink);
+  border-color: var(--color-ink);
+}
+
+/* Botón cancelar del modal de reserva */
+#btn-cerrar-modal {
+  color: black;
+  border-color: black;
+}
+
+/* Botón confirmar del modal de reserva */
+.btn-confirmar {
+  background-color: var(--color-accent);
+  color: black;
+}
+
+/* Botón del modal de chat */
+#btn-cerrar-chat {
+  width: 100%;
+  background-color: black;
+  color: white;
+}
+/* ==================================================
+   DISEÑO AVANZADO (TIPO DASHBOARD) - CREADO A MANO
+   ================================================== */
+
+/* Banner superior */
+.top-banner {
+  background-color: #000;
+  color: #fff;
+  text-align: center;
+  padding: 10px;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* Navegación dentro del header */
+.nav-principal {
+  display: flex;
+  gap: 20px;
+}
+.nav-principal a {
+  text-decoration: none;
+  color: var(--color-ink);
+  font-weight: bold;
+  transition: opacity 0.3s;
+}
+.nav-principal a:hover {
+  opacity: 0.6;
+}
+
+/* Layout Principal (Grid para Sidebar y Contenido) */
+.layout-dashboard {
+  display: flex;
+  gap: 30px;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  align-items: flex-start;
+}
+
+/* Sidebar (Panel izquierdo) */
+.sidebar {
+  flex: 0 0 250px; /* Ancho fijo del sidebar */
+  background: var(--color-surface);
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 20px;
+}
+.sidebar h2 { margin: 5px 0 15px 0; font-size: 1.5rem; }
+.sidebar hr { border: none; border-top: 2px solid #eee; margin-bottom: 20px; }
+.sidebar-nav ul { list-style: none; padding: 0; margin: 0; }
+.sidebar-nav li { margin-bottom: 15px; }
+.sidebar-nav a {
+  text-decoration: none;
+  color: #555;
+  font-weight: bold;
+  display: block;
+  transition: color 0.3s, transform 0.3s;
+}
+.sidebar-nav a:hover {
+  color: #000;
+  transform: translateX(5px);
+}
+.info-box {
+  background: #f4f4f4;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 0.85rem;
+  margin-top: 30px;
+  border-left: 4px solid #000;
+}
+
+/* Contenido Principal */
+.contenido-principal {
+  flex: 1; /* Toma todo el espacio restante */
+  min-width: 0;
+}
+
+/* Tipografía repetitiva */
+.etiqueta-pequena {
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #888;
+  letter-spacing: 1px;
+  margin-bottom: 5px;
+}
+
+/* Sección Hero */
+.hero-dashboard {
+  background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.8)), url('https://techwear-australia.com/cdn/shop/files/reflective-jacket-black-model-wearing-style.jpg') center/cover;
+  border-radius: 20px;
+  color: white;
+  display: flex;
+  flex-wrap: wrap;
+  overflow: hidden;
+  margin-bottom: 40px;
+  box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+.hero-texto {
+  padding: 50px;
+  flex: 1;
+  min-width: 300px;
+}
+.hero-texto h1 { font-size: 3rem; margin-bottom: 15px; line-height: 1.1; }
+.hero-botones { display: flex; gap: 15px; margin-top: 25px; }
+.btn-primario { background: white; color: black; border: none; }
+.btn-secundario { background: transparent; color: white; border: 2px solid white; }
+
+.hero-contador {
+  background: rgba(0,0,0,0.6);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(10px);
+}
+.hero-contador .countdown span { display: flex; flex-direction: column; align-items: center; }
+.hero-contador .countdown b { font-size: 2.5rem; }
+
+/* Stats Grid */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  margin-bottom: 40px;
+}
+.stat-card {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+  transition: transform 0.3s;
+}
+.stat-card:hover { transform: translateY(-5px); }
+.stat-card h2 { font-size: 2.5rem; margin: 10px 0; }
+.stat-card.oscura { background: #000; color: white; }
+progress { width: 100%; height: 10px; accent-color: red; }
+
+/* Lookbook Visual */
+.lookbook-section {
+  background: white;
+  padding: 40px;
+  border-radius: 20px;
+  margin-bottom: 40px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+}
+.lookbook-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+  margin-top: 20px;
+}
+.lookbook-item {
+  margin: 0;
+  position: relative;
+  border-radius: 15px;
+  overflow: hidden;
+}
+.lookbook-item img { width: 100%; height: 250px; object-fit: cover; display: block; transition: transform 0.3s; }
+.lookbook-item:hover img { transform: scale(1.05); }
+.lookbook-item figcaption {
+  position: absolute;
+  bottom: 0; width: 100%;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  padding: 15px;
+  backdrop-filter: blur(5px);
+}
+
+/* Modificaciones Productos */
+.panel-productos { background: #f9f9f9; padding: 40px; border-radius: 20px; }
+.card-destacada { position: relative; border: 2px solid #000; }
+.tag-hot {
+  position: absolute; top: 15px; right: 15px;
+  background: red; color: white; padding: 5px 10px;
+  font-weight: bold; border-radius: 5px; z-index: 2;
+}
+.btn-oscura { background: #000; color: white; }
+
+/* Footer */
+.site-footer {
+  background: #111; color: #fff; padding: 30px;
+  display: flex; justify-content: space-between; align-items: center;
+  margin-top: 50px;
+}
+.site-footer a { color: #aaa; text-decoration: none; }
+
+/* ==================================================
+   NUEVOS BOTONES FLOTANTES MULTIPLES
+   ================================================== */
+.contenedor-flotante {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  z-index: 100;
+  align-items: flex-end;
+}
+.btn-flotante {
+  background: #000; color: #fff; padding: 15px 30px;
+  border-radius: 50px; text-decoration: none; font-weight: bold;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transition: transform 0.3s;
+}
+.btn-flotante-pequeno {
+  background: #fff; color: #000; width: 50px; height: 50px;
+  border-radius: 50%; display: flex; align-items: center; justify-content: center;
+  text-decoration: none; font-size: 1.5rem; border: 2px solid #eee;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+  transition: transform 0.3s;
+}
+.btn-flotante:hover, .btn-flotante-pequeno:hover { transform: scale(1.1); }
+
+/* Ajustes Responsive básicos para que no se rompa en celular */
+@media (max-width: 900px) {
+  .layout-dashboard { flex-direction: column; }
+  .sidebar { width: 100%; position: static; }
+  .nav-principal { display: none; } /* Oculta nav en móvil para simplificar */
+}
