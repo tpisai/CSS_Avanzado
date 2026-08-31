@@ -103,25 +103,30 @@
           <a class="section-link" href="#zapatillas">VER TODO →</a>
         </div>
 
-        <div class="products">
+        <!-- AGREGA ESTA LÍNEA QUE SE HABÍA BORRADO -->
+        <div class="products"> 
+
           <article class="product-card">
             <div class="product-visual">
               <span class="product-badge">NEW</span>
-              <img
-                src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85"
-                alt="Zapatillas deportivas negras y blancas">
-              <button class="favorite-button" type="button" aria-label="Añadir Zapatillas Low Street a favoritos">♡</button>
-            </div>
-            <div class="product-body">
-              <p class="product-category">ZAPATILLAS</p>
-              <h3>Zapatillas Low Street</h3>
-              <p class="product-description">Perfil bajo / Black & White</p>
-              <div class="product-footer">
-                <strong>S/ 399.00</strong>
-                <button class="add-button" type="button" data-product="Zapatillas Low Street">+</button>
-              </div>
-            </div>
-          </article>
+              <a href="producto.html">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85" alt="Zapatillas deportivas negras y blancas">
+              </a>
+    <button class="favorite-button" type="button" aria-label="Añadir Zapatillas Low Street a favoritos">♡</button>
+  </div>
+  <div class="product-body">
+    <p class="product-category">ZAPATILLAS</p>
+    <!-- Hacemos que el título sea clicable sin arruinar el diseño -->
+    <a href="producto.html" style="text-decoration: none; color: inherit;">
+      <h3>Zapatillas Low Street</h3>
+    </a>
+    <p class="product-description">Perfil bajo / Black & White</p>
+    <div class="product-footer">
+      <strong>S/ 399.00</strong>
+      <button class="add-button" type="button" data-product="Zapatillas Low Street">+</button>
+    </div>
+  </div>
+</article>
 
           <article class="product-card">
             <div class="product-visual">
