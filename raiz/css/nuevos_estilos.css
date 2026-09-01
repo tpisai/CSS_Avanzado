@@ -1,4 +1,141 @@
-/* --- ESTILOS DEL TEMPORIZADOR --- */
+/* ==========================================
+   VARIABLES GLOBALES
+   ========================================== */
+:root {
+  color-scheme: light;
+  --color-ink: #111111;
+  --color-muted: #686868;
+  --color-primary: #111111;
+  --color-primary-dark: #000000;
+  --color-accent: #d7ff00;
+  --color-surface: #ffffff;
+  --color-soft: #f2f2f0;
+  --color-border: #d9d9d6;
+  --color-dark: #101010;
+  --color-dark-soft: #1d1d1d;
+  --shadow: 0 1rem 2.5rem rgb(0 0 0 / 12%);
+  --radius: 0rem;
+  --container: 76rem;
+}
+
+/* ==========================================
+   AJUSTES BASE Y UTILIDADES
+   ========================================== */
+html { 
+  scroll-behavior: smooth; 
+  scroll-padding-top: 100px; 
+}
+
+.bg-body-custom {
+  background-color: #f8f9fa; 
+  font-family: 'Helvetica Neue', Arial, sans-serif;
+}
+
+.fw-black { 
+  font-weight: 900; 
+}
+
+.text-accent {
+  color: var(--color-accent) !important;
+}
+
+.bg-badge-accent {
+  background-color: var(--color-accent) !important;
+}
+
+.txt-small {
+  font-size: 0.8rem;
+}
+
+.txt-subtitle {
+  font-size: 0.85rem;
+}
+
+.hover-scale { 
+  transition: transform 0.3s ease; 
+}
+
+.hover-scale:hover { 
+  transform: translateY(-5px); 
+}
+
+/* ==========================================
+   COMPONENTES ESPECÍFICOS
+   ========================================== */
+/* Logo STREETHYPE */
+.logo-sh {
+  width: 48px;
+  height: 48px;
+  font-weight: 900;
+  font-size: 1.2rem;
+}
+
+.logo-text {
+  font-weight: 900; 
+  font-size: 1.8rem; 
+  color: var(--color-primary-dark); 
+  letter-spacing: -0.05em; 
+  display: flex; 
+  align-items: center;
+}
+
+.logo-hype {
+  color: var(--color-accent); 
+  padding: 0.1em 0.2em; 
+  margin-left: 2px; 
+  line-height: 1;
+}
+
+/* Layout y Hero */
+.sidebar { 
+  position: sticky; 
+  top: 100px; 
+}
+
+.hero-bg {
+  background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.8)), url('https://techwear-australia.com/cdn/shop/files/reflective-jacket-black-model-wearing-style.jpg?v=1705734314&width=1946') center/cover;
+}
+
+/* Botones personalizados */
+.btn-accent {
+  background-color: var(--color-accent);
+  border: none;
+  color: var(--color-primary-dark);
+}
+.btn-accent:hover {
+  background-color: #c2e600; /* Ligeramente más oscuro en hover */
+  color: var(--color-primary-dark);
+}
+
+.btn-float-circle {
+  width: 50px; 
+  height: 50px;
+}
+
+.btn-float-chat {
+  background-color: var(--color-accent); 
+  color: var(--color-primary-dark); 
+  border: none;
+}
+.btn-float-chat:hover {
+  background-color: #c2e600;
+  color: var(--color-primary-dark);
+}
+
+/* Barra de progreso */
+.progress-custom {
+  height: 10px; 
+  background-color: var(--color-soft);
+}
+
+.progress-bar-custom {
+  width: 98%; 
+  background-color: var(--color-accent);
+}
+
+/* ==========================================
+   TEMPORIZADOR Y MODALES
+   ========================================== */
 .countdown-container {
   background: var(--color-ink);
   color: white;
@@ -27,55 +164,50 @@
   font-size: 2rem;
 }
 
-/* --- ESTILOS DE LOS MODALES --- */
+/* Modales */
 .modal-overlay {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.75);
   display: flex;
   justify-content: center;
   align-items: center;
-  z-index: 1000;
   opacity: 0;
   visibility: hidden;
   transition: all 0.3s ease;
 }
 
-/* Esta clase es la que el JS añade para mostrar el modal */
 .modal-overlay.activo {
   opacity: 1;
   visibility: visible;
 }
 
-.modal-content {
+.modal-content-custom {
   background: var(--color-surface);
-  padding: 2.5rem;
   width: 90%;
-  max-width: 400px;
+  max-width: 450px;
   box-shadow: var(--shadow);
   transform: translateY(20px);
   transition: all 0.3s ease;
 }
 
-.modal-overlay.activo .modal-content {
+.modal-chat {
+  max-width: 400px;
+}
+
+.modal-overlay.activo .modal-content-custom {
   transform: translateY(0);
 }
 
-.modal-content h3 {
+.modal-content-custom h3 {
   margin-top: 0;
-  font-size: 1.5rem;
-  border-bottom: 2px solid var(--color-ink);
-  padding-bottom: 0.5rem;
 }
 
 .modal-input {
   width: 100%;
-  padding: 0.8rem;
-  margin: 1rem 0;
-  border: 1px solid var(--color-border);
 }
 
 .modal-actions {
