@@ -1,0 +1,56 @@
+// src/less/layout.less 
+.container { 
+  width: min(100% - 2rem, @container-max); 
+  margin-inline: auto; 
+} 
+ 
+.section { 
+  padding-block: clamp(3rem, 7vw, 5.5rem); 
+ 
+  &--tinted { 
+    background: @color-surface-soft; 
+  } 
+} 
+ 
+.hero { 
+  padding-block: clamp(4rem, 9vw, 7rem); 
+  background: linear-gradient(135deg, #eef6ff, #f8fbff); 
+ 
+  &__layout { 
+    display: grid; 
+    gap: 2rem; 
+    align-items: center; 
+  } 
+ 
+  &__content { 
+    min-inline-size: 0; 
+  } 
+  
+  &__panel { 
+    .surface-card(#fff; 1.25rem); 
+    .stack(.7rem); 
+    padding: 1.5rem; 
+  } 
+} 
+ 
+.card-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr)); 
+  gap: 1.25rem; 
+} 
+ 
+.split-layout { 
+  display: grid; 
+  gap: 2rem; 
+} 
+ 
+@media (min-width: @bp-md) { 
+  .hero__layout { 
+    grid-template-columns: minmax(0, 1.35fr) minmax(16rem, .65fr); 
+  } 
+ 
+  .split-layout { 
+    grid-template-columns: minmax(0, 1fr) minmax(18rem, .8fr); 
+    align-items: start; 
+  } 
+} 
