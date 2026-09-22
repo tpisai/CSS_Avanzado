@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Zapatillas Low Street - STREETHYPE">
   <title>Zapatillas Low Street | STREETHYPE</title>
-  <link rel="stylesheet" href="../css/inicio.css">
-  <link rel="stylesheet" href="../css/producto.css">
+  <!-- Reutilizamos tu misma hoja de estilos -->
+  <link rel="stylesheet" href="/assets/css/inicio.css">
 </head>
 
 <body>
   <a class="skip-link" href="#contenido">Saltar al contenido</a>
 
-  <!-- CABECERA -->
+  <!-- CABECERA (Idéntica a index.html) -->
   <header class="site-header">
     <div class="announcement">
       <div class="container announcement__inner">
@@ -24,7 +24,7 @@
     </div>
 
     <div class="container header__inner">
-      <a class="brand" href="index.html" aria-label="STREETHYPE, inicio">
+      <a class="brand" href="/index.html" aria-label="STREETHYPE, inicio">
         <span class="brand__mark">SH</span>
         <span>STREET<span>HYPE</span></span>
       </a>
@@ -38,11 +38,11 @@
 
       <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
         <ul class="site-nav__list">
-          <li><a href="index.html#novedades">Novedades</a></li>
-          <li><a href="index.html#zapatillas">Zapatillas</a></li>
-          <li><a href="index.html#ropa">Ropa</a></li>
-          <li><a href="index.html#accesorios">Accesorios</a></li>
-          <li><a href="index.html#sale">Sale</a></li>
+          <li><a href="/index.html#novedades">Novedades</a></li>
+          <li><a href="/index.html#zapatillas">Zapatillas</a></li>
+          <li><a href="/index.html#ropa">Ropa</a></li>
+          <li><a href="/index.html#accesorios">Accesorios</a></li>
+          <li><a href="/index.html#sale">Sale</a></li>
         </ul>
       </nav>
 
@@ -56,222 +56,225 @@
     </div>
   </header>
 
-  <!-- CONTENIDO PRINCIPAL -->
-  <main id="contenido" class="container main-content">
-    
-    <!-- Migas de pan -->
-    <nav aria-label="Migas de pan" class="breadcrumb-nav">
-        <a href="index.html">Inicio</a> / 
-        <a href="index.html#zapatillas">Zapatillas</a> / 
+  <!-- CONTENIDO PRINCIPAL DEL PRODUCTO -->
+  <main id="contenido" class="container" style="padding: 4rem 0;">
+    <!-- Migas de pan (Breadcrumbs) -->
+    <nav aria-label="Migas de pan" style="margin-bottom: 2rem; font-size: 0.9rem;">
+        <a href="/index.html" style="color: #666; text-decoration: none;">Inicio</a> / 
+        <a href="/index.html#zapatillas" style="color: #666; text-decoration: none;">Zapatillas</a> / 
         <strong id="producto-breadcrumb">Zapatillas Low Street</strong>
     </nav>
 
     <!-- Contenedor del Producto -->
-    <div class="product-layout">
+    <div style="display: flex; flex-wrap: wrap; gap: 4rem;">
       
-      <!-- Galería -->
-      <div class="product-gallery">
+      <!-- Galería / Imagen del Producto -->
+     <div style="flex: 1; min-width: 300px; background: #f4f4f4; border-radius: 12px; padding: 2rem; display: flex; align-items: center; justify-content: center;">
         <img 
           id="producto-imagen"
           src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85" 
           alt="Zapatillas Low Street" 
-          class="product-image-main">
+          style="width: 100%; max-height: 400px; object-fit: contain; border-radius: 8px;">
       </div>
 
-      <!-- Detalles -->
-      <div class="product-info">
+      <!-- Detalles del Producto -->
+      <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
         <p class="eyebrow">NUEVO INGRESO</p>
-        <h1 id="producto-titulo" class="product-title">Zapatillas Low Street</h1>
-        <p id="producto-precio" class="product-price">S/ 399.00</p>
+        <h1 id="producto-titulo" style="margin: 0.5rem 0 1rem 0; font-size: 2.5rem;">Zapatillas Low Street</h1>
+        <p id="producto-precio" style="font-size: 1.5rem; font-weight: bold; margin-bottom: 1.5rem;">S/ 399.00</p>
         
-        <p id="producto-descripcion" class="product-description">
+        <p id="producto-descripcion" style="color: #555; line-height: 1.6; margin-bottom: 2rem;">
           Perfil bajo en Black & White. Diseñadas para la calle, estas zapatillas combinan un estilo clásico con materiales de alta durabilidad para resistir el uso diario urbano. Suela de goma antideslizante y capellada reforzada.
         </p>
 
-        <!-- Selector de Tallas -->
-        <div id="bloque-tallas" class="size-selector">
-          <p id="talla-label" class="size-label">Selecciona tu talla (PE):</p>
-          <div id="grupo-tallas" class="size-group">
+        <!-- Selector de Tallas (se arma por JS según la categoría del producto) -->
+        <div id="bloque-tallas" style="margin-bottom: 2rem;">
+          <p id="talla-label" style="font-weight: bold; margin-bottom: 0.8rem;">Selecciona tu talla (PE):</p>
+          <div id="grupo-tallas" style="display: flex; gap: 0.5rem;">
           </div>
         </div>
 
-        <!-- Botón Añadir -->
-        <button id="producto-boton" class="button add-button btn-full" type="button" data-product="Zapatillas Low Street">
-          AÑADIR AL CARRITO
-        </button>
+        <!-- Botón Añadir al Carrito (Conectado a inicio.js) -->
+        <button id="producto-boton" class="button add-button" type="button" data-product="Zapatillas Low Street" style="width: 100%; text-align: center; cursor: pointer;">
+  AÑADIR AL CARRITO
+</button>
         
-        <div class="product-benefits">
+        <div style="margin-top: 2rem; padding-top: 2rem; border-top: 1px solid #eee; font-size: 0.9rem; color: #666;">
           <p>✓ Envío gratis a todo el Perú</p>
           <p>✓ Devoluciones gratuitas hasta 30 días</p>
         </div>
       </div>
     </div>
-
-    <!-- SECCIÓN: CATÁLOGO GENERAL -->
-    <section class="catalog-section">
-      <div class="catalog-header">
-        <p class="eyebrow catalog-eyebrow">EXPLORA EL CATALOGO</p>
-        <h2 class="catalog-title">Todos los productos</h2>
+    <!-- SECCIÓN: MÁS PRODUCTOS -->
+    <!-- SECCIÓN: MÁS PRODUCTOS -->
+   <!-- SECCIÓN: CATÁLOGO GENERAL DE PRODUCTOS -->
+    <!-- SECCIÓN: CATÁLOGO GENERAL DE PRODUCTOS -->
+   <section style="margin-top: 5rem; border-top: 1px solid #eee; padding-top: 3rem;">
+      <div style="margin-bottom: 2rem;">
+        <p class="eyebrow" style="margin: 0 0 0.5rem; color: #0b63ce; font-size: 0.78rem; font-weight: 900; letter-spacing: 0.1em; text-transform: uppercase;">EXPLORA EL CATALOGO</p>
+        <h2 style="font-size: clamp(1.5rem, 2vw + 1rem, 2.2rem); margin: 0;">Todos los productos</h2>
       </div>
 
-      <!-- Grid responsivo -->
-      <div class="products grid-layout">
-        <!-- Producto 1 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-drop">DROP</span>
+      <!-- Contenedor Grid responsivo -->
+     <div class="products" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr)); gap: 2rem;">
+
+        <!-- Producto 1: Zapatillas -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #cce7d0; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">DROP</span>
             <a href="producto.html?id=concrete">
-              <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=85" alt="Zapatillas Concrete">
+              <img src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=85" alt="Zapatillas Concrete" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">ZAPATILLAS</p>
-            <h3 class="product-card-title"><a href="producto.html?id=concrete">Zapatillas Concrete</a></h3>
-            <p class="product-card-subtitle">Suela chunky / Off White</p>
-            <div class="product-card-footer">
-              <strong>S/ 429.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Zapatillas Concrete">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">ZAPATILLAS</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=concrete" style="text-decoration: none; color: inherit;">Zapatillas Concrete</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">Suela chunky / Off White</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 429.00</strong>
+              <button class="add-button" type="button" data-product="Zapatillas Concrete" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
 
-        <!-- Producto 2 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-new">NEW</span>
+        <!-- Producto 2: Zapatillas -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #e0f0ff; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">NEW</span>
             <a href="producto.html?id=court">
-              <img src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=800&q=85" alt="Zapatillas Court">
+              <img src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=800&q=85" alt="Zapatillas Court" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">ZAPATILLAS</p>
-            <h3 class="product-card-title"><a href="producto.html?id=court">Zapatillas Court</a></h3>
-            <p class="product-card-subtitle">Classic shape / White</p>
-            <div class="product-card-footer">
-              <strong>S/ 459.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Zapatillas Court">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">ZAPATILLAS</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=court" style="text-decoration: none; color: inherit;">Zapatillas Court</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">Classic shape / White</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 459.00</strong>
+              <button class="add-button" type="button" data-product="Zapatillas Court" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
 
-        <!-- Producto 3 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-limited">LIMITED</span>
+        <!-- Producto 3: Ropa / Chaqueta -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #fae1dd; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">LIMITED</span>
             <a href="producto.html?id=utility-jacket">
-              <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85" alt="Oversize Utility Jacket">
+              <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85" alt="Oversize Utility Jacket" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">ROPA</p>
-            <h3 class="product-card-title"><a href="producto.html?id=utility-jacket">Oversize Utility Jacket</a></h3>
-            <p class="product-card-subtitle">Heavy cotton / Sand</p>
-            <div class="product-card-footer">
-              <strong>S/ 349.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Oversize Utility Jacket">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">ROPA</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=utility-jacket" style="text-decoration: none; color: inherit;">Oversize Utility Jacket</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">Heavy cotton / Sand</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 349.00</strong>
+              <button class="add-button" type="button" data-product="Oversize Utility Jacket" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
 
-        <!-- Producto 4 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-new">NEW</span>
+        <!-- Producto 4: Polera / Hoodie -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #e2d9f3; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">NEW</span>
             <a href="producto.html?id=hoodie-urban">
-              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85" alt="Hoodie Urban Essential">
+              <img src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85" alt="Hoodie Urban Essential" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">POLERA</p>
-            <h3 class="product-card-title"><a href="producto.html?id=hoodie-urban">Hoodie Urban Essential</a></h3>
-            <p class="product-card-subtitle">Fleece / Black</p>
-            <div class="product-card-footer">
-              <strong>S/ 289.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Hoodie Urban Essential">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">POLERA</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=hoodie-urban" style="text-decoration: none; color: inherit;">Hoodie Urban Essential</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">Fleece / Black</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 289.00</strong>
+              <button class="add-button" type="button" data-product="Hoodie Urban Essential" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
 
-        <!-- Producto 5 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-hot">HOT</span>
+        <!-- Producto 5: Polo / T-Shirt -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #fff3cd; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">HOT</span>
             <a href="producto.html?id=polo-graphic">
-              <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=85" alt="Polo Graphic Street">
+              <img src="https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=85" alt="Polo Graphic Street" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">POLO</p>
-            <h3 class="product-card-title"><a href="producto.html?id=polo-graphic">Polo Graphic Street</a></h3>
-            <p class="product-card-subtitle">100% Algodón / White</p>
-            <div class="product-card-footer">
-              <strong>S/ 119.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Polo Graphic Street">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">POLO</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=polo-graphic" style="text-decoration: none; color: inherit;">Polo Graphic Street</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">100% Algodón / White</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 119.00</strong>
+              <button class="add-button" type="button" data-product="Polo Graphic Street" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
 
-        <!-- Producto 6 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-new">NEW</span>
+        <!-- Producto 6: Pantalón / Jogger -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #d1ecf1; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">NEW</span>
             <a href="producto.html?id=jogger-cargo">
-              <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=85" alt="Jogger Cargo Tactical">
+              <img src="https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=85" alt="Jogger Cargo Tactical" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">PANTALÓN</p>
-            <h3 class="product-card-title"><a href="producto.html?id=jogger-cargo">Jogger Cargo Tactical</a></h3>
-            <p class="product-card-subtitle">Multi bolsillos / Olive</p>
-            <div class="product-card-footer">
-              <strong>S/ 229.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Jogger Cargo Tactical">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">PANTALÓN</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=jogger-cargo" style="text-decoration: none; color: inherit;">Jogger Cargo Tactical</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">Multi bolsillos / Olive</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 229.00</strong>
+              <button class="add-button" type="button" data-product="Jogger Cargo Tactical" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
 
-        <!-- Producto 7 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-sale">SALE</span>
+        <!-- Producto 7: Accesorio / Gorra -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #f8d7da; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">SALE</span>
             <a href="producto.html?id=cap-classic">
-              <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85" alt="Cap Classic Hype">
+              <img src="https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85" alt="Cap Classic Hype" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">ACCESORIO</p>
-            <h3 class="product-card-title"><a href="producto.html?id=cap-classic">Cap Classic Hype</a></h3>
-            <p class="product-card-subtitle">Ajustable / Black</p>
-            <div class="product-card-footer">
-              <strong>S/ 89.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Cap Classic Hype">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">ACCESORIO</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=cap-classic" style="text-decoration: none; color: inherit;">Cap Classic Hype</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">Ajustable / Black</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 89.00</strong>
+              <button class="add-button" type="button" data-product="Cap Classic Hype" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
 
-        <!-- Producto 8 -->
-        <article class="product-card">
-          <div class="product-card-image-wrap">
-            <span class="product-badge badge-new">NEW</span>
+        <!-- Producto 8: Accesorio / Mochila -->
+        <article class="product-card" style="display: flex; flex-direction: column; min-inline-size: 0; border: 1px solid #eee; border-radius: 8px; overflow: hidden; background: #fff;">
+          <div style="position: relative;">
+            <span class="product-badge" style="position: absolute; top: 10px; left: 10px; background: #e2d9f3; padding: 4px 8px; font-size: 0.8rem; font-weight: bold; z-index: 2;">NEW</span>
             <a href="producto.html?id=mochila-urban">
-              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85" alt="Mochila Urban Utility">
+              <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85" alt="Mochila Urban Utility" style="display: block; width: 100%; height: 220px; object-fit: cover;">
             </a>
           </div>
-          <div class="product-card-details">
-            <p class="product-card-category">ACCESORIO</p>
-            <h3 class="product-card-title"><a href="producto.html?id=mochila-urban">Mochila Urban Utility</a></h3>
-            <p class="product-card-subtitle">Impermeable / Grey</p>
-            <div class="product-card-footer">
-              <strong>S/ 199.00</strong>
-              <button class="add-button btn-circle" type="button" data-product="Mochila Urban Utility">+</button>
+          <div style="display: flex; flex-direction: column; flex: 1; padding: 1.25rem;">
+            <p style="margin: 0 0 0.4rem; color: #666; font-size: 0.75rem; font-weight: bold;">ACCESORIO</p>
+            <h3 style="margin: 0 0 0.4rem; font-size: 1rem;"><a href="producto.html?id=mochila-urban" style="text-decoration: none; color: inherit;">Mochila Urban Utility</a></h3>
+            <p style="margin: 0; color: #555; font-size: 0.85rem;">Impermeable / Grey</p>
+            <div style="margin-block-start: auto; display: flex; justify-content: space-between; align-items: center; margin-top: 1.2rem;">
+              <strong style="font-size: 1rem;">S/ 199.00</strong>
+              <button class="add-button" type="button" data-product="Mochila Urban Utility" style="background: black; color: white; border: none; width: 35px; height: 35px; border-radius: 50%; cursor: pointer;">+</button>
             </div>
           </div>
         </article>
+
       </div>
     </section>
   </main>
 
-  <!-- PIE DE PÁGINA -->
+  <!-- PIE DE PÁGINA (Idéntico a index.html) -->
   <footer class="site-footer">
     <div class="container footer-grid">
       <div>
@@ -280,9 +283,9 @@
       </div>
       <div>
         <h3>SHOP</h3>
-        <a href="index.html#zapatillas">Zapatillas</a>
-        <a href="index.html#ropa">Ropa</a>
-        <a href="index.html#accesorios">Accesorios</a>
+        <a href="/index.html#zapatillas">Zapatillas</a>
+        <a href="/index.html#ropa">Ropa</a>
+        <a href="/index.html#accesorios">Accesorios</a>
       </div>
       <div>
         <h3>AYUDA</h3>
@@ -303,9 +306,11 @@
     </div>
   </footer>
 
+  <!-- Mensaje flotante del carrito -->
   <div class="cart-message" id="cart-message" aria-live="polite"></div>
 
-  <script src="../js/inicio.js"></script>
-  <script src="../js/producto.js"></script>
+  <!-- Reutilizamos tu mismo script -->
+  <script src="assets/js/inicio.js"></script>
+  <script src="assets/js/producto.js"></script>
 </body>
 </html>
