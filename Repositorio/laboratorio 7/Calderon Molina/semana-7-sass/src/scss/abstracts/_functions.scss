@@ -1,0 +1,12 @@
+@use "sass:map";
+@use "tokens" as t;
+
+@function space($step) {
+  $value: map.get(t.$spaces, $step);
+
+  @if $value == null {
+    @error "Paso de espacio no válido: #{$step}.";
+  }
+
+  @return $value;
+}
