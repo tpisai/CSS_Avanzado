@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="STREETHYPE - tienda urbana de zapatillas, ropa y accesorios streetwear.">
+  <title>STREETHYPE | Streetwear</title>
+  <link rel="stylesheet" href="css/inicio.css">
+</head>
+
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="announcement">
+      <div class="container announcement__inner">
+        <p>ENVÍO GRATIS DESDE S/ 399</p>
+        <p>CAMBIOS SIN COSTO</p>
+        <p>3 CUOTAS SIN INTERÉS</p>
+        <p>RETIRO EN TIENDA GRATIS</p>
+      </div>
+    </div>
+
+    <div class="container header__inner">
+      <a class="brand" href="index.html" aria-label="STREETHYPE, inicio">
+        <span class="brand__mark">SH</span>
+        <span>STREET<span>HYPE</span></span>
+      </a>
+
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="visually-hidden">Abrir menú</span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <ul class="site-nav__list">
+          <li><a href="paginas/novedades.html">Novedades</a></li>
+          <li><a href="#zapatillas">Zapatillas</a></li>
+          <li><a href="#ropa">Ropa</a></li>
+          <li><a href="#accesorios">Accesorios</a></li>
+          <li><a href="#sale">Sale</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="icon-button" type="button" aria-label="Buscar productos">⌕</button>
+        <button class="icon-button" type="button" aria-label="Mi cuenta">♙</button>
+        <button class="cart-button" type="button" aria-label="Carrito de compras">
+          <a href="paginas/carrito.html">🛒</a><span class="cart-count">0</span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero-layout">
+        <div class="hero-content">
+          <p class="eyebrow">NEW STREET SEASON / 2026</p>
+          <h1 id="hero-title">OWN YOUR STYLE.</h1>
+          <p class="hero-text">
+            Prendas, zapatillas y accesorios para quienes convierten
+            la calle en su propio escenario.
+          </p>
+
+          <div class="hero-actions">
+            <a class="button" href="#novedades">VER COLECCIÓN</a>
+            <a class="button button--secondary" href="#categorias">EXPLORAR</a>
+          </div>
+
+          <div class="hero-note">
+            <span class="hero-note__number">01</span>
+            <div>
+              <p class="hero-note__title">DROP 01 — EVERYDAY STREET</p>
+              <p>Diseños esenciales con actitud urbana.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-media">
+          <img
+            src="https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85"
+            alt="Modelo con una propuesta de moda urbana">
+        </div>
+      </div>
+
+      <div class="hero-dots" aria-label="Selección de campaña">
+        <button class="hero-dot hero-dot--active" type="button" aria-label="Campaña 1" data-slide="0"></button>
+        <button class="hero-dot" type="button" aria-label="Campaña 2" data-slide="1"></button>
+        <button class="hero-dot" type="button" aria-label="Campaña 3" data-slide="2"></button>
+      </div>
+    </section>
+
+    <section class="section" id="novedades" aria-labelledby="novedades-title">
+      <div class="container">
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">JUST DROPPED</p>
+            <h2 id="novedades-title">Nuevos ingresos</h2>
+          </div>
+          <a class="section-link" href="#zapatillas">VER TODO →</a>
+        </div>
+
+        <!-- AGREGA ESTA LÍNEA QUE SE HABÍA BORRADO -->
+        <div class="products"> 
+
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="product-badge">NEW</span>
+              <a href="paginas/producto.html">
+                <img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85" alt="Zapatillas deportivas negras y blancas">
+              </a>
+    <button class="favorite-button" type="button" aria-label="Añadir Zapatillas Low Street a favoritos">♡</button>
+  </div>
+  <div class="product-body">
+    <p class="product-category">ZAPATILLAS</p>
+    <!-- Hacemos que el título sea clicable sin arruinar el diseño -->
+    <a href="paginas/producto.html" style="text-decoration: none; color: inherit;">
+      <h3>Zapatillas Low Street</h3>
+    </a>
+    <p class="product-description">Perfil bajo / Black & White</p>
+    <div class="product-footer">
+      <strong>S/ 399.00</strong>
+      <button class="add-button" type="button" data-product="Zapatillas Low Street">+</button>
+    </div>
+  </div>
+</article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="product-badge">DROP</span>
+              <img
+                src="https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=85"
+                alt="Zapatillas urbanas de color claro">
+              <button class="favorite-button" type="button" aria-label="Añadir Zapatillas Concrete a favoritos">♡</button>
+            </div>
+            <div class="product-body">
+              <p class="product-category">ZAPATILLAS</p>
+              <h3>Zapatillas Concrete</h3>
+              <p class="product-description">Suela chunky / Off White</p>
+              <div class="product-footer">
+                <strong>S/ 429.00</strong>
+                <button class="add-button" type="button" data-product="Zapatillas Concrete">+</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="product-badge">NEW</span>
+              <img
+                src="https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=800&q=85"
+                alt="Zapatillas deportivas blancas">
+              <button class="favorite-button" type="button" aria-label="Añadir Zapatillas Court a favoritos">♡</button>
+            </div>
+            <div class="product-body">
+              <p class="product-category">ZAPATILLAS</p>
+              <h3>Zapatillas Court</h3>
+              <p class="product-description">Classic shape / White</p>
+              <div class="product-footer">
+                <strong>S/ 459.00</strong>
+                <button class="add-button" type="button" data-product="Zapatillas Court">+</button>
+              </div>
+            </div>
+          </article>
+
+          <article class="product-card">
+            <div class="product-visual">
+              <span class="product-badge product-badge--dark">LIMITED</span>
+              <img
+                src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85"
+                alt="Prenda de moda urbana en tonos neutros">
+              <button class="favorite-button" type="button" aria-label="Añadir Oversize Utility Jacket a favoritos">♡</button>
+            </div>
+            <div class="product-body">
+              <p class="product-category">ROPA</p>
+              <h3>Oversize Utility Jacket</h3>
+              <p class="product-description">Heavy cotton / Sand</p>
+              <div class="product-footer">
+                <strong>S/ 349.00</strong>
+                <button class="add-button" type="button" data-product="Oversize Utility Jacket">+</button>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--dark" id="categorias" aria-labelledby="categorias-title">
+      <div class="container">
+        <div class="section-heading section-heading--light">
+          <div>
+            <p class="eyebrow eyebrow--light">FIND YOUR FIT</p>
+            <h2 id="categorias-title">Tu estilo. Tu calle.</h2>
+          </div>
+          <p>Construye tu outfit a tu manera.</p>
+        </div>
+
+        <div class="category-grid">
+          <a class="category-card category-card--large" href="#zapatillas" id="zapatillas">
+            <div>
+              <p class="category-number">01</p>
+              <h3>ZAPATILLAS</h3>
+              <p>Modelos para todos los días.</p>
+            </div>
+            <span>EXPLORAR →</span>
+          </a>
+
+          <a class="category-card" href="#ropa" id="ropa">
+            <div>
+              <p class="category-number">02</p>
+              <h3>ROPA</h3>
+              <p>Oversize, básica y urbana.</p>
+            </div>
+            <span>EXPLORAR →</span>
+          </a>
+
+          <a class="category-card category-card--accent" href="#accesorios" id="accesorios">
+            <div>
+              <p class="category-number">03</p>
+              <h3>ACCESORIOS</h3>
+              <p>Detalles que completan el look.</p>
+            </div>
+            <span>EXPLORAR →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section editorial" id="sale" aria-labelledby="editorial-title">
+      <div class="container editorial-layout">
+        <div class="editorial-media">
+          <img
+            src="https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=85"
+            alt="Colección de ropa urbana">
+        </div>
+
+        <div class="editorial-content">
+          <p class="eyebrow">STREET CULTURE</p>
+          <h2 id="editorial-title">No sigas tendencias. Haz las tuyas.</h2>
+          <p>
+            El streetwear nació en la calle y sigue evolucionando con ella.
+            Mezcla básicos, siluetas amplias y piezas protagonistas para
+            construir un estilo que se sienta realmente tuyo.
+          </p>
+          <a class="button" href="#novedades">DESCUBRIR EL DROP</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section newsletter" aria-labelledby="newsletter-title">
+      <div class="container newsletter-inner">
+        <div>
+          <p class="eyebrow">STAY IN THE LOOP</p>
+          <h2 id="newsletter-title">No te pierdas el próximo drop.</h2>
+          <p>Recibe novedades, lanzamientos y promociones de STREETHYPE.</p>
+        </div>
+
+        <form class="newsletter-form" id="newsletter-form">
+          <label class="visually-hidden" for="email">Correo electrónico</label>
+          <input id="email" name="email" type="email" placeholder="Tu correo electrónico" required>
+          <button class="button" type="submit">UNIRME</button>
+        </form>
+        <p class="form-message" id="form-message" aria-live="polite"></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-grid">
+      <div>
+        <a class="brand brand--footer" href="index.html">STREET<span>HYPE</span></a>
+        <p>Streetwear para moverte a tu manera.</p>
+      </div>
+
+      <div>
+        <h3>SHOP</h3>
+        <a href="#zapatillas">Zapatillas</a>
+        <a href="#ropa">Ropa</a>
+        <a href="#accesorios">Accesorios</a>
+      </div>
+
+      <div>
+        <h3>AYUDA</h3>
+        <a href="#">Envíos</a>
+        <a href="#">Cambios</a>
+        <a href="paginas/contacto.html">Contacto</a>
+        <a href="paginas/preguntas-frecuentes.html">Preguntas frecuentes</a>
+
+      </div>
+
+      <div>
+        <h3>SÍGUENOS</h3>
+        <a href="#">Instagram</a>
+        <a href="#">TikTok</a>
+        <a href="#">Facebook</a>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <p>© <span id="year"></span> STREETHYPE. Todos los derechos reservados.</p>
+      <p>HECHO PARA LA CALLE.</p>
+    </div>
+  </footer>
+
+  <div class="cart-message" id="cart-message" aria-live="polite"></div>
+
+  <script src="js/inicio.js"></script>
+</body>
+</html>

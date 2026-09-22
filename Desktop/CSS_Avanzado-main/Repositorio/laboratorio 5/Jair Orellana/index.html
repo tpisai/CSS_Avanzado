@@ -1,0 +1,83 @@
+<html lang="es"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <meta name="description" content="Laboratorio comparativo de Sass y Less"> 
+        <title>CSS Build Lab | Semana 5</title> 
+        <!-- Cambia solo el nombre del archivo para comparar ambas salidas. --> 
+        <link rel="stylesheet" href="dist/css/main-less.css"> 
+    </head> 
+    <body> 
+        <a class="skip-link" href="#contenido">Saltar al contenido</a> 
+        <header class="site-header"> 
+            <div class="container site-header__inner"> 
+            <a class="brand" href="#inicio" aria-label="CSS Build Lab, inicio"> 
+            <span class="brand__mark" aria-hidden="true">&lt;/&gt;</span> 
+            <span>CSS Build Lab</span> 
+            </a> 
+            <span class="status"><span aria-hidden="true"></span> Pipeline activo</span> 
+            </div> 
+        </header> 
+        <main id="contenido"> 
+            <section class="hero" id="inicio"> 
+            <div class="container hero__layout"> 
+            <div> 
+            <p class="eyebrow">Semana 5 · Preprocesadores CSS</p> 
+            <h1>Una fuente mantenible, dos compiladores, CSS verificable.</h1> 
+            <p class="hero__lead">Compara Sass y Less sin perder de vista el producto final: una hoja CSS que el navegador puede 
+    interpretar.</p> 
+          <div class="actions"> 
+            <a class="button" href="#comparacion">Ver comparación</a> 
+            <a class="button button--secondary" href="#evidencia">Registrar evidencia</a> 
+          </div> 
+        </div>  
+        <aside class="terminal" aria-label="Resumen del proceso de compilación"> 
+          <p><span>$</span> npm run build</p> 
+          <p><strong>✓</strong> main.scss → main-sass.css</p> 
+          <p><strong>✓</strong> main.less → main-less.css</p> 
+          <p><strong>✓</strong> source maps generados</p> 
+        </aside> 
+      </div> 
+    </section> 
+  
+    <section class="section" id="comparacion" aria-labelledby="titulo-comparacion"> 
+      <div class="container"> 
+        <p class="eyebrow">Misma intención visual</p> 
+        <h2 id="titulo-comparacion">Dos sintaxis de autoría</h2> 
+        <div class="card-grid"> 
+          <article class="card"> 
+            <p class="card__tag">Sass · SCSS</p> 
+            <h3>Variables con $</h3> 
+            <p>El módulo y los mixins se procesan antes de que el navegador reciba el archivo.</p> 
+            <code>$color-primary: #0b67d1;</code> 
+          </article> 
+          <article class="card"> 
+            <p class="card__tag">Less</p> 
+            <h3>Variables con @</h3> 
+            <p>La compilación también produce CSS estándar y puede generar un mapa de origen.</p> 
+            <code>@color-primary: #0b67d1;</code> 
+          </article> 
+          <article class="card"> 
+            <p class="card__tag">CSS generado</p> 
+            <h3>El contrato del navegador</h3> 
+            <p>La pestaña Network debe cargar una salida desde dist/css, nunca el archivo fuente.</p> 
+            <code>color: #0b67d1;</code> 
+          </article> 
+        </div> 
+      </div> 
+    </section> 
+    <section class="evidence" id="evidencia"> 
+      <div class="container evidence__inner"> 
+        <div> 
+          <p class="eyebrow">Criterio profesional</p> 
+          <h2>La compilación debe poder repetirse.</h2> 
+        </div> 
+        <p>Conserva package.json, package-lock.json y las fuentes. Documenta versiones, comando, resultado y corrección.</p> 
+      </div> 
+    </section> 
+  </main> 
+  <footer class="site-footer"> 
+    <div class="container">Hojas de Estilo en Cascada Avanzado · UTP</div> 
+  </footer> 
+</body> 
+</html>
