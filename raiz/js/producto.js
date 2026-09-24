@@ -137,3 +137,105 @@ if (producto) {
     }
 }
 });
+
+// Integración con el carrito compartido.
+document.addEventListener("DOMContentLoaded", () => {
+  const STORAGE_KEY = "streethype-cart";
+  const addButton = document.querySelector("#producto-boton");
+  const cartButton = document.querySelector(".cart-button");
+  const cartCount = document.querySelector(".cart-count");
+
+  const readCart = () => {
+    try {
+      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      return Array.isArray(saved) ? saved : [];
+    } catch {
+      return [];
+    }
+  };
+
+  const updateCartCount = () => {
+    const quantity = readCart().reduce((total, item) => total + Number(item.quantity || 0), 0);
+    if (cartCount) cartCount.textContent = quantity;
+  };
+
+  updateCartCount();
+
+  if (cartButton) {
+    cartButton.addEventListener("click", () => {
+      window.location.href = "carrito.html";
+    });
+  }
+
+  if (!addButton) return;
+
+  addButton.addEventListener("click", () => {
+    const title = document.querySelector("#producto-titulo")?.textContent.trim() || "Producto STREET HYPE";
+    const priceText = document.querySelector("#producto-precio")?.textContent || "S/ 0.00";
+    const price = Number(priceText.replace(/[^\d.]/g, "")) || 0;
+    const productId = new URLSearchParams(window.location.search).get("id") || title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+    const size = document.querySelector(".btn-talla.is-selected")?.textContent.trim()
+      || document.querySelector(".btn-talla[aria-pressed=\"true\"]")?.textContent.trim()
+      || "Única";
+
+    const cart = readCart();
+    const item = cart.find((cartItem) => cartItem.id === productId);
+
+    if (item) {
+      item.quantity += 1;
+    } else {
+      cart.push({
+        id: productId,
+        name: title,
+        category: "Producto STREET HYPE",
+        color: "Talla " + size,
+        price,
+        quantity: 1
+      });
+    }
+
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    updateCartCount();
+
+    const originalText = addButton.textContent;
+    addButton.textContent = "AÑADIDO AL CARRITO";
+    addButton.disabled = true;
+
+    window.setTimeout(() => {
+      addButton.textContent = originalText;
+      addButton.disabled = false;
+    }, 1200);
+  });
+});
+
+
+// Guarda también la imagen visible del producto para mostrarla en el carrito.
+document.addEventListener("DOMContentLoaded", () => {
+  const STORAGE_KEY = "streethype-cart";
+  const addButton = document.querySelector("#producto-boton");
+
+  if (!addButton) return;
+
+  addButton.addEventListener("click", () => {
+    const productId = new URLSearchParams(window.location.search).get("id")
+      || (document.querySelector("#producto-titulo")?.textContent || "producto")
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, "-");
+    const image = document.querySelector("#producto-imagen")?.src || "";
+
+    if (!image) return;
+
+    try {
+      const cart = JSON.parse(localStorage.getItem(STORAGE_KEY));
+      if (!Array.isArray(cart)) return;
+
+      const item = cart.find((cartItem) => cartItem.id === productId);
+      if (!item) return;
+
+      item.image = image;
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    } catch {
+      // El carrito se gestiona desde carrito.js si no hay datos válidos.
+    }
+  });
+});
