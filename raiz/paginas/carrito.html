@@ -3,125 +3,124 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Avance de carrito de compras STREETHYPE.">
+  <meta name="description" content="Carrito de compras de STREET HYPE">
   <title>STREETHYPE | Carrito</title>
   <link rel="stylesheet" href="../css/carrito.css">
+  <script src="../js/carrito.js" defer></script>
 </head>
-
 <body>
-  <header class="header">
-    <a class="logo" href="../index.html">
-      <span>SH</span>
-      STREET<span>HYPE</span>
-    </a>
-
-    <nav class="nav">
-      <a href="/paginas/novedades.html">Novedades</a>
-      <a href="/index.html">Zapatillas</a>
-      <a href="/index.html">Ropa</a>
-      <a href="/index.html">Accesorios</a>
+  <header class="site-header">
+    <div class="header-top">
+      <a class="brand" href="../index.html" aria-label="Ir al inicio de STREET HYPE">STREET<span>HYPE</span></a>
+      <a class="cart-badge" href="#carrito" aria-label="Ver carrito">
+        <span id="cart-count">0</span>
+      </a>
+    </div>
+    <nav class="main-nav" aria-label="Navegación principal">
+      <a href="../index.html">Inicio</a>
+      <a href="novedades.html">Novedades</a>
+      <a href="../index.html#zapatillas">Zapatillas</a>
+      <a href="../index.html#ropa">Ropa</a>
+      <a href="../index.html#accesorios">Accesorios</a>
+      <a class="active" href="carrito.html">Carrito</a>
     </nav>
-
-    <a class="cart-icon" href="#carrito">
-      🛒 <span>2</span>
-    </a>
   </header>
 
-  <main id="carrito">
-    <section class="cart-header">
-      <p>STREETHYPE / CHECKOUT</p>
-      <h1>Tu carrito</h1>
-      <span>Avance visual del carrito de compras</span>
-    </section>
+  <main id="carrito" class="cart-page">
+    <p class="eyebrow">STREET HYPE / CHECKOUT</p>
+    <h1 class="page-title">Tu selección<br>para la calle.</h1>
+    <p class="page-intro">Este es el segundo avance del carrito. Ya puedes agregar prendas, modificar cantidades y conservar tu selección mientras navegas.</p>
 
-    <section class="cart-layout">
-      <div class="cart-products">
-        <h2>Productos seleccionados <span>(2)</span></h2>
+    <div class="cart-layout">
+      <section class="cart-list" aria-labelledby="cart-title">
+        <div class="list-heading">
+          <h2 id="cart-title">Mi carrito</h2>
+          <span id="cart-item-label">0 productos</span>
+        </div>
 
-        <article class="product">
-          <img
-            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=500&q=80"
-            alt="Zapatillas Low Street">
+        <div id="cart-items" class="cart-items" aria-live="polite"></div>
 
-          <div class="product-info">
-            <p class="category">ZAPATILLAS</p>
-            <h3>Zapatillas Low Street</h3>
-            <p>Black & White / Talla 40</p>
-
-            <div class="product-actions">
-              <div class="quantity">
-                <button type="button">−</button>
-                <span>1</span>
-                <button type="button">+</button>
-              </div>
-
-              <button class="remove" type="button">Quitar</button>
-            </div>
+        <div id="empty-cart" class="empty-cart" hidden>
+          <div>
+            <h2>Tu carrito está vacío</h2>
+            <p>Explora la selección y agrega una prenda para continuar con tu compra.</p>
+            <a class="button-primary" href="#recomendados">Ver recomendados</a>
           </div>
+        </div>
+      </section>
 
-          <strong class="price">S/ 399.00</strong>
-        </article>
-
-        <article class="product">
-          <img
-            src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=500&q=80"
-            alt="Oversize Utility Jacket">
-
-          <div class="product-info">
-            <p class="category">ROPA</p>
-            <h3>Oversize Utility Jacket</h3>
-            <p>Sand / Talla M</p>
-
-            <div class="product-actions">
-              <div class="quantity">
-                <button type="button">−</button>
-                <span>1</span>
-                <button type="button">+</button>
-              </div>
-
-              <button class="remove" type="button">Quitar</button>
-            </div>
-          </div>
-
-          <strong class="price">S/ 349.00</strong>
-        </article>
-
-        <a class="continue" href="/index.html">← Seguir comprando</a>
-      </div>
-
-      <aside class="summary">
-        <p class="summary-label">RESUMEN DEL PEDIDO</p>
-
+      <aside class="summary-card" aria-labelledby="summary-title">
+        <h2 id="summary-title">Resumen</h2>
         <div class="summary-row">
           <span>Subtotal</span>
-          <strong>S/ 748.00</strong>
+          <strong id="subtotal">S/ 0.00</strong>
         </div>
-
         <div class="summary-row">
           <span>Envío</span>
-          <strong>Gratis</strong>
+          <strong id="shipping">S/ 0.00</strong>
         </div>
-
-        <div class="total">
+        <div class="summary-row total-row">
           <span>Total</span>
-          <strong>S/ 748.00</strong>
+          <strong id="total">S/ 0.00</strong>
         </div>
-
-        <button class="checkout" type="button">
-          PROCEDER AL PAGO
-        </button>
-
-        <p class="notice">
-          Este es un avance visual. El pago todavía no está implementado.
-        </p>
+        <button id="checkout-button" class="checkout-button" type="button" disabled>Proceder al pago</button>
+        <p class="summary-note">Envío gratis en compras desde S/ 399.00.</p>
       </aside>
+    </div>
+
+    <section id="recomendados" class="recommendations" aria-labelledby="recommendations-title">
+      <div class="recommendation-heading">
+        <div>
+          <p class="eyebrow">Completa tu fit</p>
+          <h2 id="recommendations-title">Recomendados para ti</h2>
+        </div>
+        <p>Las imágenes se integrarán después desde <code>assets/img</code>. Por ahora se muestran referencias visuales temporales.</p>
+      </div>
+
+      <div class="product-grid">
+        <article class="product-card">
+          <div class="product-visual" aria-label="Imagen pendiente de Hoodie Shadow">
+            <span>Imagen pendiente</span>
+          </div>
+          <h3>Hoodie Shadow</h3>
+          <p>Hoodie oversize / Negro</p>
+          <div class="product-footer">
+            <span class="product-price">S/ 219.00</span>
+            <button class="add-button" type="button" data-add-product="hoodie-shadow">Agregar</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual" aria-label="Imagen pendiente de Cargo Stone">
+            <span>Imagen pendiente</span>
+          </div>
+          <h3>Cargo Stone</h3>
+          <p>Pantalón cargo / Gris</p>
+          <div class="product-footer">
+            <span class="product-price">S/ 189.00</span>
+            <button class="add-button" type="button" data-add-product="cargo-stone">Agregar</button>
+          </div>
+        </article>
+
+        <article class="product-card">
+          <div class="product-visual" aria-label="Imagen pendiente de Low Street Neon">
+            <span>Imagen pendiente</span>
+          </div>
+          <h3>Low Street Neon</h3>
+          <p>Zapatillas urbanas / Lima</p>
+          <div class="product-footer">
+            <span class="product-price">S/ 399.00</span>
+            <button class="add-button" type="button" data-add-product="low-street-neon">Agregar</button>
+          </div>
+        </article>
+      </div>
     </section>
   </main>
 
-  <footer>
-    <p>© 2026 STREETHYPE. HECHO PARA LA CALLE.</p>
+  <footer class="site-footer">
+    <p>© 2026 STREET HYPE. HECHO PARA LA CALLE.</p>
   </footer>
 
-  <script src="/js/carrito.js"></script>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
 </body>
 </html>
