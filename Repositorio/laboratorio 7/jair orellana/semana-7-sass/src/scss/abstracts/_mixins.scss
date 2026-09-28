@@ -1,0 +1,19 @@
+@use "tokens" as t;
+
+@mixin focus-ring($color: t.$color-primary) {
+  outline: 3px solid rgb(from $color r g b / 0.35);
+  outline-offset: 3px;
+}
+
+@mixin surface-card {
+  background: t.$color-surface;
+  border: 1px solid rgb(11 37 69 / 0.10);
+  border-radius: t.$radius-md;
+  box-shadow: t.$shadow-card;
+}
+
+@mixin respond-min($width) {
+  @media (min-width: $width) {
+    @content;
+  }
+}

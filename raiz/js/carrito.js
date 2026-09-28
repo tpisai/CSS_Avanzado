@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 (() => {
   "use strict";
 
@@ -424,5 +423,4 @@
   });
 
   renderCart();
->>>>>>> 1ca8553d9c6abbf1aba781a57fbd2bc6b779fd11
 })();

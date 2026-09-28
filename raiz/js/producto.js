@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 document.addEventListener("DOMContentLoaded", () => {
 const DATOS_PRODUCTOS = {
     "low-street": {
