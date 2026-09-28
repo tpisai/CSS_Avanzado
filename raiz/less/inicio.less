@@ -1,0 +1,65 @@
+@import "variables.less";
+
+.hero-banner {
+  width: 100%;
+  background-color: @color-secundario;
+  padding: (@padding-base * 3) @padding-base;
+  text-align: center;
+
+  h1 {
+    font-size: 2.5rem;
+    color: @color-principal;
+    margin-bottom: 12px;
+  }
+
+  p {
+    color: lighten(@color-texto, 20%);
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+  }
+
+  .btn-comprar {
+    .btn-style(@color-principal, @color-blanco);
+  }
+}
+
+.categorias-destacadas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: @padding-base;
+  padding: (@padding-base * 2);
+
+  .card-categoria {
+    border: 1px solid @color-borde;
+    border-radius: @border-radius;
+    overflow: hidden;
+    text-align: center;
+    transition: transform 0.2s ease;
+
+    &:hover {
+      transform: translateY(-5px);
+    }
+
+    img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    h3 {
+      padding: @padding-base;
+      margin: 0;
+    }
+  }
+}
+
+// Responsivo
+@media (max-width: @mobile) {
+  .hero-banner {
+    padding: @padding-base;
+    
+    h1 {
+      font-size: 1.8rem;
+    }
+  }
+}

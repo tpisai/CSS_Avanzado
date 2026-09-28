@@ -1,0 +1,42 @@
+@use "../abstracts" as a;
+
+:root {
+  --color-primary: #{a.$color-primary};
+  --color-ink: #{a.$color-ink};
+  --color-muted: #{a.$color-muted};
+  --color-surface: #{a.$color-surface};
+  --color-surface-soft: #{a.$color-surface-soft};
+}
+
+body {
+  min-block-size: 100vh;
+  color: var(--color-ink);
+  background: var(--color-surface);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration-thickness: 0.1em;
+  text-underline-offset: 0.18em;
+}
+
+a:focus-visible,
+button:focus-visible {
+  @include a.focus-ring;
+}
+
+.skip-link {
+  position: absolute;
+  inset-block-start: a.space(2);
+  inset-inline-start: a.space(2);
+  z-index: 10;
+  padding: a.space(2) a.space(3);
+  background: #fff;
+  transform: translateY(-160%);
+}
+
+.skip-link:focus {
+  transform: translateY(0);
+}
