@@ -1,0 +1,52 @@
+@import "variables.less";
+
+.producto-detalle {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: (@padding-base * 2);
+  padding: (@padding-base * 2);
+  max-width: @desktop;
+  margin: 0 auto;
+
+  .galeria-imagen {
+    img {
+      width: 100%;
+      border-radius: @border-radius;
+      border: 1px solid @color-borde;
+    }
+  }
+
+  .info-producto {
+    display: flex;
+    flex-direction: column;
+
+    .titulo {
+      font-size: 2rem;
+      margin-bottom: 8px;
+    }
+
+    .precio {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: @color-acento;
+      margin-bottom: 16px;
+    }
+
+    .descripcion {
+      color: @color-texto;
+      line-height: 1.6;
+      margin-bottom: 24px;
+    }
+
+    .btn-agregar {
+      .btn-style(@color-principal, @color-blanco);
+      font-size: 1rem;
+    }
+  }
+}
+
+@media (max-width: @tablet) {
+  .producto-detalle {
+    grid-template-columns: 1fr;
+  }
+}
