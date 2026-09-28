@@ -1,0 +1,83 @@
+/* VARIABLES DE ALTO IMPACTO */
+@color-primario: #ff4757; 
+@color-secundario: #2f3542;
+@color-hover: #ff6b81;
+
+.sombra-animada() {
+  box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+  border-radius: 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); 
+}
+
+.seccion-novedades {
+  background: linear-gradient(135deg, #f1f2f6, white);
+  padding: 50px 20px;
+  margin-top: 40px;
+  
+  h2 { text-align: center; font-size: 2.5rem; margin-bottom: 40px; color: @color-secundario; }
+
+  .contenedor-tarjetas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+
+    .tarjeta {
+      .sombra-animada();
+      width: 300px;
+      background-color: white;
+      overflow: hidden; 
+      
+      .imagen-tarjeta {
+        /* Imágenes dinámicas desde internet para que funcionen directo */
+        background-color: #eee;
+        background-size: cover;
+        background-position: center;
+        height: 220px;
+        transition: transform 0.6s ease; 
+        
+        &.cap1 { background-image: url('https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=600'); }
+        &.hood1 { background-image: url('https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=600'); }
+      }
+
+      .contenido-tarjeta {
+        padding: 25px;
+        text-align: center;
+      }
+
+      &:hover {
+        transform: translateY(-15px) scale(1.05); 
+        box-shadow: 0 20px 40px rgba(255, 71, 87, 0.4); 
+        
+        .imagen-tarjeta {
+          transform: scale(1.15); 
+        }
+      }
+
+      h3 {
+        color: @color-secundario;
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+      }
+
+      button.btn-novedad {
+        background-color: @color-primario;
+        color: white;
+        border: none;
+        padding: 12px 30px;
+        font-size: 1.1rem;
+        border-radius: 30px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        
+        &:hover {
+          background-color: @color-hover;
+          transform: scale(1.1); 
+        }
+        &:active {
+          transform: scale(0.9); 
+        }
+      }
+    }
+  }
+}
