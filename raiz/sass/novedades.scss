@@ -1,0 +1,80 @@
+$color-alerta: #ff9f43; 
+$color-fondo-oscuro: #1e272e;
+$espaciado: 20px;
+
+@mixin texto-de-fuego {
+  background: linear-gradient(to right, #ff9f43, #ee5253);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.novedades-destacadas {
+  padding: $espaciado * 4 20px;
+  background-image: radial-gradient(circle at center, #2f3640 0%, #000000 100%);
+  text-align: center;
+  margin-top: 40px;
+
+  h2.titulo-destacado {
+    @include texto-de-fuego;
+    font-size: 3.5rem;
+    margin-bottom: $espaciado * 3;
+    text-transform: uppercase;
+    animation: latido 2s infinite; 
+  }
+
+  .grid-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: $espaciado * 2;
+    max-width: 1200px;
+    margin: 0 auto;
+
+    .producto-nuevo {
+      background: $color-fondo-oscuro;
+      border-radius: 15px;
+      border-left: 6px solid $color-alerta;
+      padding: $espaciado * 2;
+      position: relative;
+      cursor: pointer;
+      transition: all 0.4s ease;
+
+      &::before {
+        content: "¡NUEVO!";
+        position: absolute;
+        top: -15px;
+        right: -15px;
+        background-color: $color-alerta;
+        color: white;
+        padding: 8px 20px;
+        font-weight: bold;
+        border-radius: 20px;
+        transform: rotate(12deg);
+        box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      }
+
+      &:hover {
+        transform: translateY(-10px);
+        border-left-width: 15px; 
+        box-shadow: 0 15px 40px rgba(255, 159, 67, 0.3); 
+      }
+
+      h4 {
+        color: $color-alerta;
+        font-size: 2rem;
+        margin-bottom: 10px;
+      }
+      
+      p {
+        color: #d2dae2;
+        font-size: 1.1rem;
+        line-height: 1.6;
+      }
+    }
+  }
+}
+
+@keyframes latido {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); filter: drop-shadow(0 0 10px #ff9f43); }
+  100% { transform: scale(1); }
+}

@@ -6,25 +6,24 @@
   <meta name="description" content="Drop exclusivo de STREETHYPE. Novedades en streetwear y sneakers.">
   <title>Drop Exclusivo | STREETHYPE</title>
   
-  <!-- Enlace a tu CSS personalizado (Reemplazo total de Bootstrap) -->
+  <!-- Enlaces a tus CSS según tu estructura de carpetas -->
   <link rel="stylesheet" href="../css/novedades.css">
+  <link rel="stylesheet" href="../css/novedades-less.css">
+  <link rel="stylesheet" href="../css/novedades-sass.css">
 </head>
 <body class="bg-body-custom">
 
   <header class="site-header">
     <div class="header-container">
-      
       <a class="brand" href="../index.html">
         <span class="brand-box">SH</span>
         <span class="brand-text">STREET<span class="brand-accent">HYPE</span></span>
       </a>
-      
       <nav class="nav-desktop">
         <a href="#hero" class="nav-link">Inicio</a>
         <a href="#novedades" class="nav-link">Lookbook</a>
         <a href="#productos" class="nav-link">Reservas</a>
       </nav>
-
       <a href="../index.html" class="btn-volver">
         <span class="icon-arrow">←</span> Volver
       </a>
@@ -42,7 +41,7 @@
             <ul class="sidebar-menu">
               <li><a class="sidebar-item active" href="#hero">⚡ Resumen Drop</a></li>
               <li><a class="sidebar-item" href="#progreso">📊 Hype Stats</a></li>
-              <li><a class="sidebar-item" href="#novedades"> imágenes Lookbook Visual</a></li>
+              <li><a class="sidebar-item" href="#novedades">📸 Lookbook Visual</a></li>
               <li><a class="sidebar-item" href="#productos">📦 Reservar Ahora</a></li>
             </ul>
           </nav>
@@ -60,9 +59,7 @@
             <div class="hero-content">
               <p class="hero-tag">Sneak Peek Visual</p>
               <h1 class="hero-title">LA CALLE EN MOVIMIENTO.</h1>
-              <p class="hero-desc">
-                Siluetas sobredimensionadas, detalles reflectantes y comodidad técnica. Explora las texturas de la nueva temporada.
-              </p>
+              <p class="hero-desc">Siluetas sobredimensionadas, detalles reflectantes y comodidad técnica. Explora las texturas de la nueva temporada.</p>
               <div class="hero-actions">
                 <a class="btn-accent" href="#productos">Reservar Anticipado</a>
                 <a class="btn-outline" href="#novedades">Ver Galería</a>
@@ -104,6 +101,7 @@
         </section>
 
         <section id="novedades" class="lookbook-section">
+          <!-- (Se mantiene tu lookbook original exacto) -->
           <div class="lookbook-header">
             <div>
               <p class="lookbook-subtitle">Editorial</p>
@@ -145,6 +143,7 @@
           </div>
         </section>
 
+        <!-- SECCIÓN DE RESERVAS ORIGINAL CORREGIDA -->
         <section id="productos" class="productos-section">
           <div class="productos-header">
             <div>
@@ -163,7 +162,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Hoodie Reflex</h4>
                   <p class="card-desc">Detalles reflectantes 3M. Algodón pesado de 400gsm.</p>
-                  <button class="button btn-reserva" data-producto="Hoodie Reflex">Reservar S/ 259</button>
+                  <button class="button btn-reserva" data-producto="Hoodie Reflex" data-precio="259">Reservar S/ 259</button>
                 </div>
               </div>
             </article>
@@ -177,7 +176,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Sneakers Volt</h4>
                   <p class="card-desc">Edición ultra limitada. Suela con cámara de aire expuesta.</p>
-                  <button class="button btn-reserva" data-producto="Sneakers Volt">Reservar S/ 520</button>
+                  <button class="button btn-reserva" data-producto="Sneakers Volt" data-precio="520">Reservar S/ 520</button>
                 </div>
               </div>
             </article>
@@ -190,7 +189,7 @@
                 <div class="card-body">
                   <h4 class="card-title">Cargo Pants</h4>
                   <p class="card-desc">Múltiples bolsillos tácticos y ajuste oversize relajado.</p>
-                  <button class="button btn-reserva" data-producto="Cargo Pants">Reservar S/ 199</button>
+                  <button class="button btn-reserva" data-producto="Cargo Pants" data-precio="199">Reservar S/ 199</button>
                 </div>
               </div>
             </article>
@@ -199,6 +198,43 @@
 
       </div>
     </div>
+
+    <!-- SECCIÓN 1: Controlada por SASS (Banner Destacado Expresivo) -->
+    <section class="novedades-destacadas">
+      <h2 class="titulo-destacado">Drops Exclusivos de la Semana</h2>
+      <div class="grid-productos">
+        <div class="producto-nuevo" data-producto="Sneakers Hypebeast X" data-precio="450">
+          <h4>Sneakers Hypebeast X</h4>
+          <p>Edición limitada. Brilla en la oscuridad con detalles reflectivos.</p>
+        </div>
+        <div class="producto-nuevo" data-producto="Jacket Urban Camo" data-precio="320">
+          <h4>Jacket Urban Camo</h4>
+          <p>Material impermeable de grado militar con corte oversize.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- SECCIÓN 2: Controlada por LESS (Cuadrícula con Botones) -->
+    <section class="seccion-novedades">
+      <h2>Catálogo de Novedades</h2>
+      <div class="contenedor-tarjetas">
+        <div class="tarjeta">
+          <div class="imagen-tarjeta cap1"></div>
+          <div class="contenido-tarjeta">
+            <h3>Gorras Snapback V2</h3>
+            <button class="btn-novedad" data-producto="Gorras Snapback V2" data-precio="89">¡Lo quiero!</button>
+          </div>
+        </div>
+        <div class="tarjeta">
+          <div class="imagen-tarjeta hood1"></div>
+          <div class="contenido-tarjeta">
+            <h3>Hoodie Essential</h3>
+            <button class="btn-novedad" data-producto="Hoodie Essential" data-precio="150">¡Lo quiero!</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer class="site-footer">
@@ -213,20 +249,24 @@
     <a href="#" id="btn-chat" class="btn-float-chat">💬 Asesor</a>
   </div>
 
+  <!-- MODAL DE RESERVA CORREGIDO -->
   <div id="reserva-modal" class="modal-overlay">
     <div class="modal-content-custom">
       <h3 id="modal-titulo" class="modal-heading">Confirmar Reserva</h3>
       <p class="modal-text">Asegura tu <strong id="modal-producto-nombre" class="modal-highlight"></strong> antes del drop.</p>
       <form id="form-reserva">
         <input type="email" placeholder="Tu correo electrónico" required class="modal-input">
+        <!-- Input oculto para guardar el precio al enviar el form -->
+        <input type="hidden" id="modal-producto-precio" value="">
         <div class="modal-actions">
           <button type="button" class="btn-modal-cancel" id="btn-cerrar-modal">Cancelar</button>
-          <button type="submit" class="btn-modal-confirm">Confirmar</button>
+          <button type="submit" class="btn-modal-confirm">Añadir al Carrito</button>
         </div>
       </form>
     </div>
   </div>
 
+  <!-- MODAL DE CHAT -->
   <div id="chat-modal" class="modal-overlay">
     <div class="modal-content-custom modal-chat">
       <h3 class="modal-heading">🎧 Soporte</h3>
@@ -235,8 +275,6 @@
     </div>
   </div>
 
-  <!-- Enlace a tu JavaScript sin modificar -->
   <script src="../js/novedades.js"></script>
-  
 </body>
 </html>

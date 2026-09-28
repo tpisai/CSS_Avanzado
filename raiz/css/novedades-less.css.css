@@ -1,0 +1,73 @@
+/* VARIABLES DE ALTO IMPACTO */
+.seccion-novedades {
+  background: linear-gradient(135deg, #f1f2f6, white);
+  padding: 50px 20px;
+  margin-top: 40px;
+}
+.seccion-novedades h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: #2f3542;
+}
+.seccion-novedades .contenedor-tarjetas {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 30px;
+  justify-content: center;
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  border-radius: 15px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  width: 300px;
+  background-color: white;
+  overflow: hidden;
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta .imagen-tarjeta {
+  /* Imágenes dinámicas desde internet para que funcionen directo */
+  background-color: #eee;
+  background-size: cover;
+  background-position: center;
+  height: 220px;
+  transition: transform 0.6s ease;
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta .imagen-tarjeta.cap1 {
+  background-image: url('https://images.pexels.com/photos/1124465/pexels-photo-1124465.jpeg?auto=compress&cs=tinysrgb&w=600');
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta .imagen-tarjeta.hood1 {
+  background-image: url('https://images.pexels.com/photos/1183266/pexels-photo-1183266.jpeg?auto=compress&cs=tinysrgb&w=600');
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta .contenido-tarjeta {
+  padding: 25px;
+  text-align: center;
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta:hover {
+  transform: translateY(-15px) scale(1.05);
+  box-shadow: 0 20px 40px rgba(255, 71, 87, 0.4);
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta:hover .imagen-tarjeta {
+  transform: scale(1.15);
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta h3 {
+  color: #2f3542;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta button.btn-novedad {
+  background-color: #ff4757;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  font-size: 1.1rem;
+  border-radius: 30px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta button.btn-novedad:hover {
+  background-color: #ff6b81;
+  transform: scale(1.1);
+}
+.seccion-novedades .contenedor-tarjetas .tarjeta button.btn-novedad:active {
+  transform: scale(0.9);
+}

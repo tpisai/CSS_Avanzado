@@ -31,6 +31,10 @@ body.bg-body-custom {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: transform 0.3s ease;
+}
+.brand:hover {
+  transform: scale(1.02);
 }
 .brand-box {
   background: #000;
@@ -42,6 +46,13 @@ body.bg-body-custom {
   justify-content: center;
   font-weight: 900;
   font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+.brand:hover .brand-box {
+  background: var(--color-accent);
+  color: #000;
+  border-radius: 50%;
+  transform: rotate(10deg);
 }
 .brand-text {
   font-weight: 900;
@@ -57,7 +68,13 @@ body.bg-body-custom {
   padding: 0.1em 0.2em;
   margin-left: 2px;
   line-height: 1;
+  transition: all 0.3s ease;
 }
+.brand:hover .brand-accent {
+  background: var(--color-accent);
+  color: #000;
+}
+
 .nav-desktop {
   display: flex;
   gap: 1.5rem;
@@ -66,7 +83,26 @@ body.bg-body-custom {
 .nav-link {
   color: #212529;
   text-decoration: none;
+  position: relative;
+  transition: color 0.3s ease;
 }
+.nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background-color: var(--color-accent);
+  transition: width 0.3s ease;
+}
+.nav-link:hover {
+  color: var(--color-primary-dark);
+}
+.nav-link:hover::after {
+  width: 100%;
+}
+
 .btn-volver {
   border: 2px solid #212529;
   color: #212529;
@@ -78,6 +114,13 @@ body.bg-body-custom {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-volver:hover {
+  background: #212529;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(33, 37, 41, 0.3);
 }
 
 .main-container {
@@ -101,6 +144,11 @@ body.bg-body-custom {
   border: 1px solid #dee2e6;
   position: sticky;
   top: 5rem;
+  transition: all 0.4s ease;
+}
+.sidebar-card:hover {
+  box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  transform: translateY(-5px);
 }
 .sidebar-subtitle {
   text-transform: uppercase;
@@ -129,6 +177,11 @@ body.bg-body-custom {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.3s ease;
+}
+.sidebar-item:hover {
+  color: var(--color-primary-dark);
+  transform: translateX(5px);
 }
 .sidebar-item.active {
   color: #212529;
@@ -138,6 +191,12 @@ body.bg-body-custom {
   padding: 1rem;
   border-radius: 0.5rem;
   border: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+}
+.sidebar-alert:hover {
+  background: #fff;
+  border-color: var(--color-accent);
+  box-shadow: 0 4px 15px rgba(212, 255, 0, 0.2);
 }
 .alert-title {
   display: block;
@@ -160,6 +219,11 @@ body.bg-body-custom {
   box-shadow: 0 1rem 3rem rgba(0,0,0,0.175);
   margin-bottom: 3rem;
   overflow: hidden;
+  position: relative;
+  transition: box-shadow 0.4s ease;
+}
+.hero-section:hover {
+  box-shadow: 0 1.5rem 4rem rgba(0,0,0,0.25);
 }
 .hero-grid {
   display: flex;
@@ -202,7 +266,13 @@ body.bg-body-custom {
   padding: 0.75rem 1.75rem;
   border-radius: 50rem;
   text-decoration: none;
-  transition: transform 0.2s;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 4px 10px rgba(212, 255, 0, 0.2);
+}
+.btn-accent:hover {
+  background-color: #fff;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(212, 255, 0, 0.5);
 }
 .btn-outline {
   border: 2px solid #fff;
@@ -211,6 +281,13 @@ body.bg-body-custom {
   padding: 0.75rem 1.75rem;
   border-radius: 50rem;
   text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-outline:hover {
+  background-color: #fff;
+  color: #111;
+  transform: translateY(-5px) scale(1.05);
+  box-shadow: 0 8px 25px rgba(255, 255, 255, 0.3);
 }
 .hero-counter-wrapper {
   width: 350px;
@@ -227,6 +304,11 @@ body.bg-body-custom {
   text-align: center;
   backdrop-filter: blur(10px);
   width: 100%;
+  transition: transform 0.4s ease, border-color 0.4s ease;
+}
+.counter-box:hover {
+  transform: scale(1.03);
+  border-color: var(--color-accent);
 }
 .counter-label {
   color: rgba(255,255,255,0.5);
@@ -246,6 +328,7 @@ body.bg-body-custom {
   display: block;
   font-size: 1.75rem;
   font-weight: bold;
+  animation: pulse-text 2s infinite;
 }
 .countdown-text {
   font-size: 0.65rem;
@@ -264,6 +347,12 @@ body.bg-body-custom {
   border-radius: 1rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
   border: 1px solid #dee2e6;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.metric-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+  border-color: #ced4da;
 }
 .metric-label {
   color: #6c757d;
@@ -287,6 +376,9 @@ body.bg-body-custom {
   background: #212529;
   color: #fff;
 }
+.dark-card:hover {
+  box-shadow: 0 15px 30px rgba(33,37,41,0.3);
+}
 .light-text {
   color: rgba(255,255,255,0.5) !important;
 }
@@ -304,6 +396,19 @@ body.bg-body-custom {
   background: #212529;
   height: 100%;
   border-radius: 50rem;
+  position: relative;
+  overflow: hidden;
+}
+/* Efecto de brillo animado en la barra de progreso */
+.progress-bar-fill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+  animation: shimmer 2s infinite;
 }
 
 .lookbook-section {
@@ -341,6 +446,13 @@ body.bg-body-custom {
   border-radius: 50rem;
   font-weight: bold;
   text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-outline-dark:hover {
+  background: #212529;
+  color: #fff;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 5px 15px rgba(33, 37, 41, 0.3);
 }
 .lookbook-grid {
   display: flex;
@@ -364,12 +476,24 @@ body.bg-body-custom {
   position: relative;
   height: 100%;
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  transition: box-shadow 0.4s ease;
+}
+.lookbook-img-box:hover {
+  box-shadow: 0 12px 30px rgba(0,0,0,0.2);
 }
 .img-fluid {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
+/* EFECTO ZOOM AL PASAR EL CURSOR */
+.lookbook-img-box:hover .img-fluid,
+.card-image-wrapper:hover img,
+.lookbook-img-box:hover img {
+  transform: scale(1.15);
+}
+
 .img-overlay {
   position: absolute;
   bottom: 0;
@@ -379,7 +503,13 @@ body.bg-body-custom {
   color: #fff;
   padding: 1rem;
   backdrop-filter: blur(5px);
+  transition: all 0.4s ease;
 }
+.lookbook-img-box:hover .img-overlay {
+  background: rgba(0,0,0,0.8);
+  padding-bottom: 1.5rem; /* Efecto revelación hacia arriba */
+}
+
 .badge-custom {
   background: #f8f9fa;
   color: #212529;
@@ -432,6 +562,7 @@ body.bg-body-custom {
   font-weight: bold;
   font-size: 0.9rem;
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  animation: pulse-badge 2s infinite;
 }
 .resource-grid {
   display: grid;
@@ -446,6 +577,11 @@ body.bg-body-custom {
   position: relative;
   display: flex;
   flex-direction: column;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.resource-card:hover {
+  transform: translateY(-12px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15);
 }
 .card-inner {
   display: flex;
@@ -456,6 +592,14 @@ body.bg-body-custom {
   aspect-ratio: 1 / 1;
   background: #fff;
   overflow: hidden;
+  position: relative;
+}
+/* Asegurar que las imágenes dentro del wrapper tengan transición */
+.card-image-wrapper img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 .card-body {
   padding: 1.5rem;
@@ -486,6 +630,13 @@ body.bg-body-custom {
   width: 100%;
   text-align: center;
   text-decoration: none;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.button:hover {
+  background: var(--color-accent);
+  color: #000;
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(212, 255, 0, 0.4);
 }
 .badge-hot {
   position: absolute;
@@ -498,6 +649,7 @@ body.bg-body-custom {
   font-weight: bold;
   z-index: 2;
   box-shadow: 0 0.25rem 0.5rem rgba(0,0,0,0.1);
+  animation: pulse-badge-accent 2s infinite;
 }
 
 .site-footer {
@@ -525,6 +677,12 @@ body.bg-body-custom {
   text-decoration: none;
   font-size: 0.85rem;
   font-weight: bold;
+  transition: color 0.3s ease, transform 0.3s ease;
+  display: inline-block;
+}
+.footer-subir:hover {
+  color: var(--color-accent);
+  transform: translateY(-3px);
 }
 
 .floating-actions {
@@ -548,6 +706,14 @@ body.bg-body-custom {
   text-decoration: none;
   border: 1px solid #dee2e6;
   font-size: 1.2rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-float-circle:hover {
+  transform: translateY(-8px) rotate(360deg);
+  box-shadow: 0 12px 20px rgba(0,0,0,0.2);
+  background: var(--color-accent);
+  color: #000;
+  border-color: var(--color-accent);
 }
 .btn-float-chat {
   background: #212529;
@@ -560,6 +726,13 @@ body.bg-body-custom {
   display: flex;
   align-items: center;
   gap: 0.5rem;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-float-chat:hover {
+  transform: translateY(-8px) scale(1.05);
+  background: var(--color-accent);
+  color: #000;
+  box-shadow: 0 12px 25px rgba(212, 255, 0, 0.4);
 }
 
 .modal-overlay {
@@ -573,6 +746,7 @@ body.bg-body-custom {
   z-index: 1040;
   justify-content: center;
   align-items: center;
+  backdrop-filter: blur(5px);
 }
 .modal-content-custom {
   background: #fff;
@@ -582,6 +756,7 @@ body.bg-body-custom {
   text-align: center;
   max-width: 400px;
   width: 90%;
+  animation: modal-pop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 .modal-heading {
   font-weight: 800;
@@ -607,6 +782,12 @@ body.bg-body-custom {
   margin-bottom: 1.5rem;
   font-size: 1rem;
   box-sizing: border-box;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+.modal-input:focus {
+  outline: none;
+  border-color: #212529;
+  box-shadow: 0 0 0 3px rgba(33, 37, 41, 0.1);
 }
 .modal-actions {
   display: flex;
@@ -621,6 +802,13 @@ body.bg-body-custom {
   padding: 0.5rem 1.5rem;
   font-weight: bold;
   cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-modal-cancel:hover {
+  background: #212529;
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(33, 37, 41, 0.2);
 }
 .btn-modal-confirm {
   background: #212529;
@@ -631,4 +819,163 @@ body.bg-body-custom {
   font-weight: bold;
   cursor: pointer;
   box-shadow: 0 0.125rem 0.25rem rgba(0,0,0,0.075);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.btn-modal-confirm:hover {
+  background: var(--color-accent);
+  color: #000;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 8px 20px rgba(212, 255, 0, 0.4);
+}
+
+/* ==========================================================
+   ESTILOS MEJORADOS PARA LAS SECCIONES FINALES (DROPS Y BOTONES)
+   ========================================================== */
+
+/* 1. Centrado y mejora visual de la sección inferior de Drops (SASS) */
+.novedades-destacadas {
+  text-align: center !important;
+  padding: 60px 20px !important;
+}
+
+.novedades-destacadas .grid-productos {
+  display: flex !important;
+  flex-direction: row !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 30px !important;
+  flex-wrap: wrap !important;
+}
+
+.novedades-destacadas .producto-nuevo {
+  text-align: left !important;
+  max-width: 450px !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  overflow: hidden !important; /* Para que el zoom de la imagen no se salga de la tarjeta */
+}
+
+/* Efecto de zoom en las imágenes de los productos SASS/LESS al hacer hover en la tarjeta */
+.novedades-destacadas .producto-nuevo img,
+.seccion-novedades .tarjeta img {
+  transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) !important;
+}
+.novedades-destacadas .producto-nuevo:hover img,
+.seccion-novedades .tarjeta:hover img {
+  transform: scale(1.15) !important;
+}
+
+.novedades-destacadas .producto-nuevo:hover {
+  transform: translateY(-12px) scale(1.03) !important;
+  box-shadow: 0 20px 40px rgba(255, 159, 67, 0.3) !important;
+}
+
+/* 2. Centrado y unificación de la sección LESS (Catálogo de Novedades) */
+.seccion-novedades {
+  text-align: center !important;
+  padding: 60px 20px !important;
+}
+
+.seccion-novedades h2 {
+  text-align: center !important;
+  width: 100% !important;
+  margin-bottom: 30px !important;
+}
+
+.seccion-novedades .contenedor-tarjetas {
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+  gap: 30px !important;
+  flex-wrap: wrap !important;
+}
+
+.seccion-novedades .tarjeta {
+  margin: 0 auto !important;
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  overflow: hidden !important; /* Mantiene la imagen dentro al hacer zoom */
+}
+.seccion-novedades .tarjeta:hover {
+  transform: translateY(-12px) !important;
+  box-shadow: 0 15px 35px rgba(0,0,0,0.15) !important;
+}
+
+/* 3. Animación unificada para los botones "¡Lo quiero!" (Estilo idéntico al resto de botones) */
+.seccion-novedades button.btn-novedad {
+  display: inline-block !important;
+  background: linear-gradient(135deg, #ff4757, #ff6b81) !important;
+  color: #ffffff !important;
+  font-weight: 700 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+  border: none !important;
+  padding: 12px 30px !important;
+  border-radius: 30px !important;
+  cursor: pointer !important;
+  box-shadow: 0 4px 15px rgba(255, 71, 87, 0.4) !important;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+/* Animación cuando pasas el cursor por encima (Hover) */
+.seccion-novedades button.btn-novedad:hover {
+  background: linear-gradient(135deg, var(--color-accent), #e1ff00) !important;
+  color: #000 !important; /* Contraste dinámico al cambiar a amarillo */
+  transform: translateY(-5px) scale(1.08) !important;
+  box-shadow: 0 12px 30px rgba(212, 255, 0, 0.6) !important;
+}
+
+/* Efecto de destello interno en el botón "btn-novedad" */
+.seccion-novedades button.btn-novedad::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.5), transparent);
+  transition: all 0.6s ease;
+}
+.seccion-novedades button.btn-novedad:hover::before {
+  left: 150%;
+}
+
+/* Efecto cuando haces clic (Active) */
+.seccion-novedades button.btn-novedad:active {
+  transform: translateY(2px) scale(0.95) !important;
+  box-shadow: 0 4px 10px rgba(212, 255, 0, 0.4) !important;
+}
+
+/* ==========================================================
+   KEYFRAMES (ANIMACIONES GLOBALES AÑADIDAS)
+   ========================================================== */
+
+@keyframes pulse-badge {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(33, 37, 41, 0.7); }
+  50% { transform: scale(1.05); box-shadow: 0 0 0 8px rgba(33, 37, 41, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(33, 37, 41, 0); }
+}
+
+@keyframes pulse-badge-accent {
+  0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 255, 0, 0.7); }
+  50% { transform: scale(1.1); box-shadow: 0 0 0 10px rgba(212, 255, 0, 0); }
+  100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(212, 255, 0, 0); }
+}
+
+@keyframes pulse-text {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.8; transform: scale(1.03); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer {
+  0% { left: -100%; }
+  100% { left: 200%; }
+}
+
+@keyframes modal-pop {
+  0% { transform: scale(0.8); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
 }
