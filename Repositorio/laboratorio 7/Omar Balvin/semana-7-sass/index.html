@@ -1,0 +1,84 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FrontLab | Recursos de CSS</title>
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+  <header class="site-header">
+    <div class="container site-header__inner">
+      <a class="brand" href="#">FrontLab</a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#rutas">Rutas</a></li>
+          <li><a href="#recursos">Recursos</a></li>
+          <li><a href="#reto">Reto</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+  <main id="contenido">
+    <section class="hero">
+      <div class="container hero__layout">
+        <div>
+          <p class="eyebrow">Semana 7 · Sass modular</p>
+          <h1>Diseña estilos que puedan crecer sin perder trazabilidad.</h1>
+          <p class="hero__lead">Variables, módulos, mixins y funciones con una arquitectura que compila a CSS estándar.</p>
+          <div class="actions">
+            <a class="button button--primary" href="#recursos">Ver recursos</a>
+            <a class="button button--secondary" href="#reto">Ir al reto</a>
+          </div>
+        </div>
+        <aside class="hero__panel" aria-label="Objetivo de la sesión">
+          <strong>Objetivo</strong>
+          <p>Pasar de archivos aislados a un sistema Sass modular y comprobable.</p>
+        </aside>
+      </div>
+    </section>
+    <section class="section" id="recursos">
+      <div class="container">
+        <div class="section-heading">
+          <p class="eyebrow">Biblioteca práctica</p>
+          <h2>Recursos para construir con intención</h2>
+        </div>
+        <div class="resource-grid">
+          <article class="card">
+            <span class="card__tag">Arquitectura</span>
+            <h3>Módulos Sass</h3>
+            <p>Organiza dependencias con @use y @forward.</p>
+            <a class="card__link" href="#">Explorar</a>
+          </article>
+          <article class="card">
+            <span class="card__tag">Reutilización</span>
+            <h3>Mixins</h3>
+            <p>Encapsula patrones de declaraciones sin duplicar intención.</p>
+            <a class="card__link" href="#">Explorar</a>
+          </article>
+          <article class="card">
+            <span class="card__tag">Calidad</span>
+            <h3>Funciones</h3>
+            <p>Transforma valores y valida decisiones del sistema.</p>
+            <a class="card__link" href="#">Explorar</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section class="challenge" id="reto">
+      <div class="container challenge__inner">
+        <div>
+          <p class="eyebrow">Reto final</p>
+          <h2>Extiende el sistema, no el desorden.</h2>
+          <p>Crea una variante de tarjeta usando las mismas abstracciones públicas.</p>
+        </div>
+        <a class="button button--light" href="#contenido">Volver arriba</a>
+      </div>
+    </section>
+  </main>
+  <footer class="site-footer">
+    <div class="container">FrontLab · Laboratorio de CSS Avanzado</div>
+  </footer>
+</body>
+</html>
