@@ -1,241 +1,275 @@
 document.addEventListener("DOMContentLoaded", () => {
-const DATOS_PRODUCTOS = {
-    "low-street": {
-    titulo: "Zapatillas Low Street",
-    precio: "S/ 399.00",
-    descripcion: "Perfil bajo en Black & White. Diseñadas para la calle, estas zapatillas combinan un estilo clásico con materiales de alta durabilidad para resistir el uso diario urbano. Suela de goma antideslizante y capellada reforzada.",
-    imagen: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=800&q=85",
-    categoria: "zapatillas",
-    tallas: ["39", "40", "41", "42"]
-    },
-    "concrete": {
-    titulo: "Zapatillas Concrete",
-    precio: "S/ 429.00",
-    descripcion: "Suela chunky de gran volumen en tono Off White. Un diseño robusto pensado para destacar en el día a día.",
-    imagen: "https://images.unsplash.com/photo-1552346154-21d32810aba3?auto=format&fit=crop&w=800&q=85",
-    categoria: "zapatillas",
-    tallas: ["39", "40", "41", "42"]
-    },
-    "court": {
-    titulo: "Zapatillas Court",
-    precio: "S/ 459.00",
-    descripcion: "Silueta clásica en color blanco. Un básico atemporal que combina con cualquier outfit urbano.",
-    imagen: "https://images.unsplash.com/photo-1495555961986-6d4c1ecb7be3?auto=format&fit=crop&w=800&q=85",
-    categoria: "zapatillas",
-    tallas: ["39", "40", "41", "42"]
-    },
-    "utility-jacket": {
-    titulo: "Oversize Utility Jacket",
-    precio: "S/ 349.00",
-    descripcion: "Chaqueta oversize en algodón grueso, tono Sand. Edición limitada con múltiples bolsillos utilitarios.",
-    imagen: "https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=85",
-    categoria: "ropa",
-    tallas: ["S", "M", "L"]
-    },
-    "hoodie-urban": {
-    titulo: "Hoodie Urban Essential",
-    precio: "S/ 289.00",
-    descripcion: "Polerón de fleece en negro, corte urbano essential. Ideal para el día a día.",
-    imagen: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=800&q=85",
-    categoria: "ropa",
-    tallas: ["S", "M", "L"]
-    },
-    "polo-graphic": {
-    titulo: "Polo Graphic Street",
-    precio: "S/ 119.00",
-    descripcion: "Polo 100% algodón en blanco con gráfico street. Comodidad y estilo en una sola prenda.",
-    imagen: "https://images.unsplash.com/photo-1521572267360-ee0c2909d518?auto=format&fit=crop&w=800&q=85",
-    categoria: "ropa",
-    tallas: ["S", "M", "L"]
-    },
-    "jogger-cargo": {
-    titulo: "Jogger Cargo Tactical",
-    precio: "S/ 229.00",
-    descripcion: "Jogger cargo en tono Olive con múltiples bolsillos tácticos. Ajuste cómodo para movimiento libre.",
-    imagen: "https://images.unsplash.com/photo-1517445312882-bc9910d016b7?auto=format&fit=crop&w=800&q=85",
-    categoria: "ropa",
-    tallas: ["S", "M", "L"]
-    },
-    "cap-classic": {
-    titulo: "Cap Classic Hype",
-    precio: "S/ 89.00",
-    descripcion: "Gorra ajustable en negro, diseño clásico. El accesorio infaltable para cualquier outfit.",
-    imagen: "https://images.unsplash.com/photo-1588850561407-ed78c282e89b?auto=format&fit=crop&w=800&q=85",
-    categoria: "accesorio",
-    tallas: []
-    },
-    "mochila-urban": {
-    titulo: "Mochila Urban Utility",
-    precio: "S/ 199.00",
-    descripcion: "Mochila impermeable en gris, pensada para el uso diario en la ciudad.",
-    imagen: "https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=800&q=85",
-    categoria: "accesorio",
-    tallas: []
-    }
-};
+    
+    // ==========================================
+    // 1. FILTROS DEL CATÁLOGO (Aislado para evitar errores)
+    // ==========================================
+    const inicializarFiltros = () => {
+        const botonesFiltro = document.querySelectorAll('.filter-btn');
+        const productosCatalogo = document.querySelectorAll('.product-card');
 
-const parametrosURL = new URLSearchParams(window.location.search);
-const idProducto = parametrosURL.get('id') || 'low-street';
-const producto = DATOS_PRODUCTOS[idProducto];
+        if (botonesFiltro.length > 0) {
+            botonesFiltro.forEach(boton => {
+                boton.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    
+                    // Quitar clase 'active' a todos
+                    botonesFiltro.forEach(btn => btn.classList.remove('active'));
+                    // Añadir 'active' al botón clickeado
+                    boton.classList.add('active');
 
-if (producto) {
-    document.getElementById('producto-imagen').src = producto.imagen;
-    document.getElementById('producto-imagen').alt = producto.titulo;
-    document.getElementById('producto-titulo').textContent = producto.titulo;
-    document.getElementById('producto-breadcrumb').textContent = producto.titulo;
-    document.getElementById('producto-precio').textContent = producto.precio;
-    document.getElementById('producto-descripcion').textContent = producto.descripcion;
-    document.getElementById('producto-boton').setAttribute('data-product', producto.titulo);
-    document.title = producto.titulo + " | STREETHYPE";
+                    // Obtener la categoría
+                    const categoriaSeleccionada = boton.getAttribute('data-filter');
 
-    const bloqueTallas = document.getElementById('bloque-tallas');
-    const grupoTallas = document.getElementById('grupo-tallas');
-    const tallaLabel = document.getElementById('talla-label');
-
-    if (!producto.tallas || producto.tallas.length === 0) {
-    bloqueTallas.style.display = 'none';
-    } else {
-    bloqueTallas.style.display = 'block';
-    tallaLabel.textContent = producto.categoria === 'zapatillas'
-        ? 'Selecciona tu talla (PE):'
-        : 'Selecciona tu talla:';
-
-    grupoTallas.innerHTML = '';
-    producto.tallas.forEach((talla, index) => {
-        const boton = document.createElement('button');
-        boton.type = 'button';
-        boton.className = 'btn-talla' + (index === 0 ? ' talla-activa' : '');
-        boton.textContent = talla;
-        
-        boton.style.padding = '0.5rem 1.2rem';
-        boton.style.cursor = 'pointer';
-        boton.style.borderRadius = '4px';
-
-        if (index === 0) {
-        boton.style.border = '1px solid #000';
-        boton.style.background = '#000';
-        boton.style.color = 'white';
-        } else {
-        boton.style.border = '1px solid #ccc';
-        boton.style.background = 'white';
-        boton.style.color = 'black';
+                    // Filtrar productos
+                    productosCatalogo.forEach(producto => {
+                        const categoriaProducto = producto.getAttribute('data-category');
+                        if (categoriaSeleccionada === 'todos' || categoriaProducto === categoriaSeleccionada) {
+                            producto.style.display = 'flex';
+                        } else {
+                            producto.style.display = 'none';
+                        }
+                    });
+                });
+            });
         }
+    };
+    // Inicializamos los filtros inmediatamente
+    inicializarFiltros();
 
-        boton.addEventListener('click', () => {
-        grupoTallas.querySelectorAll('.btn-talla').forEach(b => {
-        b.style.background = 'white';
-        b.style.color = 'black';
-        b.style.borderColor = '#ccc';
-        });
-        boton.style.background = '#000';
-        boton.style.color = '#fff';
-        boton.style.borderColor = '#000';
-        });
+    // ==========================================
+    // 2. BASE DE DATOS Y RENDERIZADO
+    // ==========================================
+    const DATOS_PRODUCTOS = {
+              // ROPA
+        "camiseta-magica": { titulo: "Camiseta Mágica", precio: "S/ 89.00", descripcion: "Camiseta de algodón pima, suave y ligera para el verano.", imagen: "../assets/img/camiseta.magica.jpg", categoria: "ropa", tallas: ["S", "M", "L", "XL"] },
+        "polo-azul": { titulo: "Polo Azul Urbano", precio: "S/ 99.00", descripcion: "Polo azul con cuello, estilo casual perfecto para salidas.", imagen: "../assets/img/polo.azul.jpg", categoria: "ropa", tallas: ["S", "M", "L", "XL"] },
+        "polo-crema": { titulo: "Polo Crema Essential", precio: "S/ 99.00", descripcion: "Polo color crema básico, combina con cualquier estilo.", imagen: "../assets/img/polo.crema.jpg", categoria: "ropa", tallas: ["S", "M", "L", "XL"] },
+        "polo-verde-militar": { titulo: "Polo Verde Militar", precio: "S/ 99.00", descripcion: "Polo de algodón grueso en tono verde militar.", imagen: "../assets/img/polo.verde.militar.jpg", categoria: "ropa", tallas: ["S", "M", "L", "XL"] },
+        "jogger-mujer": { titulo: "Jogger Beige Mujer", precio: "S/ 129.00", descripcion: "Pantalón jogger cómodo y estilizado de cintura alta.", imagen: "../assets/img/Jogger Para Mujer.jpg", categoria: "ropa", tallas: ["28", "30", "32"] },
+        "chaqueta-hype": { titulo: "Chaqueta de Cuero Hype", precio: "S/ 249.00", descripcion: "Chaqueta estilo urbano para climas templados a fríos.", imagen: "../assets/img/chaquetas.jpg", categoria: "ropa", tallas: ["S", "M", "L"] },
 
-        grupoTallas.appendChild(boton);
-    });
-    }
-}
-});
+        // ZAPATILLAS
+        "zapatillas-nike-rojas": { titulo: "Nike Running Rojas", precio: "S/ 389.00", descripcion: "Zapatillas ligeras diseñadas para alto rendimiento.", imagen: "../assets/img/Zapatillas Nike Rojas.jpg", categoria: "zapatillas", tallas: ["39", "40", "41", "42"] },
+        "botines-rojos-nike": { titulo: "Botines Air Jordan", precio: "S/ 529.00", descripcion: "Diseño clásico tipo botín para el mejor look urbano.", imagen: "../assets/img/Botines rojos Nike.jpg", categoria: "zapatillas", tallas: ["40", "41", "42", "43"] },
+        "adidas-id3711": { titulo: "Adidas Gazelle ID3711", precio: "S/ 349.00", descripcion: "Clásicas zapatillas blancas con las tres tiras negras.", imagen: "../assets/img/Zapatillas adidadas id3711.jpg", categoria: "zapatillas", tallas: ["39", "40", "41", "42"] },
+        "adidas-running-azul": { titulo: "Adidas Running Azul", precio: "S/ 299.00", descripcion: "Zapatillas azules deportivas para running diario.", imagen: "../assets/img/Zapatillas Running azul.jpg", categoria: "zapatillas", tallas: ["39", "40", "41", "42"] },
 
-// Integración con el carrito compartido.
-document.addEventListener("DOMContentLoaded", () => {
-  const STORAGE_KEY = "streethype-cart";
-  const addButton = document.querySelector("#producto-boton");
-  const cartButton = document.querySelector(".cart-button");
-  const cartCount = document.querySelector(".cart-count");
+        // ACCESORIOS
+        "gorra-blanca": { titulo: "Gorra Básica Blanca", precio: "S/ 49.00", descripcion: "Gorra blanca con diseño de malla transpirable.", imagen: "../assets/img/Gorra Blanca.jpg", categoria: "accesorios", tallas: [] },
+        "gorra-crema": { titulo: "Gorra Vintage Crema", precio: "S/ 55.00", descripcion: "Gorra en tono crema deslavado, estilo vintage 90s.", imagen: "../assets/img/gorra crema.jpg", categoria: "accesorios", tallas: [] },
+        "gorra-deportiva": { titulo: "Gorra Deportiva Under", precio: "S/ 65.00", descripcion: "Gorra negra de secado rápido ideal para entrenar.", imagen: "../assets/img/Gorra Deportiva.jpg", categoria: "accesorios", tallas: [] },
+        "gorra-dunkelvolk": { titulo: "Gorra Dunkelvolk Khaki", precio: "S/ 79.00", descripcion: "Gorra urbana bicolor marca Dunkelvolk original.", imagen: "../assets/img/Gorra para Hombre DUNKELVOLK.jpg", categoria: "accesorios", tallas: [] }
+    };
 
-  const readCart = () => {
     try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return Array.isArray(saved) ? saved : [];
-    } catch {
-      return [];
-    }
-  };
+        const parametrosURL = new URLSearchParams(window.location.search);
+        const idProducto = parametrosURL.get('id') || 'zapatillas-nike-rojas';
+        const producto = DATOS_PRODUCTOS[idProducto];
 
-  const updateCartCount = () => {
-    const quantity = readCart().reduce((total, item) => total + Number(item.quantity || 0), 0);
-    if (cartCount) cartCount.textContent = quantity;
-  };
+        if (producto) {
+            const imgEl = document.getElementById('producto-imagen');
+            const titEl = document.getElementById('producto-titulo');
+            const preEl = document.getElementById('producto-precio');
+            const descEl = document.getElementById('producto-descripcion');
+            
+            if(imgEl) { imgEl.src = producto.imagen; imgEl.alt = producto.titulo; }
+            if(titEl) titEl.textContent = producto.titulo;
+            if(preEl) preEl.textContent = producto.precio;
+            if(descEl) descEl.textContent = producto.descripcion;
 
-  updateCartCount();
+            const bloqueTallas = document.getElementById('bloque-tallas');
+            const grupoTallas = document.getElementById('grupo-tallas');
 
-  if (cartButton) {
-    cartButton.addEventListener("click", () => {
-      window.location.href = "carrito.html";
-    });
-  }
-
-  if (!addButton) return;
-
-  addButton.addEventListener("click", () => {
-    const title = document.querySelector("#producto-titulo")?.textContent.trim() || "Producto STREET HYPE";
-    const priceText = document.querySelector("#producto-precio")?.textContent || "S/ 0.00";
-    const price = Number(priceText.replace(/[^\d.]/g, "")) || 0;
-    const productId = new URLSearchParams(window.location.search).get("id") || title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
-    const size = document.querySelector(".btn-talla.is-selected")?.textContent.trim()
-      || document.querySelector(".btn-talla[aria-pressed=\"true\"]")?.textContent.trim()
-      || "Única";
-
-    const cart = readCart();
-    const item = cart.find((cartItem) => cartItem.id === productId);
-
-    if (item) {
-      item.quantity += 1;
-    } else {
-      cart.push({
-        id: productId,
-        name: title,
-        category: "Producto STREET HYPE",
-        color: "Talla " + size,
-        price,
-        quantity: 1
-      });
+            if (bloqueTallas && grupoTallas) {
+                if (!producto.tallas || producto.tallas.length === 0) {
+                    bloqueTallas.style.display = 'none';
+                } else {
+                    bloqueTallas.style.display = 'block';
+                    grupoTallas.innerHTML = '';
+                    producto.tallas.forEach((talla, index) => {
+                        const boton = document.createElement('button');
+                        boton.type = 'button';
+                        boton.className = 'btn-talla' + (index === 0 ? ' talla-activa' : '');
+                        boton.textContent = talla;
+                        boton.addEventListener('click', () => {
+                            grupoTallas.querySelectorAll('.btn-talla').forEach(b => b.classList.remove('talla-activa'));
+                            boton.classList.add('talla-activa');
+                        });
+                        grupoTallas.appendChild(boton);
+                    });
+                }
+            }
+        }
+    } catch (error) {
+        console.warn("Error cargando detalles del producto principal:", error);
     }
 
-    localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+    // ==========================================
+    // 3. CARRITO Y MODALES (Garantía y Confirmación)
+    // ==========================================
+    const LÍMITE_COMPRA = 4;
+    const STORAGE_KEY = "streethype-cart";
+    
+    const readCart = () => {
+        try { return JSON.parse(localStorage.getItem(STORAGE_KEY)) || []; } 
+        catch { return []; }
+    };
+
+    const updateCartCount = () => {
+        const countEl = document.querySelector(".cart-count");
+        if (countEl) countEl.textContent = readCart().reduce((sum, item) => sum + (Number(item.quantity) || 0), 0);
+    };
     updateCartCount();
 
-    const originalText = addButton.textContent;
-    addButton.textContent = "AÑADIDO AL CARRITO";
-    addButton.disabled = true;
+    let productoPendiente = null;
+    const modalGarantia = document.getElementById('modal-garantia');
+    const modalConfirmacion = document.getElementById('modal-confirmacion');
 
-    window.setTimeout(() => {
-      addButton.textContent = originalText;
-      addButton.disabled = false;
-    }, 1200);
-  });
-});
+    const iniciarFlujoCompra = (productoData) => {
+        productoPendiente = productoData;
+        if (modalGarantia) modalGarantia.style.display = 'flex';
+    };
 
+    const confirmarAlCarrito = () => {
+        if (modalGarantia) modalGarantia.style.display = 'none'; 
 
-// Guarda también la imagen visible del producto para mostrarla en el carrito.
-document.addEventListener("DOMContentLoaded", () => {
-  const STORAGE_KEY = "streethype-cart";
-  const addButton = document.querySelector("#producto-boton");
+        let cart = readCart();
+        let item = cart.find(i => i.id === productoPendiente.id);
 
-  if (!addButton) return;
+        if (item) {
+            if (item.quantity < LÍMITE_COMPRA) item.quantity += 1;
+        } else {
+            cart.push({
+                id: productoPendiente.id, 
+                name: productoPendiente.title, 
+                price: productoPendiente.price, 
+                quantity: 1, 
+                image: productoPendiente.image
+            });
+        }
+        
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+        updateCartCount();
 
-  addButton.addEventListener("click", () => {
-    const productId = new URLSearchParams(window.location.search).get("id")
-      || (document.querySelector("#producto-titulo")?.textContent || "producto")
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, "-");
-    const image = document.querySelector("#producto-imagen")?.src || "";
+        if (modalConfirmacion) {
+            document.getElementById('modal-img').src = productoPendiente.image;
+            document.getElementById('modal-title').textContent = productoPendiente.title;
+            document.getElementById('modal-price').textContent = productoPendiente.priceText;
+            document.getElementById('modal-qty').textContent = readCart().find(i => i.id === productoPendiente.id).quantity;
+            
+            const limitMsg = document.getElementById('modal-limit-msg');
+            if(limitMsg) {
+                limitMsg.style.color = "#888";
+                limitMsg.style.fontWeight = "normal";
+            }
+            modalConfirmacion.style.display = 'flex';
+        }
+    };
 
-    if (!image) return;
+    // Funciones de cierre de modales
+    document.getElementById('cerrar-garantia')?.addEventListener('click', () => modalGarantia.style.display = 'none');
+    document.getElementById('cerrar-confirmacion')?.addEventListener('click', () => modalConfirmacion.style.display = 'none');
+    document.getElementById('btn-seguir-comprando')?.addEventListener('click', () => modalConfirmacion.style.display = 'none');
+
+    // Botones de continuar compra
+    document.getElementById('btn-sin-proteccion')?.addEventListener('click', confirmarAlCarrito);
+    document.getElementById('btn-con-proteccion')?.addEventListener('click', confirmarAlCarrito);
+
+    // Sumar y restar en el modal
+    document.getElementById('modal-plus')?.addEventListener('click', () => {
+        let cart = readCart();
+        let item = cart.find(i => i.id === productoPendiente.id);
+        const limitMsg = document.getElementById('modal-limit-msg');
+        
+        if (item && item.quantity < LÍMITE_COMPRA) {
+            item.quantity += 1;
+            document.getElementById('modal-qty').textContent = item.quantity;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+            updateCartCount();
+            if(limitMsg) { limitMsg.style.color = "#888"; limitMsg.style.fontWeight = "normal"; }
+        } else {
+            if(limitMsg) { limitMsg.style.color = "red"; limitMsg.style.fontWeight = "bold"; }
+        }
+    });
+
+    document.getElementById('modal-minus')?.addEventListener('click', () => {
+        let cart = readCart();
+        let item = cart.find(i => i.id === productoPendiente.id);
+        const limitMsg = document.getElementById('modal-limit-msg');
+        
+        if (item && item.quantity > 1) {
+            item.quantity -= 1;
+            document.getElementById('modal-qty').textContent = item.quantity;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+            updateCartCount();
+            if(limitMsg) { limitMsg.style.color = "#888"; limitMsg.style.fontWeight = "normal"; }
+        }
+    });
+
+    // ==========================================
+    // 4. CONEXIÓN DE BOTONES ("Añadir" y "+")
+    // ==========================================
+    try {
+        const btnPrincipal = document.getElementById("producto-boton") || document.querySelector(".add-button"); 
+        if (btnPrincipal) {
+            btnPrincipal.addEventListener("click", (e) => {
+                e.preventDefault();
+                const titleElement = document.getElementById("producto-titulo") || document.querySelector(".product-title");
+                const priceElement = document.getElementById("producto-precio") || document.querySelector(".product-price");
+                const imageElement = document.getElementById("producto-imagen") || document.querySelector(".product-image-main");
+
+                const title = titleElement ? titleElement.textContent.trim() : "Producto Principal";
+                const priceText = priceElement ? priceElement.textContent : "S/ 0.00";
+                const price = Number(priceText.replace(/[^\d.]/g, "")) || 0;
+                
+                let productId = new URLSearchParams(window.location.search).get("id");
+                if (!productId) productId = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+                
+                const image = imageElement ? imageElement.src : "";
+                iniciarFlujoCompra({ id: productId, title: title, priceText: priceText, price: price, image: image });
+            });
+        }
+    } catch (e) { console.warn("Error en el botón principal", e); }
 
     try {
-      const cart = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      if (!Array.isArray(cart)) return;
+        const botonesAddCatalogo = document.querySelectorAll('.btn-circle');
+        botonesAddCatalogo.forEach(boton => {
+            boton.addEventListener('click', (e) => {
+                e.preventDefault(); 
+                const card = boton.closest('.product-card');
+                const title = card.querySelector('.product-card-title').textContent.trim();
+                const priceText = card.querySelector('strong').textContent;
+                const price = Number(priceText.replace(/[^\d.]/g, "")) || 0;
+                const image = card.querySelector('img').src;
+                const id = title.toLowerCase().replace(/[^a-z0-9]+/g, "-");
+                
+                iniciarFlujoCompra({ id: id, title: title, priceText: priceText, price: price, image: image });
+            });
+        });
+    } catch (e) { console.warn("Error en botones del catálogo", e); }
 
-      const item = cart.find((cartItem) => cartItem.id === productId);
-      if (!item) return;
-
-      item.image = image;
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
-    } catch {
-      // El carrito se gestiona desde carrito.js si no hay datos válidos.
-    }
-  });
+    // ==========================================
+    // 5. SUSCRIPCIÓN NEWSLETTER
+    // ==========================================
+    try {
+        const btnSuscripcion = document.querySelector('section form button');
+        const inputSuscripcion = document.querySelector('section form input[type="email"]');
+        if (btnSuscripcion && inputSuscripcion) {
+            btnSuscripcion.addEventListener('click', (e) => {
+                e.preventDefault();
+                if(inputSuscripcion.value.trim() !== "") {
+                    const txtOriginal = btnSuscripcion.textContent;
+                    btnSuscripcion.textContent = "¡SUSCRITO ✓!";
+                    btnSuscripcion.style.background = "#4CAF50"; 
+                    setTimeout(() => {
+                        btnSuscripcion.textContent = txtOriginal;
+                        btnSuscripcion.style.background = "#000"; 
+                        inputSuscripcion.value = ""; 
+                    }, 2000);
+                } else {
+                    alert("Por favor ingresa un correo electrónico válido.");
+                }
+            });
+        }
+    } catch (e) { console.warn("Error en newsletter", e); }
 });

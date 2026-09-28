@@ -1,52 +1,303 @@
-@import "variables.less";
 
-.producto-detalle {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: (@padding-base * 2);
-  padding: (@padding-base * 2);
-  max-width: @desktop;
+/* VARIABLES */
+@black: #000000;
+@white: #ffffff;
+@gray-light: #f7f7f7;
+@gray-dark: #444444;
+@gray-border: #eeeeee;
+
+/* ESTILOS GLOBALES */
+.container {
+  max-width: 1200px;
   margin: 0 auto;
+  padding: 0 1.5rem;
+}
 
-  .galeria-imagen {
-    img {
-      width: 100%;
-      border-radius: @border-radius;
-      border: 1px solid @color-borde;
+.main-content {
+  padding: 2rem 0 5rem;
+}
+
+/* =========================================
+   1. FIX DEFINITIVO: IMAGEN Y BOTÓN GIGANTE
+   ========================================= */
+.product-layout {
+  display: grid !important;
+  grid-template-columns: 1fr 1fr !important;
+  gap: 4rem !important;
+  /* El secreto absoluto: 'start' evita que los hijos crezcan a lo alto */
+  align-items: start !important; 
+  align-content: start !important;
+
+  /* --- FIX DE LA IMAGEN (Quitar el gris sobrante) --- */
+  .product-gallery {
+    background: transparent !important; /* Quitamos el fondo gris por completo */
+    display: block !important;
+    width: 100% !important;
+    height: auto !important;
+    padding: 0 !important;
+    margin: 0 !important;
+
+    .product-image-main {
+      display: block !important;
+      width: 100% !important;
+      height: auto !important; /* La altura se ajustará a la imagen real */
+      max-height: 600px !important;
+      object-fit: contain !important; /* Para que la imagen Nike no se mutile */
+      border-radius: 8px !important;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05); /* Un toque sutil para separar del fondo blanco */
+      transition: transform 0.3s ease;
+
+      &:hover {
+        transform: scale(1.02);
+      }
     }
   }
 
-  .info-producto {
-    display: flex;
-    flex-direction: column;
+  /* --- FIX DEL BOTÓN GIGANTE --- */
+  .product-info {
+    display: block !important; /* Cambiamos Flex por Block para evitar estiramientos raros */
+    width: 100% !important;
+    height: auto !important;
 
-    .titulo {
-      font-size: 2rem;
-      margin-bottom: 8px;
+    .eyebrow {
+      color: @black;
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
     }
 
-    .precio {
-      font-size: 1.5rem;
-      font-weight: bold;
-      color: @color-acento;
-      margin-bottom: 16px;
+    .product-title {
+      font-size: 3rem;
+      font-weight: 900;
+      text-transform: uppercase;
+      line-height: 1.1;
+      margin-bottom: 1rem;
     }
 
-    .descripcion {
-      color: @color-texto;
+    .product-price {
+      font-size: 1.75rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+
+    .product-description {
+      color: @gray-dark;
       line-height: 1.6;
-      margin-bottom: 24px;
+      font-size: 1.05rem;
+      margin-bottom: 2rem;
     }
 
-    .btn-agregar {
-      .btn-style(@color-principal, @color-blanco);
-      font-size: 1rem;
+    .size-selector {
+      margin-bottom: 2rem;
+      
+      .size-group {
+        display: flex;
+        gap: 0.5rem;
+        flex-wrap: wrap;
+
+        .btn-talla {
+          background: @white;
+          color: @black;
+          border: 1px solid #ccc;
+          padding: 0.6rem 1.2rem;
+          font-weight: 700;
+          cursor: pointer;
+          
+          &:hover { border-color: @black; }
+          
+          &.talla-activa {
+            background: @black;
+            color: @white;
+            border-color: @black;
+          }
+        }
+      }
+    }
+
+    /* OBLIGAR AL BOTÓN A SER PEQUEÑO */
+    .add-button {
+      display: inline-block !important; /* Crucial para que no herede altos extraños */
+      background: @black !important;
+      color: @white !important;
+      border: none !important;
+      text-transform: uppercase !important;
+      font-weight: 800 !important;
+      cursor: pointer !important;
+      width: 100% !important;
+      padding: 15px 0 !important; /* Control estricto del alto interno */
+      height: 50px !important;    /* Control estricto del alto total */
+      line-height: 20px !important; /* Centrado del texto */
+      font-size: 1.1rem !important;
+      border-radius: 4px !important;
+      transition: background 0.3s ease !important;
+      margin: 0 !important;
+
+      &:hover { background: #333 !important; }
+
+/* =========================================
+   3. CATÁLOGO (Mantengo tu arreglo que ya funciona)
+   ========================================= */
+.catalog-section {
+  margin-top: 6rem;
+  border-top: 2px solid @black;
+  padding-top: 3rem;
+
+  .catalog-header {
+    text-align: center;
+    margin-bottom: 3rem;
+
+    .catalog-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+
+      .filter-btn {
+        background: transparent;
+        border: 2px solid @gray-border;
+        padding: 0.5rem 1.5rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        cursor: pointer;
+
+        &:hover { border-color: @black; }
+        &.active {
+          background: @black;
+          color: @white;
+          border-color: @black;
+        }
+      }
+    }
+  }
+
+  .grid-layout {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)) !important;
+    gap: 2rem !important;
+
+    .product-card {
+      display: flex;
+      flex-direction: column;
+      border: 1px solid @gray-border;
+      border-radius: 8px;
+      overflow: hidden;
+
+      .product-card-image-wrap {
+        background: @gray-light;
+        position: relative;
+        overflow: hidden;
+        height: 250px !important; 
+
+        img {
+          width: 100% !important;
+          height: 100% !important;
+          object-fit: cover !important; 
+          display: block;
+          transition: transform 0.3s ease;
+        }
+
+        &:hover img { transform: scale(1.05); }
+
+        .product-badge {
+          position: absolute;
+          top: 10px;
+          left: 10px;
+          padding: 4px 8px;
+          font-weight: 800;
+          font-size: 0.75rem;
+          z-index: 2;
+
+          &.badge-drop { background: @black; color: @white; }
+          &.badge-new { background: @white; color: @black; }
+          &.badge-limited { background: red; color: @white; }
+          &.badge-sale { background: @black; color: @white; }
+        }
+      }
+
+      .product-card-details {
+        padding: 1.25rem;
+        background: @white;
+
+        .product-card-category {
+          color: #888;
+          font-size: 0.75rem;
+          font-weight: 700;
+          margin: 0 0 0.5rem 0;
+        }
+
+        .product-card-title {
+          font-size: 1.1rem;
+          font-weight: 800;
+          margin: 0;
+          a { text-decoration: none; color: @black; }
+        }
+
+        .product-card-footer {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          margin-top: 1rem;
+
+          strong { font-size: 1.2rem; font-weight: 700; }
+          
+          .btn-circle {
+            background: @black;
+            color: @white;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:hover { transform: scale(1.1); }
+          }
+        }
+      }
     }
   }
 }
+
+/* Responsive */
+@media (max-width: 768px) {
+  .product-layout {
+    grid-template-columns: 1fr !important; 
+  }
+}
+/* FIX FORZADO PARA LA IMAGEN Y EL BOTÓN (USANDO IDs) */
+.product-gallery {
+  background: transparent !important;
+  padding: 0 !important;
+}
+
+#producto-imagen {
+  max-height: 450px !important;
+  object-fit: contain !important;
+  border-radius: 8px;
+}
+
+#producto-boton {
+  height: 50px !important;
+  max-height: 50px !important;
+  padding: 0 20px !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  margin-top: 10px !important;
 
 @media (max-width: @tablet) {
   .producto-detalle {
     grid-template-columns: 1fr;
   }
+
+}
+}
+    }
+}
 }
