@@ -1,0 +1,35 @@
+@color-principal: #111111;
+@color-secundario: #f5f5f5;
+@color-acento: #e63946;
+@color-texto: #333333;
+@color-borde: #e0e0e0;
+@color-blanco: #ffffff;
+
+@fuente-principal: 'Inter', system-ui, -apple-system, sans-serif;
+
+@padding-base: 16px;
+@border-radius: 8px;
+
+@mobile: 620px;
+@tablet: 860px;
+@desktop: 1200px;
+
+.flex-center() {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-style(@bg: @color-principal, @color: @color-blanco) {
+  background-color: @bg;
+  color: @color;
+  padding: 10px 20px;
+  border: none;
+  border-radius: @border-radius;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background-color: lighten(@bg, 10%);
+  }
+}

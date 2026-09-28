@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Pago de demostración de STREET HYPE">
+  <title>STREETHYPE | Pago</title>
+  <link rel="stylesheet" href="../css/pagos.css">
+  <script src="../js/pagos.js" defer></script>
+</head>
+<body>
+  <header class="payment-header">
+    <a class="payment-brand" href="../index.html">STREET<span>HYPE</span></a>
+    <a class="back-link" href="carrito.html">← Volver al carrito</a>
+  </header>
+
+  <main class="payment-page">
+    <section class="payment-heading">
+      <p class="eyebrow">STREET HYPE / PAGO SEGURO</p>
+      <h1>Último paso.<br>Completa tu compra.</h1>
+      <p>Esta pantalla es una demostración académica: no procesa cobros ni guarda datos de tarjeta.</p>
+    </section>
+
+    <div class="payment-layout">
+      <section class="payment-card" aria-labelledby="payment-title">
+        <h2 id="payment-title">Datos de pago</h2>
+        <form id="payment-form">
+          <div class="field-group">
+            <label for="card-name">Nombre del titular</label>
+            <input id="card-name" name="card-name" type="text" placeholder="NOMBRE COMO APARECE EN LA TARJETA" autocomplete="off" required>
+          </div>
+
+          <div class="field-group">
+            <label for="card-number">Número de tarjeta</label>
+            <input id="card-number" name="card-number" type="text" inputmode="numeric" maxlength="19" placeholder="0000 0000 0000 0000" autocomplete="off" required>
+            <small>Solo para demostración visual. No se almacena.</small>
+          </div>
+
+          <div class="field-row">
+            <div class="field-group">
+              <label for="expiry">Fecha de vencimiento</label>
+              <input id="expiry" name="expiry" type="text" inputmode="numeric" maxlength="5" placeholder="MM/AA" autocomplete="off" required>
+            </div>
+            <div class="field-group">
+              <label for="cvv">CVV</label>
+              <input id="cvv" name="cvv" type="password" inputmode="numeric" maxlength="4" placeholder="000" autocomplete="off" required>
+            </div>
+          </div>
+
+          <div class="field-group">
+            <label for="email">Correo de contacto</label>
+            <input id="email" name="email" type="email" placeholder="CORREO@EJEMPLO.COM" autocomplete="email" required>
+          </div>
+
+          <button class="pay-button" type="submit">Confirmar pago de demostración</button>
+          <p class="security-note">🔒 La información ingresada no se envía ni se guarda.</p>
+        </form>
+      </section>
+
+      <aside class="order-card" aria-labelledby="order-title">
+        <h2 id="order-title">Tu pedido</h2>
+        <div id="order-items" class="order-items"></div>
+        <div class="order-total">
+          <span>Total</span>
+          <strong id="order-total">S/ 0.00</strong>
+        </div>
+        <p id="empty-order-message" class="empty-order-message" hidden>Tu carrito está vacío. Agrega un producto antes de continuar.</p>
+      </aside>
+    </div>
+
+    <section id="success-message" class="success-message" hidden aria-live="polite">
+      <p class="eyebrow">Pedido registrado</p>
+      <h2>¡Gracias por tu compra!</h2>
+      <p>Es una confirmación de demostración: no se realizó ningún cobro y tus datos de tarjeta no fueron almacenados.</p>
+      <a class="continue-button" href="../index.html">Seguir explorando</a>
+    </section>
+  </main>
+
+  <footer class="payment-footer">© 2026 STREET HYPE. HECHO PARA LA CALLE.</footer>
+</body>
+</html>
