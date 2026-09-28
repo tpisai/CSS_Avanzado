@@ -1,0 +1,18 @@
+{
+  "name": "isai-sanchez",
+  "version": "1.0.0",
+  "description": "",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+   "build": "lessc --source-map src/less/main.less dist/css/main.css", 
+   "check:less": "lessc --version" 
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "less": "4.9.1"
+  }
+}
