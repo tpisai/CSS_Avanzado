@@ -1,0 +1,16 @@
+{
+  "name": "raiz",
+  "version": "1.0.0",
+  "description": "Hola Mundo, Primera clase de CSS Avanzado, creacion de grupos y de repositorio principal en github :p",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "less": "^4.9.1"
+  }
+}
