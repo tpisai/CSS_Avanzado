@@ -126,7 +126,6 @@ const year = document.querySelector("#year");
 if (year) {
   year.textContent = new Date().getFullYear();
 }
-<<<<<<< HEAD
 /* -------------------- CATÁLOGO Y FILTROS -------------------- */
 
 const productosData = [
@@ -230,5 +229,3 @@ document.addEventListener("DOMContentLoaded", () => {
   renderizarProductos();
 });
 
-=======
->>>>>>> 1ca8553d9c6abbf1aba781a57fbd2bc6b779fd11

@@ -63,7 +63,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     try {
         const parametrosURL = new URLSearchParams(window.location.search);
-        const idProducto = parametrosURL.get('id') || 'zapatillas-nike-rojas';
+        const idProducto = parametrosURL.get("id") || "1";
         const producto = DATOS_PRODUCTOS[idProducto];
 
         if (producto) {
