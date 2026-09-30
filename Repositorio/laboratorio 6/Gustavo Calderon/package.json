@@ -1,0 +1,13 @@
+{
+  "name": "gustavo-calderon-laboratorio-6",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Laboratorio 6 de CSS Avanzado con LESS.",
+  "scripts": {
+    "build": "lessc --source-map src/less/main.less dist/css/main.css",
+    "check:less": "lessc --version"
+  },
+  "devDependencies": {
+    "less": "^4.2.0"
+  }
+}
