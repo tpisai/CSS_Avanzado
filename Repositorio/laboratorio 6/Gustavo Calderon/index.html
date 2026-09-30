@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Laboratorio 6 de CSS Avanzado: uso de LESS.">
+  <title>Laboratorio 6 | Gustavo Calderon</title>
+  <link rel="stylesheet" href="dist/css/main.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="site-header">
+    <div class="container header-content">
+      <a class="brand" href="#inicio">Bitácora LESS</a>
+      <nav aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><a href="#conceptos">Conceptos</a></li>
+          <li><a href="#proceso">Proceso</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="contenido">
+    <section class="hero" id="inicio">
+      <div class="container hero-grid">
+        <div>
+          <p class="eyebrow">Laboratorio 6 · CSS Avanzado</p>
+          <h1>Estilos ordenados con LESS</h1>
+          <p class="lead">Esta práctica separa variables, mixins, componentes y estilos compilados para mantener una interfaz fácil de escalar.</p>
+          <div class="hero-actions">
+            <a class="button button--primary" href="#conceptos">Ver conceptos</a>
+            <a class="button button--secondary" href="#proceso">Ver proceso</a>
+          </div>
+        </div>
+
+        <aside class="status-card" aria-label="Resumen del laboratorio">
+          <span class="status-card__label">Entrega</span>
+          <strong>LESS + CSS</strong>
+          <span>Variables reutilizables</span>
+          <span>Mixins para componentes</span>
+        </aside>
+      </div>
+    </section>
+
+    <section class="section" id="conceptos">
+      <div class="container">
+        <p class="eyebrow">Fundamentos</p>
+        <h2>Elementos aplicados</h2>
+        <div class="card-grid">
+          <article class="card">
+            <span class="card__number">01</span>
+            <h3>Variables</h3>
+            <p>Los colores, sombras y espacios se concentran en un archivo para evitar repetir valores.</p>
+          </article>
+          <article class="card">
+            <span class="card__number">02</span>
+            <h3>Mixins</h3>
+            <p>Los estilos compartidos de botones y tarjetas se reutilizan mediante mixins.</p>
+          </article>
+          <article class="card">
+            <span class="card__number">03</span>
+            <h3>Responsive</h3>
+            <p>La grilla se adapta a pantallas pequeñas con una regla de media query definida en LESS.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section--soft" id="proceso">
+      <div class="container process-layout">
+        <div>
+          <p class="eyebrow">Flujo de trabajo</p>
+          <h2>De LESS a CSS</h2>
+          <p>El archivo <code>main.less</code> importa módulos pequeños. Luego el comando de compilación genera el CSS utilizado por esta página.</p>
+        </div>
+        <ol class="steps-list">
+          <li><span>1</span>Definir tokens visuales.</li>
+          <li><span>2</span>Crear mixins reutilizables.</li>
+          <li><span>3</span>Compilar en <code>dist/css</code>.</li>
+        </ol>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-content">
+      <p>Gustavo Calderon · Laboratorio 6</p>
+      <a href="#inicio">Volver al inicio</a>
+    </div>
+  </footer>
+</body>
+</html>
