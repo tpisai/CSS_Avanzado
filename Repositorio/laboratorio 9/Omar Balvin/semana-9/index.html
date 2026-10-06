@@ -1,0 +1,77 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>MotionLab Talleres</title>
+  <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#contenido">Ir al contenido</a>
+  <header class="site-header container">
+    <strong>MotionLab Talleres</strong>
+    <p>Laboratorio de animaciones CSS</p>
+  </header>
+  <main id="contenido" class="container" tabindex="-1">
+    <h1>Movimiento con propósito</h1>
+    <p>Explora tres talleres y controla la demostración.</p>
+    <section class="lab" aria-labelledby="lab-title">
+      <h2 id="lab-title">Panel de animaciones</h2>
+      <p id="control-help">
+        Activar inicia las entradas y el indicador repetitivo.
+        Pausar detiene su avance. Desactivar restaura la vista.
+        Para repetir, desactiva y vuelve a activar.
+      </p>
+      <input id="run" type="checkbox" aria-describedby="control-help">
+      <label for="run">Activar movimiento</label>
+      <input id="pause" type="checkbox" aria-describedby="control-help">
+      <label for="pause">Pausar movimiento</label>
+      <p class="motion-note">
+        Si tu sistema pide movimiento reducido,
+        el catálogo permanece estático incluso al activar.
+      </p>
+      <div class="stage">
+        <p class="indicator">
+          <span class="indicator_dot" aria-hidden="true"></span>
+          Indicador decorativo de la demostración
+        </p>
+        <div class="demo-grid">
+          <article class="course-card course-card--first">
+            <p class="tag">Diseño responsivo</p>
+            <h3>Grid y Flexbox</h3>
+            <p>Organiza contenido para diferentes pantallas.</p>
+            <a class="action" href="#orientacion">Orientación sobre diseño responsivo</a>
+          </article>
+          <article class="course-card course-card--second">
+            <p class="tag">Arquitectura CSS</p>
+            <h3>Sass y Less</h3>
+            <p>Reutiliza decisiones y patrones de estilos.</p>
+            <a class="action" href="#orientacion">Orientación sobre preprocesadores</a>
+          </article>
+          <article class="course-card course-card--third">
+            <p class="tag">Animaciones CSS</p>
+            <h3>Fotogramas y tiempos</h3>
+            <p>Controla secuencias sin ocultar información.</p>
+            <a class="action" href="#orientacion">Orientación sobre animaciones</a>
+          </article>
+          <!-- 4ta tarjeta añadida para el reto de extensión -->
+          <article class="course-card course-card--fourth">
+            <p class="tag">Transformaciones 3D</p>
+            <h3>Perspectiva y Espacio</h3>
+            <p>Aplica profundidad a las interfaces web.</p>
+            <a class="action" href="#orientacion">Orientación sobre 3D</a>
+          </article>
+        </div>
+      </div>
+    </section>
+    <section id="orientacion" class="help" aria-labelledby="help-title">
+      <h2 id="help-title">Cómo elegir un taller</h2>
+      <p>Revisa los temas y tus conocimientos previos. Las animaciones ilustran una técnica de interfaz;</p>
+      <p>puedes consultar todo el catálogo sin activarlas.</p>
+    </section>
+  </main>
+  <footer class="container site-footer">
+    <p>Proyecto académico de CSS Avanzado</p>
+  </footer>
+</body>
+</html>
