@@ -10,43 +10,47 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800&display=swap"
         rel="stylesheet">
     <!-- Estilos -->
-    <link rel="stylesheet" href="../css/variables.css">
+    <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/catalogo.css">
     <!-- Iconos -->
-    <link rel="stylesheet"
-        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
 </head>
 <body>
     <!-- ==================== HEADER ==================== -->
-    <header class="header">
-        <div class="header__container">
-            <!-- Logo -->
-            <a href="../index.html" class="header__logo">
-                STREET<span>HYPE</span>
-            </a>
-            <!-- Navegación -->
-            <nav class="header__nav">
-                <a href="../index.html" class="header__link">Inicio</a>
-                <a href="catalogo.html" class="header__link header__link--active">Catálogo</a>
-                <a href="novedades.html" class="header__link">Novedades</a>
-                <a href="lookbook.html" class="header__link">Lookbook</a>
-                <a href="contacto.html" class="header__link">Contacto</a>
-            </nav>
-            <!-- Acciones -->
-            <div class="header__actions">
-                <a href="#" class="header__action" aria-label="Buscar">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                </a>
-                <a href="#" class="header__action" aria-label="Favoritos">
-                    <i class="fa-regular fa-heart"></i>
-                    <span class="header__badge">0</span>
-                </a>
-                <a href="carrito.html" class="header__action" aria-label="Carrito">
-                    <i class="fa-solid fa-bag-shopping"></i>
-                    <span class="header__badge">0</span>
-                </a>
-            </div>
+    <header class="site-header">
+    <div class="announcement">
+        <div class="container announcement__inner">
+        <p>ENVÍO GRATIS DESDE S/ 399</p>
+        <p>CAMBIOS SIN COSTO</p>
+        <p>3 CUOTAS SIN INTERÉS</p>
+        <p>RETIRO EN TIENDA GRATIS</p>
         </div>
+    </div>
+    <div class="container header__inner">
+        <a href="../index.html" class="brand" aria-label="STREETHYPE, inicio">
+        <span class="brand__mark">SH</span>
+        <span>STREET<span>HYPE</span></span>
+        </a>
+        <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="visually-hidden">Abrir menú</span>
+        </button>
+        <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <ul class="site-nav__list">
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="catalogo.html" aria-current="page">Catálogo</a></li>
+            <li><a href="novedades.html">Novedades</a></li>
+            <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+        </nav>
+        <div class="header-actions">
+        <a href="carrito.html" class="cart-button" aria-label="Ver carrito">
+            🛒 <span class="cart-count">0</span>
+        </a>
+        </div>
+    </div>
     </header>
     <!-- ==================== CONTENIDO PRINCIPAL ==================== -->
     <main class="catalogo">
@@ -109,7 +113,8 @@
             </div>
             <!-- Información de resultados -->
             <div class="catalogo__results-info">
-                <p><span id="cantidad-productos">0</span>productos encontrados</p>
+                <p><span id="cantidad-productos">0</span>
+                    productos encontrados</p>
             </div>
             <!-- ==================== PRODUCTOS ==================== -->
             <section id="productos-grid" class="catalogo__grid" 
@@ -123,12 +128,94 @@
                 </div>
                 <h2>No encontramos productos</h2>
                 <p>Intenta cambiar los filtros o realizar otra búsqueda.</p>
-                <button type="button" id="limpiar-filtros" class="catalogo__empty-button">
+                <button type="button" id="limpiar-filtros" class="button">
                     Ver todos los productos
                 </button>
             </div>
         </section>
     </main>
+     <!-- ==========================================
+       MODAL 1: COMPRA SEGURA (GARANTÍA)
+       ========================================== -->
+  <div id="modal-garantia" class="modal-overlay">
+    <div class="modal-content modal-garantia-content">
+      <button class="modal-close" id="cerrar-garantia">&times;</button>
+      
+      <div class="modal-header">
+        <h2>Protege tu producto</h2>
+      </div>
+
+      <div class="modal-body-garantia">
+        <label class="warranty-option">
+          <input type="radio" name="warranty" value="0" checked>
+          <span>Sin garantía adicional</span>
+          <span class="warranty-price">S/ 0</span>
+        </label>
+        
+        <label class="warranty-option highlighted">
+          <input type="radio" name="warranty" value="45">
+          <div class="warranty-text-col">
+            <span>Garantía de 1 año: Reparación</span>
+            <span class="badge-recomendado">¡Recomendado!</span>
+          </div>
+          <span class="warranty-price">S/ 45</span>
+        </label>
+
+        <div class="warranty-benefits">
+          <p><strong>¿Qué obtienes al agregar protección?</strong></p>
+          <ul>
+            <li>✓ Visita técnica con diagnóstico gratuito.</li>
+            <li>✓ Reparación de expertos con repuestos originales.</li>
+            <li>✓ Cobertura en caso de daño por variación de voltaje.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-outline" id="btn-sin-proteccion">Continuar sin protección</button>
+        <button class="btn-solid" id="btn-con-proteccion">Agregar protección</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 2: CONFIRMACIÓN SIMPLE
+       ========================================== -->
+  <div id="modal-confirmacion" class="modal-overlay">
+    <div class="modal-content modal-confirm-content">
+      <button class="modal-close" id="cerrar-confirmacion">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-icon-check">✓</span>
+        <h2>Producto agregado a tu Carro</h2>
+      </div>
+
+      <div class="modal-body-confirmacion">
+        <img id="modal-img" src="" alt="Producto" class="modal-img-style">
+        
+        <div class="modal-details-container">
+          <div>
+            <p id="modal-title" class="modal-title-style">Nombre</p>
+            <span id="modal-price" class="modal-price-style">S/ 0.00</span>
+          </div>
+          
+          <div class="modal-qty-container">
+            <div class="qty-selector">
+              <button id="modal-minus">-</button>
+              <span id="modal-qty">1</span>
+              <button id="modal-plus">+</button>
+            </div>
+            <span id="modal-limit-msg">Máx. 4 uds.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-seguir-comprando" class="btn-text-link">Seguir comprando</button>
+        <a href="carrito.html" class="btn-solid">Ir al Carro</a>
+      </div>
+    </div>
+  </div>
     <footer class="footer">
         <div class="footer__container">
             <div class="footer__brand">
@@ -171,6 +258,8 @@
         </div>
     </footer>
     <!-- JavaScript -->
+    <script src="../js/productos.js"></script>
+    <script src="../js/compra.js"></script>
     <script src="../js/catalogo.js"></script>
 </body>
 </html>

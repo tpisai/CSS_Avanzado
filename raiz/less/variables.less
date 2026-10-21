@@ -1,35 +1,91 @@
+/* ==================================================
+   STREETHYPE - SISTEMA DE DISEÑO GLOBAL
+   Fuente única de variables para todas las páginas
+   ================================================== */
+
+/* Colores */
 @color-principal: #111111;
-@color-secundario: #f5f5f5;
-@color-acento: #e63946;
-@color-texto: #333333;
-@color-borde: #e0e0e0;
+@color-principal-hover: #000000;
+@color-acento: #d7ff00;
+
+@color-fondo: #ffffff;
+@color-superficie: #f2f2f0;
+@color-texto: #111111;
+@color-texto-secundario: #686868;
+@color-borde: #d9d9d6;
+
 @color-blanco: #ffffff;
+@color-error: #b92f2c;
+@color-exito: #287a43;
 
-@fuente-principal: 'Inter', system-ui, -apple-system, sans-serif;
+/* Tipografía */
+@fuente-principal: "Inter", system-ui, -apple-system,
+  BlinkMacSystemFont, "Segoe UI", sans-serif;
 
-@padding-base: 16px;
-@border-radius: 8px;
+/* Contenedores y espaciado */
+@ancho-contenedor: 76rem;
 
-@mobile: 620px;
-@tablet: 860px;
-@desktop: 1200px;
+@espacio-xs: 0.5rem;
+@espacio-sm: 0.75rem;
+@espacio-md: 1rem;
+@espacio-lg: 1.5rem;
+@espacio-xl: 2rem;
+@espacio-2xl: 3rem;
 
+/* Componentes */
+@radio-borde: 0;
+@borde-estandar: 1px solid @color-borde;
+@sombra-estandar: 0 1rem 2.5rem rgb(0 0 0 / 12%);
+
+/* Interacción y movimiento */
+@transicion-rapida: 0.2s ease;
+@transicion-suave: 0.35s ease;
+@distancia-elevacion: 4px;
+
+/* Puntos de quiebre */
+@mobile: 40rem;
+@tablet: 48rem;
+@desktop: 64rem;
+
+/* Mixins reutilizables */
 .flex-center() {
   display: flex;
   align-items: center;
   justify-content: center;
 }
 
-.btn-style(@bg: @color-principal, @color: @color-blanco) {
-  background-color: @bg;
-  color: @color;
-  padding: 10px 20px;
-  border: none;
-  border-radius: @border-radius;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.contenedor() {
+  width: min(@ancho-contenedor, calc(100% - 2rem));
+  margin-inline: auto;
+}
 
-  &:hover {
-    background-color: lighten(@bg, 10%);
-  }
+.boton-base(
+  @fondo: @color-principal,
+  @texto: @color-blanco
+) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: @espacio-sm;
+  padding: 0.85rem 1.25rem;
+  border: 1px solid @fondo;
+  border-radius: @radio-borde;
+  background-color: @fondo;
+  color: @texto;
+  font: inherit;
+  font-weight: 800;
+  text-decoration: none;
+  cursor: pointer;
+  transition:
+    background-color @transicion-rapida,
+    color @transicion-rapida,
+    border-color @transicion-rapida;
+}
+
+.boton-acento() {
+  .boton-base(@color-acento, @color-principal);
+}
+
+.texto-secundario() {
+  color: @color-texto-secundario;
 }

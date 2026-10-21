@@ -1,15 +1,19 @@
 {
   "name": "raiz",
   "version": "1.0.0",
-  "description": "Hola Mundo, Primera clase de CSS Avanzado, creacion de grupos y de repositorio principal en github :p",
-  "main": "index.js",
+  "private": true,
+  "description": "Tienda urbana STREETHYPE - proyecto de CSS avanzado con LESS, transiciones, animaciones y diseño responsive",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "less:base": "lessc less/base.less css/base.css",
+    "less:catalogo": "lessc less/catalogo.less css/catalogo.css",
+    "less:carrito": "lessc less/carrito.less css/carrito.css",
+    "less:contenido": "lessc less/contenido.less css/contenido.css",
+    "less:inicio": "lessc less/inicio.less css/inicio.css",
+    "less:novedades": "lessc less/novedades.less css/novedades.css",
+    "less:pagos": "lessc less/pagos.less css/pagos.css",
+    "less:producto": "lessc less/producto.less css/producto.css",
+    "less:all": "npm run less:base && npm run less:catalogo && npm run less:carrito && npm run less:contenido && npm run less:inicio && npm run less:novedades && npm run less:pagos && npm run less:producto"
   },
-  "keywords": [],
-  "author": "",
-  "license": "ISC",
-  "type": "commonjs",
   "devDependencies": {
     "less": "^4.9.1"
   }

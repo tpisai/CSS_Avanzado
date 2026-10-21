@@ -1,0 +1,418 @@
+
+/* ========================================
+   MODALES DE COMPRA — STREETHYPE
+   Diseño compartido con producto.less
+   ======================================== */
+
+.modal-overlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    padding: @espacio-md;
+    align-items: center;
+    justify-content: center;
+    overflow-y: auto;
+    background: rgb(0 0 0 / 70%);
+    backdrop-filter: blur(3px);
+}
+
+.modal-overlay.active {
+    display: flex;
+}
+
+.modal-overlay *,
+.modal-overlay *::before,
+.modal-overlay *::after {
+    box-sizing: border-box;
+}
+
+.modal-content {
+    position: relative;
+    width: 100%;
+    max-width: 520px;
+    max-height: calc(100vh - 2rem);
+    overflow-y: auto;
+    padding: @espacio-xl;
+    border: 1px solid @color-principal;
+    border-radius: 0;
+    background: @color-blanco;
+    color: @color-principal;
+    box-shadow: 8px 8px 0 @color-acento;
+    animation: modal-aparecer 0.2s ease-out;
+}
+
+.modal-garantia-content {
+    max-width: 500px;
+}
+
+.modal-confirm-content {
+    max-width: 550px;
+}
+
+.modal-close {
+    position: absolute;
+    top: 12px;
+    right: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    border: 1px solid transparent;
+    border-radius: 0;
+    background: transparent;
+    color: @color-principal;
+    font-size: 2rem;
+    line-height: 1;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.modal-close:hover {
+    border-color: @color-principal;
+    background: @color-acento;
+}
+
+.modal-header {
+    display: flex;
+    align-items: center;
+    gap: @espacio-sm;
+    margin-bottom: @espacio-lg;
+    padding: 0 35px @espacio-md 0;
+    border-bottom: 2px solid @color-principal;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 1.25rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.modal-icon-check {
+    display: flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 30px;
+    border: 1px solid @color-principal;
+    border-radius: 0;
+    background: @color-acento;
+    color: @color-principal;
+    font-weight: 900;
+}
+
+/* Protección y garantía */
+
+.modal-body-garantia {
+    display: flex;
+    flex-direction: column;
+    gap: @espacio-sm;
+}
+
+.warranty-option {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: @espacio-md;
+    width: 100%;
+    margin: 0;
+    padding: @espacio-md;
+    border: 1px solid @color-borde;
+    border-radius: 0;
+    background: @color-blanco;
+    cursor: pointer;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+}
+
+.warranty-option:hover,
+.warranty-option.highlighted {
+    border-color: @color-principal;
+    background: @color-superficie;
+}
+
+.warranty-option.highlighted {
+    box-shadow: inset 4px 0 0 @color-acento;
+}
+
+.warranty-option input {
+    flex-shrink: 0;
+    accent-color: @color-principal;
+}
+
+.warranty-text-col {
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.warranty-price {
+    margin-left: auto;
+    font-size: 1.05rem;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+.badge-recomendado {
+    width: fit-content;
+    margin-top: 5px;
+    padding: 4px 7px;
+    background: @color-acento;
+    color: @color-principal;
+    font-size: 0.7rem;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.warranty-benefits {
+    margin-top: @espacio-md;
+    color: @color-texto-secundario;
+    font-size: 0.875rem;
+}
+
+.warranty-benefits ul {
+    margin-top: @espacio-sm;
+    padding-left: 1.25rem;
+    line-height: 1.7;
+}
+
+/* Selector de tallas generado por compra.js */
+
+.compra-tallas {
+    width: 100%;
+    margin-bottom: @espacio-md;
+}
+
+.compra-tallas[hidden] {
+    display: none;
+}
+
+.compra-tallas label {
+    display: block;
+    margin-bottom: @espacio-sm;
+    font-size: 0.85rem;
+    font-weight: 800;
+}
+
+.compra-tallas select {
+    width: 100%;
+    min-height: 44px;
+    padding: 0.65rem 0.75rem;
+    border: 1px solid @color-borde;
+    border-radius: 0;
+    background: @color-blanco;
+    color: @color-principal;
+    font: inherit;
+}
+
+/* Confirmación del producto */
+
+.modal-body-confirmacion {
+    display: flex;
+    align-items: center;
+    gap: @espacio-md;
+    padding-bottom: @espacio-lg;
+}
+
+.modal-img-style {
+    flex-shrink: 0;
+    width: 85px;
+    height: 85px;
+    border: 1px solid @color-borde;
+    border-radius: 0;
+    background: @color-superficie;
+    object-fit: contain;
+}
+
+.modal-details-container {
+    display: flex;
+    flex: 1;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: @espacio-md;
+    min-width: 0;
+}
+
+.modal-title-style {
+    margin: 0 0 @espacio-xs;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    overflow-wrap: anywhere;
+}
+
+.modal-price-style {
+    color: @color-principal;
+    font-size: 1.1rem;
+    font-weight: 900;
+}
+
+.modal-qty-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: @espacio-xs;
+}
+
+.qty-selector {
+    display: flex;
+    align-items: center;
+    border: 1px solid @color-principal;
+    border-radius: 0;
+}
+
+.qty-selector button {
+    width: 32px;
+    height: 34px;
+    border: 0;
+    border-radius: 0;
+    background: @color-superficie;
+    color: @color-principal;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.qty-selector button:hover {
+    background: @color-acento;
+}
+
+#modal-qty {
+    min-width: 34px;
+    text-align: center;
+    font-weight: 800;
+}
+
+#modal-limit-msg {
+    color: @color-texto-secundario;
+    font-size: 0.75rem;
+}
+
+/* Botones */
+
+.modal-footer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    align-items: center;
+    gap: @espacio-sm;
+    margin-top: @espacio-md;
+    padding-top: @espacio-lg;
+    border-top: 1px solid @color-borde;
+}
+
+.btn-outline,
+.btn-solid {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 44px;
+    padding: 0.75rem 1rem;
+    border: 1px solid @color-principal;
+    border-radius: 0;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 800;
+    text-align: center;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.btn-outline {
+    background: @color-blanco;
+    color: @color-principal;
+}
+
+.btn-outline:hover {
+    background: @color-superficie;
+}
+
+.btn-solid {
+    background: @color-principal;
+    color: @color-blanco;
+}
+
+.btn-solid:hover {
+    background: @color-acento;
+    color: @color-principal;
+}
+
+.btn-text-link {
+    padding: 0.5rem;
+    border: 0;
+    border-radius: 0;
+    background: transparent;
+    color: @color-principal;
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: underline;
+    cursor: pointer;
+}
+
+.btn-text-link:hover {
+    color: @color-texto-secundario;
+}
+
+@keyframes modal-aparecer {
+    from {
+        opacity: 0;
+        transform: translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Adaptación móvil */
+
+@media (max-width: @tablet) {
+    .modal-content {
+        padding: @espacio-lg;
+        box-shadow: 4px 4px 0 @color-acento;
+    }
+
+    .modal-footer {
+        flex-direction: column-reverse;
+        align-items: stretch;
+    }
+
+    .modal-footer > * {
+        width: 100%;
+    }
+
+    .modal-body-confirmacion {
+        align-items: flex-start;
+        flex-wrap: wrap;
+    }
+
+    .modal-details-container {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: @mobile) {
+    .modal-content {
+        padding: @espacio-lg;
+    }
+
+    .modal-overlay {
+        padding: @espacio-sm;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-content {
+        animation: none;
+    }
+}

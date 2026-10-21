@@ -1,15 +1,17 @@
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Contacto STREETHYPE - Estamos aquí para ayudarte.">
-  <title>STREETHYPE | Contacto</title>
-  <link rel="stylesheet" href="/css/inicio.css">
+  <meta name="description" content="Contacta con STREETHYPE para resolver tus dudas sobre pedidos, productos y cambios.">
+  <title>Contacto | STREETHYPE</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/contenido.css">
+  <script src="../js/contenido.js" defer></script>
 </head>
 
 <body>
-
   <header class="site-header">
     <div class="announcement">
       <div class="container announcement__inner">
@@ -21,85 +23,166 @@
     </div>
 
     <div class="container header__inner">
-      <a class="brand" href="/index.html" aria-label="STREETHYPE, inicio">
+      <a href="../index.html" class="brand" aria-label="STREETHYPE, inicio">
         <span class="brand__mark">SH</span>
         <span>STREET<span>HYPE</span></span>
       </a>
 
-      <nav class="site-nav" aria-label="Navegación principal">
+      <button class="menu-button" type="button"
+        aria-expanded="false" aria-controls="site-nav"
+        aria-label="Abrir menú">
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+      </button>
+
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
         <ul class="site-nav__list">
-          <li><a href="/index.html">Inicio</a></li>
-          <li><a href="/index.html#zapatillas">Zapatillas</a></li>
-          <li><a href="/index.html#ropa">Ropa</a></li>
-          <li><a href="/index.html#accesorios">Accesorios</a></li>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="contacto.html" aria-current="page">Contacto</a></li>
         </ul>
       </nav>
+
+      <div class="header-actions">
+        <a href="carrito.html" class="cart-button"
+          aria-label="Ver carrito de compras">
+          🛒 <span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
     </div>
   </header>
 
   <main id="contenido">
-
-    <section class="section">
+    <section class="section content-page">
       <div class="container">
-
-        <div class="section-heading">
-          <div>
-            <p class="eyebrow">STREETHYPE</p>
-            <h1>Contacto</h1>
-          </div>
+        <div class="content-hero">
+          <p class="eyebrow">ESTAMOS PARA AYUDARTE</p>
+          <h1>Hablemos.</h1>
+          <p class="content-hero__text">
+            ¿Tienes dudas sobre un producto, tu pedido o un cambio?
+            Escríbenos y te orientaremos.
+          </p>
         </div>
 
-        <p>
-          ¿Tienes alguna pregunta? Escríbenos y nuestro equipo
-          estará encantado de ayudarte.
-        </p>
+        <div class="contact-layout">
+          <aside class="contact-info">
+            <p class="eyebrow">ATENCIÓN AL CLIENTE</p>
+            <h2>¿En qué podemos ayudarte?</h2>
+            <p>
+              Queremos que tu experiencia con STREETHYPE sea sencilla,
+              desde que eliges tu producto hasta que llega a tus manos.
+            </p>
 
-        <form class="newsletter-form">
+            <div class="contact-note">
+              <span class="contact-note__number">01</span>
+              <div>
+                <h3>Pedidos y entregas</h3>
+                <p>Consultas sobre el estado y la entrega de tu compra.</p>
+              </div>
+            </div>
 
-          <label for="nombre">Nombre</label>
-          <input
-            id="nombre"
-            name="nombre"
-            type="text"
-            placeholder="Tu nombre"
-            required
-          >
+            <div class="contact-note">
+              <span class="contact-note__number">02</span>
+              <div>
+                <h3>Cambios y consultas</h3>
+                <p>Te orientamos sobre tallas, productos y condiciones de cambio.</p>
+              </div>
+            </div>
 
-          <label for="correo">Correo electrónico</label>
-          <input
-            id="correo"
-            name="correo"
-            type="email"
-            placeholder="Tu correo electrónico"
-            required
-          >
+            <div class="contact-note">
+              <span class="contact-note__number">03</span>
+              <div>
+                <h3>Otras consultas</h3>
+                <p>Cuéntanos qué necesitas y revisaremos tu solicitud.</p>
+              </div>
+            </div>
 
-          <label for="mensaje">Mensaje</label>
-          <textarea
-            id="mensaje"
-            name="mensaje"
-            rows="6"
-            placeholder="Escribe tu mensaje..."
-            required
-          ></textarea>
+            <a class="contact-help-link" href="preguntas-frecuentes.html">
+              Consulta las preguntas frecuentes →
+            </a>
+          </aside>
 
-          <button class="button" type="submit">
-            ENVIAR MENSAJE
-          </button>
+          <div class="contact-panel">
+            <h2>Envíanos un mensaje</h2>
+            <p class="contact-panel__intro">
+              Completa los campos y escribe tu consulta.
+            </p>
 
-        </form>
+            <form class="contact-form" id="contact-form">
+              <div class="form-field">
+                <label for="nombre">Nombre completo</label>
+                <input id="nombre" name="nombre" type="text"
+                  placeholder="Tu nombre" autocomplete="name" required>
+              </div>
 
+              <div class="form-field">
+                <label for="correo">Correo electrónico</label>
+                <input id="correo" name="correo" type="email"
+                  placeholder="nombre@correo.com" autocomplete="email" required>
+              </div>
+
+              <div class="form-field">
+                <label for="tema">Motivo de consulta</label>
+                <select id="tema" name="tema" required>
+                  <option value="" selected disabled>Selecciona un motivo</option>
+                  <option value="pedido">Pedido o entrega</option>
+                  <option value="producto">Consulta sobre un producto</option>
+                  <option value="cambio">Cambios o devoluciones</option>
+                  <option value="otro">Otro motivo</option>
+                </select>
+              </div>
+
+              <div class="form-field">
+                <label for="mensaje">Mensaje</label>
+                <textarea id="mensaje" name="mensaje" rows="5"
+                  placeholder="Cuéntanos cómo podemos ayudarte..." required></textarea>
+              </div>
+
+              <button class="button contact-submit" type="submit">
+                ENVIAR MENSAJE
+              </button>
+
+              <p class="form-message" id="form-message" role="status"
+                aria-live="polite"></p>
+            </form>
+          </div>
+        </div>
       </div>
     </section>
-
   </main>
 
   <footer class="site-footer">
+    <div class="container footer-grid">
+      <div class="footer-brand">
+        <a href="../index.html" class="brand" aria-label="STREETHYPE, inicio">
+          <span class="brand__mark">SH</span>
+          <span>STREET<span>HYPE</span></span>
+        </a>
+        <p>Estilo urbano. Actitud propia.</p>
+        <p class="footer-tagline">HECHO PARA LA CALLE.</p>
+      </div>
+
+      <div class="footer-column">
+        <h2>TIENDA</h2>
+        <a href="../index.html">Inicio</a>
+        <a href="catalogo.html">Catálogo</a>
+        <a href="novedades.html">Novedades</a>
+      </div>
+
+      <div class="footer-column">
+        <h2>AYUDA</h2>
+        <a href="contacto.html">Contacto</a>
+        <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+        <a href="carrito.html">Mi carrito</a>
+      </div>
+    </div>
+
     <div class="container footer-bottom">
-      <p>© 2026 STREETHYPE. Todos los derechos reservados.</p>
+      <p>© <span id="year">2026</span> STREETHYPE. Todos los derechos reservados.</p>
       <p>HECHO PARA LA CALLE.</p>
     </div>
   </footer>
-
 </body>
 </html>
