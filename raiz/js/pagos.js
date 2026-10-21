@@ -1,109 +1,274 @@
 (() => {
-  "use strict";
+    "use strict";
 
-  const STORAGE_KEY = "streethype-cart";
-  const FREE_SHIPPING_FROM = 399;
-  const SHIPPING_COST = 20;
+    const STORAGE_KEY = "streethype-cart";
+    const FREE_SHIPPING_FROM = 399;
+    const SHIPPING_COST = 20;
 
-  const form = document.querySelector("#payment-form");
-  const orderItems = document.querySelector("#order-items");
-  const orderTotal = document.querySelector("#order-total");
-  const emptyMessage = document.querySelector("#empty-order-message");
-  const payButton = document.querySelector(".pay-button");
-  const successMessage = document.querySelector("#success-message");
-  const paymentLayout = document.querySelector(".payment-layout");
-  const cardNumber = document.querySelector("#card-number");
-  const expiry = document.querySelector("#expiry");
-  const cvv = document.querySelector("#cvv");
+    const form = document.querySelector("#payment-form");
+    const orderItems = document.querySelector("#order-items");
+    const orderSubtotal = document.querySelector("#order-subtotal");
+    const orderShipping = document.querySelector("#order-shipping");
+    const orderTotal = document.querySelector("#order-total");
+    const emptyMessage = document.querySelector("#empty-order-message");
+    const payButton = document.querySelector(".pay-button");
+    const successMessage = document.querySelector("#success-message");
+    const paymentLayout = document.querySelector(".payment-layout");
 
-  function getCart() {
-    try {
-      const saved = JSON.parse(localStorage.getItem(STORAGE_KEY));
-      return Array.isArray(saved) ? saved.filter((item) => item && item.id && item.quantity > 0) : [];
-    } catch {
-      return [];
-    }
-  }
+    const cardNumber = document.querySelector("#card-number");
+    const expiry = document.querySelector("#expiry");
+    const cvv = document.querySelector("#cvv");
 
-  function money(value) {
-    return new Intl.NumberFormat("es-PE", {
-      style: "currency",
-      currency: "PEN",
-      minimumFractionDigits: 2
-    }).format(value);
-  }
-
-  function getShipping(subtotal) {
-    return subtotal === 0 || subtotal >= FREE_SHIPPING_FROM ? 0 : SHIPPING_COST;
-  }
-
-  function renderOrder() {
-    const cart = getCart();
-
-    if (cart.length === 0) {
-      orderItems.innerHTML = "";
-      emptyMessage.hidden = false;
-      payButton.disabled = true;
-      return;
+    // Evita errores si el script se carga en otra página.
+    if (!form || !orderItems || !orderTotal || !emptyMessage || !payButton) {
+        return;
     }
 
-    const subtotal = cart.reduce((total, item) => total + (Number(item.price || 0) * Number(item.quantity || 0)), 0);
-    const total = subtotal + getShipping(subtotal);
+    function getCart() {
+        try {
+            const cart = JSON.parse(
+                localStorage.getItem(STORAGE_KEY) || "[]"
+            );
 
-    orderItems.innerHTML = cart.map((item) => {
-      const name = item.name || "Producto STREET HYPE";
-      const quantity = Number(item.quantity || 0);
-      const price = Number(item.price || 0) * quantity;
+            if (!Array.isArray(cart)) return [];
 
-      return `
-        <article class="order-item">
-          <div>
-            <p class="item-name">${name}</p>
-            <p class="item-detail">Cantidad: ${quantity}</p>
-          </div>
-          <strong>${money(price)}</strong>
-        </article>
-      `;
-    }).join("");
-
-    orderTotal.textContent = money(total);
-    emptyMessage.hidden = true;
-    payButton.disabled = false;
-  }
-
-  cardNumber.addEventListener("input", () => {
-    const digits = cardNumber.value.replace(/\D/g, "").slice(0, 16);
-    cardNumber.value = digits.replace(/(.{4})/g, "$1 ").trim();
-  });
-
-  expiry.addEventListener("input", () => {
-    const digits = expiry.value.replace(/\D/g, "").slice(0, 4);
-    expiry.value = digits.length > 2 ? digits.slice(0, 2) + "/" + digits.slice(2) : digits;
-  });
-
-  cvv.addEventListener("input", () => {
-    cvv.value = cvv.value.replace(/\D/g, "").slice(0, 4);
-  });
-
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-
-    const cardDigits = cardNumber.value.replace(/\D/g, "");
-
-    if (cardDigits.length < 15) {
-      cardNumber.setCustomValidity("Ingresa un número de tarjeta válido para la demostración.");
-      cardNumber.reportValidity();
-      return;
+            return cart.filter(item =>
+                item &&
+                item.id &&
+                Number.isInteger(Number(item.quantity)) &&
+                Number(item.quantity) > 0
+            );
+        } catch {
+            return [];
+        }
     }
 
-    cardNumber.setCustomValidity("");
+    function money(value) {
+        return new Intl.NumberFormat("es-PE", {
+            style: "currency",
+            currency: "PEN",
+            minimumFractionDigits: 2
+        }).format(value);
+    }
 
-    // La demostración no transmite, guarda ni procesa los datos del formulario.
-    form.reset();
-    paymentLayout.hidden = true;
-    successMessage.hidden = false;
-    successMessage.scrollIntoView({ behavior: "smooth", block: "center" });
-  });
+    function escapeHTML(value) {
+        return String(value ?? "").replace(/[&<>"']/g, char => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[char]);
+    }
 
-  renderOrder();
+    function getPrice(item) {
+        // El precio guardado incluye la protección cuando corresponde.
+        const price = Number(
+            item.price ??
+            (Number(item.basePrice || 0) + Number(item.warrantyPrice || 0))
+        );
+
+        return Number.isFinite(price) && price > 0 ? price : 0;
+    }
+
+    function getSubtotal(cart) {
+        return cart.reduce(
+            (total, item) => total + getPrice(item) * Number(item.quantity),
+            0
+        );
+    }
+
+    function getShipping(subtotal) {
+        return subtotal === 0 || subtotal >= FREE_SHIPPING_FROM
+            ? 0
+            : SHIPPING_COST;
+    }
+
+    function renderOrder() {
+        const cart = getCart();
+
+        if (cart.length === 0) {
+            orderItems.innerHTML = "";
+
+            if (orderSubtotal) orderSubtotal.textContent = money(0);
+            if (orderShipping) orderShipping.textContent = money(0);
+
+            orderTotal.textContent = money(0);
+            emptyMessage.hidden = false;
+            payButton.disabled = true;
+            return;
+        }
+
+        const subtotal = getSubtotal(cart);
+        const shipping = getShipping(subtotal);
+        const total = subtotal + shipping;
+
+        orderItems.innerHTML = cart.map(item => {
+            const name = escapeHTML(item.name || "Producto STREET HYPE");
+            const quantity = Number(item.quantity);
+            const itemTotal = getPrice(item) * quantity;
+            const warrantyPrice = Number(item.warrantyPrice) || 0;
+
+            return `
+                <article class="order-item">
+                    <div>
+                        <p class="item-name">${name}</p>
+                        <p class="item-detail">Cantidad: ${quantity}</p>
+                        ${
+                            warrantyPrice > 0
+                                ? `<p class="item-detail">
+                                    Incluye protección: ${money(warrantyPrice)} por unidad
+                                </p>`
+                                : ""
+                        }
+                    </div>
+                    <strong>${money(itemTotal)}</strong>
+                </article>
+            `;
+        }).join("");
+
+        if (orderSubtotal) {
+            orderSubtotal.textContent = money(subtotal);
+        }
+
+        if (orderShipping) {
+            orderShipping.textContent = shipping === 0
+                ? "Gratis"
+                : money(shipping);
+        }
+
+        orderTotal.textContent = money(total);
+        emptyMessage.hidden = true;
+        payButton.disabled = false;
+    }
+
+    // Formato del número de tarjeta para la demostración.
+    cardNumber?.addEventListener("input", () => {
+        cardNumber.setCustomValidity("");
+
+        const digits = cardNumber.value
+            .replace(/\D/g, "")
+            .slice(0, 16);
+
+        cardNumber.value = digits
+            .replace(/(.{4})/g, "$1 ")
+            .trim();
+    });
+
+    // Formato MM/AA.
+    expiry?.addEventListener("input", () => {
+        expiry.setCustomValidity("");
+
+        const digits = expiry.value
+            .replace(/\D/g, "")
+            .slice(0, 4);
+
+        expiry.value = digits.length > 2
+            ? `${digits.slice(0, 2)}/${digits.slice(2)}`
+            : digits;
+    });
+
+    // Solo números, máximo cuatro dígitos.
+    cvv?.addEventListener("input", () => {
+        cvv.setCustomValidity("");
+
+        cvv.value = cvv.value
+            .replace(/\D/g, "")
+            .slice(0, 4);
+    });
+
+    function validarTarjeta() {
+        const digits = cardNumber?.value.replace(/\D/g, "") || "";
+
+        if (!cardNumber || ![15, 16].includes(digits.length)) {
+            cardNumber?.setCustomValidity(
+                "Ingresa 15 o 16 dígitos para la demostración."
+            );
+            cardNumber?.reportValidity();
+            return false;
+        }
+
+        cardNumber.setCustomValidity("");
+
+        if (expiry) {
+            const match = expiry.value.match(
+                /^(0[1-9]|1[0-2])\/(\d{2})$/
+            );
+
+            if (!match) {
+                expiry.setCustomValidity("Usa el formato MM/AA.");
+                expiry.reportValidity();
+                return false;
+            }
+
+            const month = Number(match[1]);
+            const year = 2000 + Number(match[2]);
+            const now = new Date();
+
+            const expired =
+                year < now.getFullYear() ||
+                (year === now.getFullYear() &&
+                    month < now.getMonth() + 1);
+
+            if (expired) {
+                expiry.setCustomValidity(
+                    "La fecha debe ser vigente."
+                );
+                expiry.reportValidity();
+                return false;
+            }
+
+            expiry.setCustomValidity("");
+        }
+
+        if (cvv && !/^\d{3,4}$/.test(cvv.value)) {
+            cvv.setCustomValidity("Ingresa 3 o 4 dígitos.");
+            cvv.reportValidity();
+            return false;
+        }
+
+        cvv?.setCustomValidity("");
+
+        return true;
+    }
+
+    form.addEventListener("submit", event => {
+        event.preventDefault();
+
+        // No se permite confirmar una compra sin productos.
+        if (getCart().length === 0) {
+            renderOrder();
+            return;
+        }
+
+        if (!form.reportValidity() || !validarTarjeta()) {
+            return;
+        }
+
+        // Demostración académica: no se envían ni guardan datos bancarios.
+        localStorage.removeItem(STORAGE_KEY);
+
+        form.reset();
+
+        if (paymentLayout) {
+            paymentLayout.hidden = true;
+        }
+
+        if (successMessage) {
+            successMessage.hidden = false;
+            successMessage.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
+        }
+    });
+
+    // Actualiza el año del footer si existe en esta página.
+    const year = document.querySelector("#year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+
+    renderOrder();
 })();

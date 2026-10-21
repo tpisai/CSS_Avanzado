@@ -5,28 +5,45 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Drop exclusivo de STREETHYPE. Novedades en streetwear y sneakers.">
   <title>Drop Exclusivo | STREETHYPE</title>
-  
   <!-- Enlaces a tus CSS según tu estructura de carpetas -->
+  <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/novedades.css">
-  <link rel="stylesheet" href="../css/novedades-less.css">
-  <link rel="stylesheet" href="../css/novedades-sass.css">
 </head>
-<body class="bg-body-custom">
-
+<body>
   <header class="site-header">
-    <div class="header-container">
-      <a class="brand" href="../index.html">
-        <span class="brand-box">SH</span>
-        <span class="brand-text">STREET<span class="brand-accent">HYPE</span></span>
+    <div class="announcement">
+      <div class="container announcement__inner">
+        <p>ENVÍO GRATIS DESDE S/ 399</p>
+        <p>CAMBIOS SIN COSTO</p>
+        <p>3 CUOTAS SIN INTERÉS</p>
+        <p>RETIRO EN TIENDA GRATIS</p>
+      </div>
+    </div>
+    <div class="container header__inner">
+      <a href="../index.html" class="brand"
+        aria-label="STREETHYPE, inicio">
+        <span class="brand__mark">SH</span>
+        <span>STREET<span>HYPE</span></span>
       </a>
-      <nav class="nav-desktop">
-        <a href="#hero" class="nav-link">Inicio</a>
-        <a href="#novedades" class="nav-link">Lookbook</a>
-        <a href="#productos" class="nav-link">Reservas</a>
+      <button class="menu-button" type="button" aria-expanded="false" 
+      aria-controls="site-nav" aria-label="Abrir menú">
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+      </button>
+      <nav class="site-nav" id="site-nav"
+          aria-label="Navegación principal">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="#novedades">Lookbook</a></li>
+          <li><a href="#productos">Reservas</a></li>
+        </ul>
       </nav>
-      <a href="../index.html" class="btn-volver">
-        <span class="icon-arrow">←</span> Volver
-      </a>
+      <div class="header-actions">
+        <a href="carrito.html" class="cart-button" aria-label="Ver carrito de compras">
+        🛒<span class="cart-count">0</span>
+        </a>
+      </div>
     </div>
   </header>
 
@@ -61,8 +78,8 @@
               <h1 class="hero-title">LA CALLE EN MOVIMIENTO.</h1>
               <p class="hero-desc">Siluetas sobredimensionadas, detalles reflectantes y comodidad técnica. Explora las texturas de la nueva temporada.</p>
               <div class="hero-actions">
-                <a class="btn-accent" href="#productos">Reservar Anticipado</a>
-                <a class="btn-outline" href="#novedades">Ver Galería</a>
+                <a class="button" href="#productos">Reservar Anticipado</a>
+                <a class="button button--secondary" href="#novedades">Ver Galería</a>
               </div>
             </div>
             
@@ -107,7 +124,7 @@
               <p class="lookbook-subtitle">Editorial</p>
               <h2 class="lookbook-title">Lookbook Visual</h2>
             </div>
-            <a class="btn-outline-dark" href="#hero">Ir arriba ↑</a>
+            <a class="button button--secondary" href="#hero">Ir arriba ↑</a>
           </div>
           
           <div class="lookbook-grid">

@@ -5,37 +5,48 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Zapatillas Low Street | STREETHYPE</title>
   <!-- Aquí se enlaza el CSS compilado a partir de LESS -->
-  <link rel="stylesheet" href="../css/inicio.css">
+  <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/producto.css"> 
 </head>
 
 <body>
   <!-- CABECERA -->
   <header class="site-header">
+    <div class="announcement">
+      <div class="container announcement__inner">
+        <p>ENVÍO GRATIS DESDE S/ 399</p>
+        <p>CAMBIOS SIN COSTO</p>
+        <p>3 CUOTAS SIN INTERÉS</p>
+        <p>RETIRO EN TIENDA GRATIS</p>
+      </div>
+    </div>
     <div class="container header__inner">
-      <!-- FIX 1: Logo apuntando a ../index.html -->
-      <a class="brand" href="../index.html">STREET<span>HYPE</span></a>
-      <button class="cart-button" type="button" onclick="window.location.href='carrito.html'"></button>
-      
-      <nav class="site-nav" id="site-nav">
+      <a href="../index.html" class="brand" aria-label="STREETHYPE, inicio">
+        <span class="brand__mark">SH</span>
+        <span>STREET<span>HYPE</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav"
+      aria-label="Abrir menú">
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
         <ul class="site-nav__list">
-          <li><a href="../index.html#zapatillas">Zapatillas</a></li>
-          <li><a href="../index.html#ropa">Ropa</a></li>
-          <li><a href="../index.html#accesorios">Accesorios</a></li>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
         </ul>
       </nav>
-      
       <div class="header-actions">
-        <!-- FIX 2: Evento onclick para ir al carrito -->
-        <button class="cart-button" type="button" onclick="window.location.href='carrito.html'" style="cursor: pointer;">
-          🛒 <span class="cart-count">0</span>
-        </button>
+        <a href="carrito.html" class="cart-button" aria-label="Ver carrito de compras">
+        🛒<span class="cart-count">0</span>
+        </a>
       </div>
     </div>
   </header>
-
   <!-- CONTENIDO PRINCIPAL -->
-
   <main id="contenido" class="container main-content">
       <div class="product-layout">
       <!-- Galería -->
@@ -46,17 +57,15 @@
           alt="zapatillas-nike-rojas"
           class="product-image-main">
       </div> 
-
-
-
       <!-- Detalles -->
       <div class="product-info">
         <p class="eyebrow">NUEVO INGRESO</p>
         <h1 id="producto-titulo" class="product-title">Zapatillas Low Street</h1>
         <!-- Estrellas de Reseña -->
-<div style="color: #FFD700; margin-bottom: 1.5rem; font-size: 1.2rem; margin-top: -5px;">
-  ★★★★★ <span style="color: #666; font-size: 0.9rem; margin-left: 8px;">(42 reseñas verificadas)</span>
-</div>
+        <div class="product-reviews" aria-label="5 de 5 estrellas, 42 reseñas verificadas">
+          <span class="product-reviews__stars" aria-hidden="true">★★★★★</span>
+          <span class="product-reviews__count">(42 reseñas verificadas)</span>
+        </div>
         <p id="producto-precio" class="product-price">S/ 399.00</p>
         
         <p id="producto-descripcion" class="product-description">
@@ -74,17 +83,22 @@
           AÑADIR AL CARRITO
         </button>
         <!-- Lista de Beneficios -->
-<div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid #eee; font-size: 0.95rem; color: #444; display: flex; flex-direction: column; gap: 1rem;">
-  <div style="display: flex; align-items: center; gap: 12px;">
-    <span style="font-size: 1.4rem;">🚚</span> <strong>Envío express gratis</strong> a todo el Perú
-  </div>
-  <div style="display: flex; align-items: center; gap: 12px;">
-    <span style="font-size: 1.4rem;">🔒</span> <strong>Pago 100% seguro</strong> y encriptado
-  </div>
-  <div style="display: flex; align-items: center; gap: 12px;">
-    <span style="font-size: 1.4rem;">🔄</span> <strong>Devoluciones sin costo</strong> hasta por 30 días
-  </div>
-</div>
+        <div class="product-benefits">
+          <div class="product-benefits__item">
+            <span aria-hidden="true">🚚</span>
+            <p><strong>Envío express gratis</strong> a todo el Perú</p>
+          </div>
+
+          <div class="product-benefits__item">
+            <span aria-hidden="true">🔒</span>
+            <p><strong>Pago 100% seguro</strong> y encriptado</p>
+          </div>
+
+          <div class="product-benefits__item">
+            <span aria-hidden="true">🔄</span>
+            <p><strong>Devoluciones sin costo</strong> hasta por 30 días</p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -99,185 +113,33 @@
           <button class="filter-btn" data-filter="zapatillas">Zapatillas</button>
           <button class="filter-btn" data-filter="ropa">Ropa</button>
           <button class="filter-btn" data-filter="accesorios">Accesorios</button>
+          <button class="filter-btn" data-filter="sale">Sale</button>
         </div>
       </div>
 
       <!-- Grid responsivo -->
       <div class="products grid-layout" id="catalogo-grid">
-        
-        <!-- Producto: Zapatilla -->
-       <!-- ================== ROPA ================== -->
-<article class="product-card" data-category="ropa">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=camiseta-magica"><img src="../assets/img/camiseta.magica.jpg" alt="Camiseta Mágica"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ROPA</p>
-    <h3 class="product-card-title"><a href="producto.html?id=camiseta-magica">Camiseta Mágica</a></h3>
-    <div class="product-card-footer"><strong>S/ 89.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="ropa">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=polo-azul"><img src="../assets/img/polo.azul.jpg" alt="Polo Azul"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ROPA</p>
-    <h3 class="product-card-title"><a href="producto.html?id=polo-azul">Polo Azul Urbano</a></h3>
-    <div class="product-card-footer"><strong>S/ 99.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="ropa">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=polo-crema"><img src="../assets/img/polo.crema.jpg" alt="Polo Crema"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ROPA</p>
-    <h3 class="product-card-title"><a href="producto.html?id=polo-crema">Polo Crema Essential</a></h3>
-    <div class="product-card-footer"><strong>S/ 99.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="ropa">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=polo-verde-militar"><img src="../assets/img/polo.verde.militar.jpg" alt="Polo Verde Militar"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ROPA</p>
-    <h3 class="product-card-title"><a href="producto.html?id=polo-verde-militar">Polo Verde Militar</a></h3>
-    <div class="product-card-footer"><strong>S/ 99.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="ropa">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=jogger-mujer"><img src="../assets/img/Jogger Para Mujer.jpg" alt="Jogger Para Mujer"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ROPA</p>
-    <h3 class="product-card-title"><a href="producto.html?id=jogger-mujer">Jogger Beige Mujer</a></h3>
-    <div class="product-card-footer"><strong>S/ 129.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="ropa">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=chaqueta-hype"><img src="../assets/img/chaquetas.jpg" alt="Chaquetas"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ROPA</p>
-    <h3 class="product-card-title"><a href="producto.html?id=chaqueta-hype">Chaqueta de Cuero Hype</a></h3>
-    <div class="product-card-footer"><strong>S/ 249.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<!-- ================== ZAPATILLAS ================== -->
-<article class="product-card" data-category="zapatillas">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=zapatillas-nike-rojas"><img src="../assets/img/Zapatillas Nike Rojas.jpg" alt="Zapatillas Nike Rojas"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ZAPATILLAS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=zapatillas-nike-rojas">Nike Running Rojas</a></h3>
-    <div class="product-card-footer"><strong>S/ 389.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="zapatillas">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=botines-rojos-nike"><img src="../assets/img/Botines rojos Nike.jpg" alt="Botines rojos Nike"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ZAPATILLAS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=botines-rojos-nike">Botines Air Jordan</a></h3>
-    <div class="product-card-footer"><strong>S/ 529.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="zapatillas">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=adidas-id3711"><img src="../assets/img/Zapatillas adidadas id3711.jpg" alt="Zapatillas adidas id3711"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ZAPATILLAS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=adidas-id3711">Adidas Gazelle ID3711</a></h3>
-    <div class="product-card-footer"><strong>S/ 349.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="zapatillas">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=adidas-running-azul"><img src="../assets/img/Zapatillas Running azul.jpg" alt="Zapatillas Running azul"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ZAPATILLAS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=adidas-running-azul">Adidas Running Azul</a></h3>
-    <div class="product-card-footer"><strong>S/ 299.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<!-- ================== ACCESORIOS ================== -->
-<article class="product-card" data-category="accesorios">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=gorra-blanca"><img src="../assets/img/Gorra Blanca.jpg" alt="Gorra Blanca"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ACCESORIOS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=gorra-blanca">Gorra Básica Blanca</a></h3>
-    <div class="product-card-footer"><strong>S/ 49.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="accesorios">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=gorra-crema"><img src="../assets/img/gorra crema.jpg" alt="Gorra Crema"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ACCESORIOS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=gorra-crema">Gorra Vintage Crema</a></h3>
-    <div class="product-card-footer"><strong>S/ 55.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="accesorios">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=gorra-deportiva"><img src="../assets/img/Gorra Deportiva.jpg" alt="Gorra Deportiva"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ACCESORIOS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=gorra-deportiva">Gorra Deportiva Under</a></h3>
-    <div class="product-card-footer"><strong>S/ 65.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
-<article class="product-card" data-category="accesorios">
-  <div class="product-card-image-wrap">
-    <a href="producto.html?id=gorra-dunkelvolk"><img src="../assets/img/Gorra para Hombre DUNKELVOLK.jpg" alt="Gorra Dunkelvolk"></a>
-  </div>
-  <div class="product-card-details">
-    <p class="product-card-category">ACCESORIOS</p>
-    <h3 class="product-card-title"><a href="producto.html?id=gorra-dunkelvolk">Gorra Dunkelvolk Khaki</a></h3>
-    <div class="product-card-footer"><strong>S/ 79.00</strong><button class="btn-circle">+</button></div>
-  </div>
-</article>
-
       </div>
     </section>
 </main>
   
   <!-- BANNER DE SUSCRIPCIÓN -->
-  <section style="background-color: #f4f4f4; padding: 5rem 1.5rem; text-align: center; border-top: 2px solid #000;">
-    <div class="container">
-      <h2 style="font-size: 2.2rem; font-weight: 900; text-transform: uppercase; margin: 0 0 1rem 0;">Únete a Street Hype</h2>
-      <p style="color: #555; margin-bottom: 2.5rem; font-size: 1.1rem;">Recibe 15% de descuento en tu primera compra y acceso anticipado a nuestros drops.</p>
-      
-      <form style="display: flex; justify-content: center; gap: 10px; max-width: 500px; margin: 0 auto; flex-wrap: wrap;">
-        <input type="email" placeholder="Ingresa tu correo electrónico" style="flex: 1; min-width: 220px; padding: 15px; border: 1px solid #ccc; outline: none; font-size: 1rem;">
-        <button type="button" style="background: #000; color: #fff; border: none; padding: 15px 30px; font-weight: 900; text-transform: uppercase; cursor: pointer; font-size: 1rem; transition: background 0.3s;">
-          Suscribirme
-        </button>
+  <section class="newsletter">
+    <div class="container newsletter__inner">
+      <h2>Únete a Street Hype</h2>
+      <p>
+        Recibe 15% de descuento en tu primera compra y acceso anticipado a nuestros drops.
+      </p>
+
+      <form class="newsletter__form">
+        <input
+          type="email"
+          name="email"
+          placeholder="Ingresa tu correo electrónico"
+          aria-label="Correo electrónico"
+          required
+        >
+        <button type="button">Suscribirme</button>
       </form>
     </div>
   </section>
@@ -285,15 +147,11 @@
   <!-- ==========================================
        MODAL 1: COMPRA SEGURA (GARANTÍA)
        ========================================== -->
- <!-- ==========================================
-       MODAL 1: COMPRA SEGURA (GARANTÍA)
-       ========================================== -->
   <div id="modal-garantia" class="modal-overlay">
     <div class="modal-content modal-garantia-content">
       <button class="modal-close" id="cerrar-garantia">&times;</button>
       
       <div class="modal-header">
-        <span class="modal-icon-shield">🛡️</span>
         <h2>Protege tu producto</h2>
       </div>
 
@@ -369,6 +227,8 @@
     </div>
   </div>
 
+  <script src="../js/productos.js"></script>
+  <script src="../js/compra.js"></script>
   <script src="../js/producto.js"></script>
 </body>
 </html>

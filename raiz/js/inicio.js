@@ -1,231 +1,280 @@
-const menuButton = document.querySelector(".menu-button");
-const siteNav = document.querySelector(".site-nav");
 
-if (menuButton && siteNav) {
-  menuButton.addEventListener("click", () => {
-    const isOpen = siteNav.classList.toggle("is-open");
+(() => {
+    "use strict";
 
-    menuButton.setAttribute("aria-expanded", isOpen);
-  });
-}
+    const STORAGE_KEY = "streethype-cart";
+    const MAX_PER_PRODUCT = 4;
 
-/* -------------------- HERO SIMPLE -------------------- */
+    // ==========================================
+    // UTILIDADES
+    // ==========================================
+    const formatMoney = (value) =>
+        new Intl.NumberFormat("es-PE", {
+            style: "currency",
+            currency: "PEN",
+            minimumFractionDigits: 2
+        }).format(Number(value) || 0);
 
-const heroImage = document.querySelector(".hero-media img");
-const heroTitle = document.querySelector("#hero-title");
-const heroText = document.querySelector(".hero-text");
-const heroEyebrow = document.querySelector(".hero-content .eyebrow");
-const heroDots = document.querySelectorAll(".hero-dot");
+    const escapeHTML = (value) =>
+        String(value ?? "").replace(/[&<>"']/g, (char) => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;"
+        })[char]);
 
-const slides = [
-  {
-    image: "https://images.unsplash.com/photo-1529139574466-a303027c1d8b?auto=format&fit=crop&w=1200&q=85",
-    alt: "Modelo con una propuesta de moda urbana",
-    title: "OWN YOUR STYLE.",
-    text: "Prendas, zapatillas y accesorios para quienes convierten la calle en su propio escenario.",
-    eyebrow: "NEW STREET SEASON / 2026"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1523398002811-999ca8dec234?auto=format&fit=crop&w=1200&q=85",
-    alt: "Colección de ropa urbana",
-    title: "MAKE THE STREET YOURS.",
-    text: "Siluetas amplias, básicos esenciales y piezas pensadas para construir tu propio código.",
-    eyebrow: "DROP 02 / STREET CULTURE"
-  },
-  {
-    image: "https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&w=1200&q=85",
-    alt: "Persona usando ropa de estilo urbano",
-    title: "NO RULES. JUST STYLE.",
-    text: "Una selección urbana para combinar, experimentar y moverte sin seguir el manual.",
-    eyebrow: "LIMITED EDITION / 2026"
-  }
-];
+    function readCart() {
+        try {
+            const cart = JSON.parse(
+                localStorage.getItem(STORAGE_KEY) || "[]"
+            );
 
-let currentSlide = 0;
-
-function showSlide(index) {
-  if (!heroImage || !heroTitle || !heroText || !heroEyebrow) {
-    return;
-  }
-
-  currentSlide = index;
-
-  heroImage.src = slides[index].image;
-  heroImage.alt = slides[index].alt;
-  heroTitle.textContent = slides[index].title;
-  heroText.textContent = slides[index].text;
-  heroEyebrow.textContent = slides[index].eyebrow;
-
-  heroDots.forEach((dot, dotIndex) => {
-    dot.classList.toggle("hero-dot--active", dotIndex === index);
-  });
-}
-
-heroDots.forEach((dot) => {
-  dot.addEventListener("click", () => {
-    showSlide(Number(dot.dataset.slide));
-  });
-});
-
-setInterval(() => {
-  currentSlide = (currentSlide + 1) % slides.length;
-  showSlide(currentSlide);
-}, 6000);
-
-/* -------------------- CARRITO -------------------- */
-
-const cartCount = document.querySelector(".cart-count");
-const addButtons = document.querySelectorAll(".add-button");
-const cartMessage = document.querySelector("#cart-message");
-
-let cartItems = 0;
-
-function showCartMessage(productName) {
-  if (!cartMessage) {
-    return;
-  }
-
-  cartMessage.textContent = `${productName} fue añadido al carrito.`;
-  cartMessage.classList.add("is-visible");
-
-  setTimeout(() => {
-    cartMessage.classList.remove("is-visible");
-  }, 2200);
-}
-
-addButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    cartItems += 1;
-
-    if (cartCount) {
-      cartCount.textContent = cartItems;
+            return Array.isArray(cart) ? cart : [];
+        } catch {
+            return [];
+        }
     }
 
-    showCartMessage(button.dataset.product);
-  });
-});
+    function updateCartCount(cart = readCart()) {
+        const count = cart.reduce(
+            (total, item) => total + (Number(item.quantity) || 0),
+            0
+        );
 
-/* -------------------- NEWSLETTER -------------------- */
+        document.querySelectorAll(".cart-count, #cart-count")
+            .forEach((element) => {
+                element.textContent = count;
+            });
+    }
 
-const newsletterForm = document.querySelector("#newsletter-form");
-const formMessage = document.querySelector("#form-message");
+    function saveCart(cart) {
+        try {
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(cart));
+            updateCartCount(cart);
+            return true;
+        } catch {
+            showMessage("No se pudo guardar el carrito.");
+            return false;
+        }
+    }
 
-if (newsletterForm && formMessage) {
-  newsletterForm.addEventListener("submit", (event) => {
-    event.preventDefault();
+    function showMessage(message) {
+        const cartMessage = document.querySelector("#cart-message");
+        if (!cartMessage) return;
 
-    formMessage.textContent = "¡Listo! Te avisaremos cuando llegue el próximo drop.";
-    newsletterForm.reset();
-  });
-}
+        cartMessage.textContent = message;
+        cartMessage.classList.add("is-visible");
 
-/* -------------------- AÑO DEL FOOTER -------------------- */
+        clearTimeout(showMessage.timeout);
 
-const year = document.querySelector("#year");
+        showMessage.timeout = setTimeout(() => {
+            cartMessage.classList.remove("is-visible");
+        }, 2200);
+    }
 
-if (year) {
-  year.textContent = new Date().getFullYear();
-}
-/* -------------------- CATÁLOGO Y FILTROS -------------------- */
+    function getProductImage(image) {
+        if (typeof window.STREETHYPE_IMAGE === "function") {
+            return window.STREETHYPE_IMAGE(image);
+        }
 
-const productosData = [
-  {
-    id: 1,
-    categoria: "zapatillas",
-    categoriaTexto: "ZAPATILLAS",
-    nombre: "Zapatilla Street Runner",
-    descripcion: "Suela chunky / Off White",
-    precio: "<strong>S/ 389.00</strong>",
-    badge: "NEW",
-    imagen: "https://www.nike.com.pe/dw/image/v2/BJKZ_PRD/on/demandware.static/-/Sites-catalog-equinox/default/dw6937087a/images/hi-res/198484285652_1_20250606-mrtPeru.jpg?sw=640&sh=640"
-  },
-  {
-    id: 2,
-    categoria: "ropa",
-    categoriaTexto: "ROPA",
-    nombre: "Polera Oversize Heavyweight",
-    descripcion: "Heavy cotton / Sand",
-    precio: "<strong>S/ 199.00</strong>",
-    badge: "NEW",
-    imagen: "https://www.flavorjack.pe/cdn/shop/files/HOODIE-NEGRA-BLANK-6.jpg?v=1751472414",
-  },
-  {
-    id: 3,
-    categoria: "accesorios",
-    categoriaTexto: "ACCESORIOS",
-    nombre: "Cadena Urban Silver",
-    descripcion: "Stainless Steel / Silver",
-    precio: "<strong>S/ 79.00</strong>",
-    badge: "NEW",
-    imagen: "https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?auto=format&fit=crop&w=800&q=85"
-  },
-  {
-    id: 4,
-    categoria: "sale",
-    categoriaTexto: "SALE",
-    nombre: "Casaca Varsity Black (Sale)",
-    descripcion: "Overfit / Black",
-    precio: "<strong>S/ 329.00</strong>",
-    badge: "NEW",
-    imagen: "https://images.unsplash.com/photo-1551028719-00167b16eac5?auto=format&fit=crop&w=800&q=85"
-  }
-];
+        return image || "";
+    }
 
-const gridProductos = document.querySelector("#grid-productos");
-const botonesFiltro = document.querySelectorAll(".btn-filtro");
+    // ==========================================
+    // MENÚ DE NAVEGACIÓN
+    // ==========================================
+    const menuButton = document.querySelector(".menu-button");
+    const siteNav = document.querySelector(".site-nav");
 
-function renderizarProductos(categoriaSeleccionada = "todos") {
-  if (!gridProductos) return;
+    if (menuButton && siteNav) {
+        menuButton.addEventListener("click", () => {
+            const isOpen = siteNav.classList.toggle("is-open");
+            menuButton.setAttribute("aria-expanded", String(isOpen));
+        });
 
-  const productosFiltrados = categoriaSeleccionada === "todos"
-    ? productosData
-    : productosData.filter(prod => prod.categoria === categoriaSeleccionada);
+        siteNav.querySelectorAll("a").forEach((link) => {
+            link.addEventListener("click", () => {
+                siteNav.classList.remove("is-open");
+                menuButton.setAttribute("aria-expanded", "false");
+            });
+        });
+    }
 
-  gridProductos.innerHTML = productosFiltrados.map(prod => `
-    <article class="product-card">
-      <div class="product-media">
-        ${prod.badge ? `<span class="badge badge--${prod.badge.toLowerCase()}">${prod.badge}</span>` : ''}
-        <img src="${prod.imagen}" alt="${prod.nombre}" loading="lazy">
-        <button class="wishlist-btn" aria-label="Añadir a favoritos">
-          <svg width="18" height="18" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
-        </button>
-      </div>
-      <div class="product-content">
-        <span class="product-category">${prod.categoriaTexto}</span>
-        <h3 class="product-title">${prod.nombre}</h3>
-        <p class="product-desc">${prod.descripcion}</p>
-        <div class="product-footer">
-          <div class="price-wrapper">
-            <span class="price">${prod.precio}</span>
-            ${prod.precioAnterior ? `<span class="price-old">${prod.precioAnterior}</span>` : ''}
-          </div>
-          <button class="add-button" data-product="${prod.nombre}">+</button>
-        </div>
-      </div>
-    </article>
-  `).join('');
+    // ==========================================
+    // CARRUSEL PRINCIPAL
+    // ==========================================
+    const heroImage = document.querySelector(".hero-media img");
+    const heroTitle = document.querySelector("#hero-title");
+    const heroText = document.querySelector(".hero-text");
+    const heroEyebrow = document.querySelector(".hero-content .eyebrow");
+    const heroDots = document.querySelectorAll(".hero-dot");
 
-  // Volver a vincular eventos de agregar al carrito a los nuevos botones
-  document.querySelectorAll("#grid-productos .add-button").forEach(btn => {
-    btn.addEventListener("click", () => {
-      cartItems += 1;
-      if (cartCount) cartCount.textContent = cartItems;
-      showCartMessage(btn.dataset.product);
+    const slides = [
+        {
+            image: "assets/img/hero/hero-1.webp",
+            alt: "Modelo con una propuesta de moda urbana",
+            title: "OWN YOUR STYLE.",
+            text: "Prendas, zapatillas y accesorios para quienes convierten la calle en su propio escenario.",
+            eyebrow: "NEW STREET SEASON / 2026"
+        },
+        {
+            image: "assets/img/hero/hero-2.webp",
+            alt: "Colección de ropa urbana",
+            title: "MAKE THE STREET YOURS.",
+            text: "Siluetas amplias, básicos esenciales y piezas pensadas para construir tu propio código.",
+            eyebrow: "DROP 02 / STREET CULTURE"
+        },
+        {
+            image: "assets/img/hero/hero-3.webp",
+            alt: "Persona usando ropa de estilo urbano",
+            title: "NO RULES. JUST STYLE.",
+            text: "Una selección urbana para combinar, experimentar y moverte sin seguir el manual.",
+            eyebrow: "LIMITED EDITION / 2026"
+        }
+    ];
+
+    let currentSlide = 0;
+    let heroTimer;
+
+    function showSlide(index) {
+        if (!heroImage || !heroTitle || !heroText || !heroEyebrow) {
+            return;
+        }
+
+        currentSlide = (index + slides.length) % slides.length;
+        const slide = slides[currentSlide];
+
+        heroImage.src = slide.image;
+        heroImage.alt = slide.alt;
+        heroTitle.textContent = slide.title;
+        heroText.textContent = slide.text;
+        heroEyebrow.textContent = slide.eyebrow;
+
+        heroDots.forEach((dot, dotIndex) => {
+            const active = dotIndex === currentSlide;
+
+            dot.classList.toggle("hero-dot--active", active);
+
+            if (active) {
+                dot.setAttribute("aria-current", "true");
+            } else {
+                dot.removeAttribute("aria-current");
+            }
+        });
+    }
+
+    if (
+        heroImage &&
+        heroTitle &&
+        heroText &&
+        heroEyebrow &&
+        slides.length
+    ) {
+        heroDots.forEach((dot) => {
+            dot.addEventListener("click", () => {
+                const index = Number(dot.dataset.slide);
+
+                if (!Number.isInteger(index)) return;
+
+                showSlide(index);
+                clearInterval(heroTimer);
+
+                heroTimer = setInterval(() => {
+                    showSlide(currentSlide + 1);
+                }, 6000);
+            });
+        });
+
+        showSlide(0);
+
+        heroTimer = setInterval(() => {
+            showSlide(currentSlide + 1);
+        }, 6000);
+    }
+
+    // ==========================================
+    // PRODUCTOS EN OFERTA
+    // ==========================================
+    const products = Array.isArray(window.STREETHYPE_PRODUCTS)
+        ? window.STREETHYPE_PRODUCTS
+        : [];
+
+    const productGrid = document.querySelector("#grid-productos");
+    
+    function renderProducts() {
+        if (!productGrid) return;
+        const saleProducts = products.filter((product) => product.category === "sale");
+        productGrid.innerHTML = saleProducts.map((product) => {
+            const image = getProductImage(product.image);
+            return `<article class="product-card">
+                      <a href="paginas/producto.html?id=${encodeURIComponent(product.id)}"
+                        class="product-media"
+                        aria-label="Ver ${escapeHTML(product.name)}">
+                        <img src="${escapeHTML(image)}" alt="${escapeHTML(product.name)}" loading="lazy">
+                          ${product.badge 
+                            ? `<span class="product-badge">${escapeHTML(product.badge)}</span>` : ""}
+                      </a>
+                      <div class="product-content">
+                        <span class="product-category">SALE</span>
+                        <h3 class="product-title">
+                            ${escapeHTML(product.name)}
+                        </h3>
+                        <p class="product-desc">
+                            ${escapeHTML(product.description)}
+                        </p>
+                        <div class="product-footer">
+                          <div class="price-wrapper">
+                            <span class="price">
+                              ${formatMoney(product.price)}
+                            </span>
+                            ${product.previousPrice 
+                              ? `<span class="old-price">${formatMoney(product.previousPrice)}</span>`
+                              : ""}
+                          </div>
+                          <a class="add-button" 
+                          href="paginas/producto.html?id=${encodeURIComponent(product.id)}"
+                          aria-label="Ver ${escapeHTML(product.name)}">
+                            +
+                          </a>
+                        </div>
+                    </div>
+                </article>`;
+        }).join("");
+      }
+    renderProducts();
+    updateCartCount();
+
+    // Actualiza el contador si el carrito cambia en otra pestaña.
+    window.addEventListener("storage", (event) => {
+        if (event.key === STORAGE_KEY) {
+            updateCartCount();
+        }
     });
-  });
-}
 
-// Eventos de click en los botones de filtro
-botonesFiltro.forEach(btn => {
-  btn.addEventListener("click", () => {
-    botonesFiltro.forEach(b => b.classList.remove("activo"));
-    btn.classList.add("activo");
-    renderizarProductos(btn.dataset.categoria);
-  });
-});
+    // NEWSLETTER
+    const newsletterForm = document.querySelector("#newsletter-form");
+    const formMessage = document.querySelector("#form-message");
 
-// Renderizar todos al cargar
-document.addEventListener("DOMContentLoaded", () => {
-  renderizarProductos();
-});
+    if (newsletterForm && formMessage) {
+        newsletterForm.addEventListener("submit", (event) => {
+            event.preventDefault();
 
+            if (!newsletterForm.reportValidity()) return;
+
+            formMessage.textContent =
+                "¡Listo! Te avisaremos cuando llegue el próximo drop.";
+
+            newsletterForm.reset();
+        });
+    }
+
+    // ==========================================
+    // AÑO DEL FOOTER
+    // ==========================================
+    const year = document.querySelector("#year");
+
+    if (year) {
+        year.textContent = new Date().getFullYear();
+    }
+})();
