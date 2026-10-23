@@ -1,0 +1,36 @@
+.card { 
+.surface(); 
+min-width: 0; 
+display: flex; 
+flex-direction: column; 
+gap: .space(3)[@value]; 
+overflow-wrap: anywhere; 
+&__title { margin: 0; } 
+&__action { margin-block-start: auto; } 
+} 
+.badge { 
+align-self: flex-start; 
+padding: .space(1)[@value] .space(3)[@value]; 
+border-radius: 999px; 
+font-weight: 700; 
+background: #e8eefc; 
+color: @brand; 
+&--open { .status(open); } 
+&--full { .status(full); } 
+&--soon { .status(soon); }
+} 
+.button { 
+display: inline-flex; 
+justify-content: center; 
+align-items: center; 
+min-height: 2.75rem; 
+padding: .space(3)[@value] .space(5)[@value]; 
+border: 2px solid var(--brand); 
+border-radius: @radius; 
+background: var(--brand); 
+color: white; 
+font-weight: 700; 
+text-decoration: none; 
+&:hover { text-decoration: underline; } 
+&--outline { background: transparent; color: var(--brand); } 
+} 

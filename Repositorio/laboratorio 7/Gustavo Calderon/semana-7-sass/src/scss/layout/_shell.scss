@@ -1,0 +1,32 @@
+@use "../abstracts" as a;
+
+.container {
+  inline-size: min(100% - 2rem, 72rem);
+  margin-inline: auto;
+}
+
+.site-header {
+  border-block-end: 1px solid rgb(11 37 69 / 0.10);
+  background: #fff;
+}
+
+.site-header__inner,
+.nav-list,
+.actions,
+.challenge__inner {
+  display: flex;
+  align-items: center;
+  gap: a.space(4);
+  flex-wrap: wrap;
+}
+
+.site-header__inner {
+  justify-content: space-between;
+  padding-block: a.space(4);
+}
+
+.brand {
+  color: a.$color-footer;
+  font-weight: 900;
+  text-decoration: none;
+}
