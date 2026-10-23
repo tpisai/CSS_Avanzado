@@ -14,6 +14,7 @@
     const payButton = document.querySelector(".pay-button");
     const successMessage = document.querySelector("#success-message");
     const paymentLayout = document.querySelector(".payment-layout");
+    const orderReference = document.querySelector("#order-reference");
 
     const cardNumber = document.querySelector("#card-number");
     const expiry = document.querySelector("#expiry");
@@ -59,6 +60,31 @@
             '"': "&quot;",
             "'": "&#39;"
         })[char]);
+    }
+
+    function normalizeSize(size) {
+        return String(size ?? "").trim().toUpperCase();
+    }
+
+    function resolveImagePath(image) {
+        const source = String(image ?? "").trim();
+
+        if (!source || /^(?:https?:|data:|blob:|\/)/i.test(source)) {
+            return source;
+        }
+
+        // Los artículos guardados desde compra.js ya usan ../assets/... .
+        // Las rutas sin prefijo provienen de productos.js.
+        if (source.startsWith("../") || source.startsWith("./")) {
+            return source;
+        }
+
+        return `../${source}`;
+    }
+
+    function createOrderReference() {
+        const suffix = String(Date.now()).slice(-6);
+        return `SH-${suffix}`;
     }
 
     function getPrice(item) {
@@ -108,12 +134,26 @@
             const quantity = Number(item.quantity);
             const itemTotal = getPrice(item) * quantity;
             const warrantyPrice = Number(item.warrantyPrice) || 0;
+            const size = normalizeSize(item.size);
+            const image = resolveImagePath(item.image);
 
             return `
                 <article class="order-item">
-                    <div>
+                    <div class="order-item__visual">
+                        ${
+                            image
+                                ? `<img src="${escapeHTML(image)}" alt="${name}">`
+                                : "<span>Imagen pendiente</span>"
+                        }
+                    </div>
+                    <div class="order-item__details">
                         <p class="item-name">${name}</p>
                         <p class="item-detail">Cantidad: ${quantity}</p>
+                        <p class="item-detail">${
+                            size
+                                ? `Talla: ${escapeHTML(size)}`
+                                : "Talla única"
+                        }</p>
                         ${
                             warrantyPrice > 0
                                 ? `<p class="item-detail">
@@ -249,6 +289,10 @@
         localStorage.removeItem(STORAGE_KEY);
 
         form.reset();
+
+        if (orderReference) {
+            orderReference.textContent = createOrderReference();
+        }
 
         if (paymentLayout) {
             paymentLayout.hidden = true;

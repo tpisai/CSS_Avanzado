@@ -16,8 +16,32 @@
   const toast = document.querySelector("#toast");
   const MAX_PER_PRODUCT = 4;
 
+  function normalizeSize(size) {
+    return String(size ?? "").trim().toUpperCase();
+  }
+
+  function resolveImagePath(image) {
+    const source = String(image ?? "").trim();
+
+    if (!source || /^(?:https?:|data:|blob:|\/)/i.test(source)) {
+      return source;
+    }
+
+    // compra.js guarda rutas relativas a /paginas/ (../assets/...).
+    // No se debe volver a anteponer ../ al renderizar el carrito.
+    if (source.startsWith("../") || source.startsWith("./")) {
+      return source;
+    }
+
+    return window.STREETHYPE_IMAGE
+      ? window.STREETHYPE_IMAGE(source)
+      : source;
+  }
+
   function getCartKey(item) {
-      return `${item.id}::${Number(item.warrantyPrice) || 0}`;
+      // Cada talla y protección es una variante independiente del producto.
+      // Así una misma prenda en S y M puede modificarse o eliminarse por separado.
+      return `${item.id}::${normalizeSize(item.size)}::${Number(item.warrantyPrice) || 0}`;
   }
 
   function escapeHTML(value) {
@@ -49,12 +73,13 @@
       name: item.name || productoCentral.name || "Producto",
       category: item.category || productoCentral.category || "Sin categoría",
       color: item.color || productoCentral.color || "Sin variante",
-      image: image && window.STREETHYPE_IMAGE ? window.STREETHYPE_IMAGE(image) : image,
+      image: resolveImagePath(image),
       price: Number(item.price ?? productoCentral.price ?? 0),
       previousPrice: Number(item.previousPrice ?? productoCentral.previousPrice ?? 0),
       badge: item.badge || productoCentral.badge || "",
       quantity: Number(item.quantity) || 1,
-      warrantyPrice: Number(item.warrantyPrice) || 0
+      warrantyPrice: Number(item.warrantyPrice) || 0,
+      size: normalizeSize(item.size ?? productoCentral.size)
     };
   }
 
@@ -123,8 +148,7 @@
     const cartIds = new Set(cart.map(item => item.id));
     const recommendations = products.filter(product => !cartIds.has(product.id)).slice(0, 4);
     recommendedProducts.innerHTML = recommendations.map(product => {
-      const image = product.image && window.STREETHYPE_IMAGE
-        ? window.STREETHYPE_IMAGE(product.image) : product.image || "";
+      const image = resolveImagePath(product.image);
       const price = Number(product.price) || 0;
       const previousPrice = Number(product.previousPrice) || 0;
       const isSale = previousPrice > price || Boolean(product.badge);
@@ -185,6 +209,12 @@
         const itemTotal = product.price * product.quantity;
         const imageClass = product.image ? " has-image" : "";
         const cartKey = escapeHTML(getCartKey(item));
+        const sizeLabel = product.size
+          ? `Talla: ${escapeHTML(product.size)}`
+          : "Talla única";
+        const warrantyLabel = product.warrantyPrice > 0
+          ? `<span class="item-warranty">Protección: ${money(product.warrantyPrice)}</span>`
+          : "";
         return `
             <article class="cart-item"
                     data-cart-key="${cartKey}">
@@ -199,7 +229,11 @@
                             ? " · SALE" : ""}
                     </p>
                     <h3 class="item-name">${escapeHTML(product.name)}</h3>
-                    <p class="item-meta">${escapeHTML(product.color)}</p>
+                    <div class="item-meta">
+                        <span>Color: ${escapeHTML(product.color)}</span>
+                        <span class="item-size">${sizeLabel}</span>
+                        ${warrantyLabel}
+                    </div>
                     <div class="item-actions">
                         <div class="quantity-control"
                             aria-label="Cantidad de ${escapeHTML(product.name)}">
@@ -263,8 +297,7 @@
               showToast("No se pudo iniciar el proceso de compra.");
               return;
           }
-          const image = product.image && window.STREETHYPE_IMAGE
-              ? window.STREETHYPE_IMAGE(product.image) : product.image || "";
+          const image = resolveImagePath(product.image);
           window.iniciarFlujoCompra({
               id: product.id,
               title: product.name,
