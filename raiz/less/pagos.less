@@ -116,15 +116,17 @@ a { color: inherit; text-decoration: none; }
     min-height: 50px;
     padding: 0 13px;
     border: 1px solid #bdb9b0;
-    border-radius: 7px;
+    border-radius: 0;
     background: @white;
     color: @black;
     font-size: .93rem;
     outline: none;
+    transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease;
 
     &:focus {
       border-color: @black;
       box-shadow: 0 0 0 3px fade(@lime, 65%);
+      transform: translateY(-1px);
     }
 
     &::placeholder {
@@ -160,10 +162,15 @@ a { color: inherit; text-decoration: none; }
   text-transform: uppercase;
   transition: transform .18s ease, background .18s ease, color .18s ease;
 
-  &:hover {
+  &:hover:not(:disabled) {
     transform: translateY(-2px);
     background: @lime;
     color: @black;
+  }
+
+  &:focus-visible {
+    outline: 3px solid @lime;
+    outline-offset: 3px;
   }
 
   &:disabled {
@@ -189,17 +196,44 @@ a { color: inherit; text-decoration: none; }
 .order-items { display: grid; gap: 14px; }
 
 .order-item {
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 56px minmax(0, 1fr) auto;
   gap: 14px;
+  align-items: start;
   padding-bottom: 14px;
   border-bottom: 1px solid @line;
   font-size: .86rem;
+  animation: order-item-enter .28s ease both;
 
   p { margin: 0; }
   .item-name { font-weight: 800; }
   .item-detail { margin-top: 2px; color: @muted; font-size: .75rem; }
-  strong { white-space: nowrap; }
+  strong { align-self: start; white-space: nowrap; }
+
+  &__visual {
+    display: grid;
+    width: 56px;
+    height: 68px;
+    place-items: center;
+    overflow: hidden;
+    background: @paper;
+    border: 1px solid @line;
+    color: @muted;
+    font-size: .58rem;
+    font-weight: 800;
+    letter-spacing: .04em;
+    line-height: 1.2;
+    text-align: center;
+    text-transform: uppercase;
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__details { min-width: 0; }
 }
 
 .order-total {
@@ -218,6 +252,7 @@ a { color: inherit; text-decoration: none; }
   margin: 32px auto 0;
   padding: 30px;
   text-align: center;
+  animation: payment-success-enter .36s ease both;
 
   &[hidden] { display: none; }
 
@@ -233,10 +268,33 @@ a { color: inherit; text-decoration: none; }
   }
 }
 
+.order-reference {
+  margin: 0 0 22px;
+  color: @black;
+  font-size: .83rem;
+  font-weight: 800;
+
+  strong {
+    padding: 4px 7px;
+    background: @lime;
+    letter-spacing: .05em;
+  }
+}
+
 .continue-button {
   width: auto;
   background: @lime;
   color: @black;
+}
+
+@keyframes order-item-enter {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes payment-success-enter {
+  from { opacity: 0; transform: translateY(12px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @media (max-width: 800px) {
@@ -252,4 +310,15 @@ a { color: inherit; text-decoration: none; }
   .payment-card, .order-card { padding: 20px; }
   .field-row { grid-template-columns: 1fr 105px; gap: 11px; }
   .back-link { font-size: .68rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+  }
 }
