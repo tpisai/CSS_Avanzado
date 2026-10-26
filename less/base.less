@@ -1,0 +1,528 @@
+@import "variables.less";
+/* =========================================
+   BASE GLOBAL
+   ========================================= */
+:root {
+  color-scheme: light;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-width: 20rem;
+  margin: 0;
+  color: @color-texto;
+  background: @color-fondo;
+  font-family: @fuente-principal;
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+img,
+picture,
+video {
+  display: block;
+  max-width: 100%;
+}
+
+img,
+video {
+  height: auto;
+}
+
+a {
+  color: inherit;
+}
+
+button,
+input,
+select,
+textarea {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  .contenedor();
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+:focus-visible {
+  outline: 3px solid @color-acento;
+  outline-offset: 3px;
+}
+// Cabecera
+.site-header {
+  border-bottom: @borde-estandar;
+  background: @color-fondo;
+}
+
+.announcement {
+  color: @color-blanco;
+  background: @color-principal;
+  font-size: 0.72rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+}
+
+.announcement__inner {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.4rem 1.5rem;
+  padding-block: 0.55rem;
+}
+
+.announcement p {
+  margin: 0;
+}
+
+.header__inner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.85rem 1.25rem;
+  padding-block: 1rem;
+}
+/* LOGOTIPO */
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.65rem;
+  color: @color-texto;
+  font-weight: 900;
+  letter-spacing: -0.05em;
+  text-decoration: none;
+  transition: opacity .2s ease;
+}
+
+.brand:hover {
+  opacity: .82;
+}
+
+.brand__mark {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 2.5rem;
+  aspect-ratio: 1;
+  color: @color-blanco;
+  background: @color-principal;
+  font-size: 0.78rem;
+  font-weight: 900;
+}
+
+.brand > span:last-child {
+  color: @color-texto;
+  background: transparent;
+  font-size: 1.3rem;
+}
+
+.brand > span:last-child span {
+  display: inline-block;
+  margin-left: 0.12rem;
+  padding-inline: 0.15rem;
+  color: @color-acento;
+  background: @color-principal;
+}
+/* NAVEGACIÓN */
+.site-nav {
+  display: none;
+  flex: 1 1 100%;
+  background: @color-fondo;
+}
+
+.site-nav__list {
+  display: flex;
+  flex-direction: column;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.site-nav a {
+  color: @color-texto-secundario;
+  background: transparent;
+  font-weight: 800;
+  text-decoration: none;
+  transition: color .2s ease, background-color .2s ease;
+}
+
+.site-nav a:hover{
+  transform: translateY(-1px);
+  color: @color-principal;
+}
+
+.site-nav a:focus-visible,
+.site-nav a[aria-current="page"] {
+  color: @color-principal;
+}
+
+.menu-button {
+  display: grid;
+  gap: 0.25rem;
+  width: 2.6rem;
+  padding: 0.55rem;
+  border: @borde-estandar;
+  color: @color-texto;
+  background: @color-blanco;
+}
+
+.menu-button__line {
+  display: block;
+  height: 0.12rem;
+  background: currentColor;
+}
+
+.header-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.cart-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  min-height: 2.5rem;
+  padding: 0.45rem 0.6rem;
+  border: 0;
+  color: @color-texto;
+  background: transparent;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.cart-count {
+  display: inline-grid;
+  place-items: center;
+  min-width: 1.15rem;
+  aspect-ratio: 1;
+  padding-inline: 0.15rem;
+  border-radius: 50%;
+  color: @color-blanco;
+  background: @color-principal;
+  font-size: 0.68rem;
+}
+//BOTONES COMPARTIDOS
+/* Botón general */
+.button,
+.button-primary {
+  .boton-base();
+}
+
+.button:hover,
+.button-primary:hover {
+  border-color: @color-acento;
+  color: @color-principal;
+  background: @color-acento;
+}
+/* Variante secundaria */
+.button--secondary {
+  .boton-base(@color-fondo, @color-principal);
+  border-color: @color-borde;
+}
+
+.button--secondary:hover {
+  border-color: @color-principal;
+  color: @color-blanco;
+  background: @color-principal;
+}
+/* Compatibilidad temporal con páginas antiguas */
+.button-accent {
+  .boton-acento();
+}
+
+.button-accent:hover {
+  border-color: @color-principal;
+  color: @color-blanco;
+  background: @color-principal;
+}
+//BOTÓN DE AGREGAR PRODUCTOS
+.add-button {
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 2.5rem;
+  width: 2.5rem;
+  min-width: 2.5rem;
+  height: 2.5rem;
+  padding: 0;
+  border: 1px solid @color-principal;
+  border-radius: @radio-borde;
+  color: @color-blanco;
+  background: @color-principal;
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1;
+  text-decoration: none;
+  transition:
+    color 0.2s ease,
+    background-color 0.2s ease,
+    border-color 0.2s ease;
+}
+
+.add-button:hover {
+  border-color: @color-acento;
+  color: @color-principal;
+  background: @color-acento;
+}
+/* Alineación del precio y el botón */
+.product-footer,
+.product-card-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: @espacio-md;
+}
+
+.product-footer .add-button,
+.product-card-footer .add-button {
+  margin-left: auto;
+}
+//ADAPTACIÓN RESPONSIVE
+@media (min-width: @tablet) {
+  .menu-button {
+    display: none;
+  }
+
+  .site-nav {
+    display: block;
+    flex: 0 1 auto;
+  }
+
+  .site-nav__list {
+    flex-direction: row;
+    align-items: center;
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: (@mobile - 1px)) {
+  .announcement__inner {
+    gap: 0.35rem 0.8rem;
+    font-size: 0.65rem;
+  }
+
+  .header__inner {
+    gap: 0.65rem;
+  }
+
+  .brand > span:last-child {
+    font-size: 1.1rem;
+  }
+}
+
+/* Transición: enlaces de navegación */
+.site-nav a {
+  transition:
+    color @transicion-rapida,
+    background-color @transicion-rapida;
+}
+
+/* Transición: botones compartidos */
+.button,
+.button-primary,
+.button--secondary,
+.button-accent {
+  transition:
+    color @transicion-rapida,
+    background-color @transicion-rapida,
+    border-color @transicion-rapida;
+}
+
+/* Interacción: foco visible para teclado */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible {
+  outline: 3px solid @color-acento;
+  outline-offset: 3px;
+}
+
+/* Accesibilidad: respetar la preferencia de movimiento */
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
+  }
+}
+
+/* Accesibilidad: enlace para saltar al contenido */
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 1000;
+  padding: 0.75rem 1rem;
+  color: @color-blanco;
+  background: @color-principal;
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* Pie de página */
+.site-footer {
+  padding-top: 3rem;
+  color: @color-blanco;
+  background: @color-principal;
+}
+
+.footer-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 2rem;
+  padding-bottom: 2rem;
+}
+
+.footer-grid > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.6rem;
+}
+
+.footer-grid h3 {
+  margin: 0 0 0.5rem;
+  font-size: 0.9rem;
+  font-weight: 900;
+}
+
+.footer-grid a:not(.brand) {
+  color: @color-blanco;
+  text-decoration: none;
+}
+
+.footer-grid a:not(.brand):hover {
+  color: @color-acento;
+}
+
+.footer-grid p {
+  margin: 0;
+  color: @color-texto-secundario;
+}
+
+.brand--footer,
+.brand--footer > span:last-child {
+  color: @color-blanco;
+}
+
+.footer-bottom {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding-block: 1rem;
+  border-top: 1px solid #454545;
+  font-size: 0.8rem;
+}
+
+.footer-bottom p {
+  margin: 0;
+}
+
+@media (max-width: 48rem) {
+  .footer-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 30rem) {
+  .footer-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Mensaje flotante del carrito */
+.cart-message {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 1000;
+  max-width: min(24rem, calc(100% - 2rem));
+  padding: 1rem 1.25rem;
+  color: @color-blanco;
+  background: @color-principal;
+  border-left: 4px solid @color-acento;
+  box-shadow: @sombra-estandar;
+}
+
+/* Navegación desplegable en móviles */
+.site-nav.is-open {
+  display: block;
+  padding-block: 1rem;
+}
+
+.site-nav.is-open .site-nav__list {
+  gap: 1rem;
+}
+
+/* Legibilidad del pie de página */
+.footer-grid p {
+  color: #d0d0d0;
+}
+
+.footer-grid a:focus-visible,
+.footer-bottom a:focus-visible {
+  outline-color: @color-acento;
+}
+
+.button-primary,
+.button--secondary,
+.button-accent,
+.add-button,
+.cart-button {
+  transition: transform .2s ease,
+              background-color .2s ease,
+              color .2s ease,
+              box-shadow .2s ease;
+}
+
+.button-primary:hover,
+.button--secondary:hover,
+.button-accent:hover,
+.add-button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary:active,
+.button--secondary:active,
+.button-accent:active,
+.add-button:active,
+.cart-button:active {
+  transform: scale(.98);
+}

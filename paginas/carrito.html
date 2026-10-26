@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Carrito de compras de STREET HYPE">
+  <title>STREETHYPE | Carrito</title>
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/carrito.css">
+</head>
+<body>
+  <header class="site-header">
+    <div class="announcement">
+      <div class="container announcement__inner">
+        <p>ENVÍO GRATIS DESDE S/ 399</p>
+        <p>CAMBIOS SIN COSTO</p>
+        <p>3 CUOTAS SIN INTERÉS</p>
+        <p>RETIRO EN TIENDA GRATIS</p>
+      </div>
+    </div>
+    <div class="container header__inner">
+      <a href="../index.html" class="brand" aria-label="STREETHYPE, inicio">
+        <span class="brand__mark">SH</span>
+        <span>STREET<span>HYPE</span></span>
+      </a>
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav">
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="menu-button__line"></span>
+        <span class="visually-hidden">Abrir menú</span>
+      </button>
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
+        <ul class="site-nav__list">
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="catalogo.html">Catálogo</a></li>
+          <li><a href="novedades.html">Novedades</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+      <div class="header-actions">
+        <a href="carrito.html" class="cart-button" aria-label="Ver carrito de compras"
+        aria-current="page">🛒<span class="cart-count" id="cart-count">0</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main id="carrito" class="cart-page">
+    <p class="eyebrow">STREET HYPE / CHECKOUT</p>
+    <h1 class="page-title">Tu selección<br>para la calle.</h1>
+    <p class="page-intro">Este es el segundo avance del carrito. Ya puedes agregar prendas, modificar cantidades y conservar tu selección mientras navegas.</p>
+
+    <div class="cart-layout">
+      <section class="cart-list" aria-labelledby="cart-title">
+        <div class="list-heading">
+          <h2 id="cart-title">Mi carrito</h2>
+          <span id="cart-item-label">0 productos</span>
+        </div>
+
+        <div id="cart-items" class="cart-items" aria-live="polite"></div>
+
+        <div id="empty-cart" class="empty-cart" hidden>
+          <div>
+            <h2>Tu carrito está vacío</h2>
+            <p>Explora la selección y agrega una prenda para continuar con tu compra.</p>
+            <a class="button" href="#recomendados">Ver recomendados</a>
+          </div>
+        </div>
+      </section>
+
+      <aside class="summary-card" aria-labelledby="summary-title">
+        <h2 id="summary-title">Resumen</h2>
+        <div class="summary-row">
+          <span>Subtotal</span>
+          <strong id="subtotal">S/ 0.00</strong>
+        </div>
+        <div class="summary-row">
+          <span>Envío</span>
+          <strong id="shipping">S/ 0.00</strong>
+        </div>
+        <div class="summary-row total-row">
+          <span>Total</span>
+          <strong id="total">S/ 0.00</strong>
+        </div>
+        <button id="checkout-button" class="checkout-button" type="button" disabled>Proceder al pago</button>
+        <p class="summary-note">Envío gratis en compras desde S/ 399.00.</p>
+      </aside>
+    </div>
+    <section id="recomendados" class="recommendations"
+            aria-labelledby="recommendations-title">
+      <div class="recommendation-heading">
+        <div>
+          <p class="eyebrow">COMPLETA TU FIT</p>
+          <h2 id="recommendations-title">También te puede gustar</h2>
+        </div>
+
+        <a class="recommendations-link" href="catalogo.html">
+          Explorar catálogo <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+
+      <div id="recommended-products" class="product-grid">
+        <!-- Las tarjetas se generan desde productos.js -->
+      </div>
+    </section>
+  </main>
+   <!-- ==========================================
+       MODAL 1: COMPRA SEGURA (GARANTÍA)
+       ========================================== -->
+  <div id="modal-garantia" class="modal-overlay">
+    <div class="modal-content modal-garantia-content">
+      <button class="modal-close" id="cerrar-garantia">&times;</button>
+      
+      <div class="modal-header">
+        <h2>Protege tu producto</h2>
+      </div>
+
+      <div class="modal-body-garantia">
+        <label class="warranty-option">
+          <input type="radio" name="warranty" value="0" checked>
+          <span>Sin garantía adicional</span>
+          <span class="warranty-price">S/ 0</span>
+        </label>
+        
+        <label class="warranty-option highlighted">
+          <input type="radio" name="warranty" value="45">
+          <div class="warranty-text-col">
+            <span>Garantía de 1 año: Reparación</span>
+            <span class="badge-recomendado">¡Recomendado!</span>
+          </div>
+          <span class="warranty-price">S/ 45</span>
+        </label>
+
+        <div class="warranty-benefits">
+          <p><strong>¿Qué obtienes al agregar protección?</strong></p>
+          <ul>
+            <li>✓ Visita técnica con diagnóstico gratuito.</li>
+            <li>✓ Reparación de expertos con repuestos originales.</li>
+            <li>✓ Cobertura en caso de daño por variación de voltaje.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-outline" id="btn-sin-proteccion">Continuar sin protección</button>
+        <button class="btn-solid" id="btn-con-proteccion">Agregar protección</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================
+       MODAL 2: CONFIRMACIÓN SIMPLE
+       ========================================== -->
+  <div id="modal-confirmacion" class="modal-overlay">
+    <div class="modal-content modal-confirm-content">
+      <button class="modal-close" id="cerrar-confirmacion">&times;</button>
+      
+      <div class="modal-header">
+        <span class="modal-icon-check">✓</span>
+        <h2>Producto agregado a tu Carro</h2>
+      </div>
+
+      <div class="modal-body-confirmacion">
+        <img id="modal-img" src="" alt="Producto" class="modal-img-style">
+        
+        <div class="modal-details-container">
+          <div>
+            <p id="modal-title" class="modal-title-style">Nombre</p>
+            <span id="modal-price" class="modal-price-style">S/ 0.00</span>
+          </div>
+          
+          <div class="modal-qty-container">
+            <div class="qty-selector">
+              <button id="modal-minus">-</button>
+              <span id="modal-qty">1</span>
+              <button id="modal-plus">+</button>
+            </div>
+            <span id="modal-limit-msg">Máx. 4 uds.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button id="btn-seguir-comprando" class="btn-text-link">Seguir comprando</button>
+        <a href="carrito.html" class="btn-solid">Ir al Carro</a>
+      </div>
+    </div>
+  </div>
+  <footer class="site-footer">
+      <div class="container footer-grid">
+          <div>
+              <a class="brand brand--footer" href="../index.html" aria-label="STREETHYPE, inicio">
+                  <span class="brand__mark">SH</span>
+                  <span>STREET<span>HYPE</span></span>
+              </a>
+              <p>Streetwear para moverte a tu manera.</p>
+          </div>
+
+          <div>
+              <h3>SHOP</h3>
+              <a href="catalogo.html?categoria=zapatillas">Zapatillas</a>
+              <a href="catalogo.html?categoria=ropa">Ropa</a>
+              <a href="catalogo.html?categoria=accesorios">Accesorios</a>
+              <a href="catalogo.html?categoria=sale">Sale</a>
+          </div>
+
+          <div>
+              <h3>AYUDA</h3>
+              <a href="#">Envíos</a>
+              <a href="#">Cambios</a>
+              <a href="contacto.html">Contacto</a>
+              <a href="preguntas-frecuentes.html">Preguntas frecuentes</a>
+          </div>
+
+          <div>
+              <h3>SÍGUENOS</h3>
+              <a href="#">Instagram</a>
+              <a href="#">TikTok</a>
+              <a href="#">Facebook</a>
+          </div>
+      </div>
+
+      <div class="container footer-bottom">
+          <p>© <span id="year"></span> STREETHYPE. Todos los derechos reservados.</p>
+          <p>HECHO PARA LA CALLE.</p>
+      </div>
+  </footer>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script src="../js/productos.js"></script>
+  <script src="../js/compra.js"></script>
+  <script src="../js/carrito.js"></script>
+</body>
+</html>
