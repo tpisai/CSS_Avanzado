@@ -186,6 +186,7 @@
   color: @color-texto;
   font-weight: 900;
   text-decoration: none;
+  transition: color .2s ease;
 }
 
 .section-link:hover {
@@ -207,16 +208,13 @@
   overflow: hidden;
   border: 1px solid @color-borde;
   background: @color-blanco;
-  transition:
-    transform @transicion-suave,
-    box-shadow @transicion-suave,
-    border-color @transicion-suave;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .product-card:hover {
-  transform: translateY(-@distancia-elevacion);
+  transform: translateY(-4px);
   border-color: @color-principal;
-  box-shadow: @sombra-estandar;
+  box-shadow: 0 12px 26px rgba(0, 0, 0, .09);
 }
 
 /* Compatible con ambas versiones de productos.js */
@@ -240,7 +238,7 @@
   height: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
-  transition: transform 0.4s ease;
+  transition: transform .35s ease;
 }
 
 .product-card:hover .product-media img,
@@ -365,14 +363,12 @@
   color: @color-blanco;
   background: #1d1d1d;
   text-decoration: none;
-  transition:
-    transform @transicion-suave,
-    background-color @transicion-suave,
-    color @transicion-suave;
+  transition: transform .25s ease, box-shadow .25s ease;
 }
 
 .category-card:hover {
-  transform: translateY(-@distancia-elevacion);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, .1);
   color: @color-principal;
   background: @color-acento;
 }
@@ -506,10 +502,15 @@
   border-radius: @radio-borde;
   color: @color-blanco;
   background: #202020;
+  transition: border-color .2s ease, box-shadow .2s ease;
 }
 
 .newsletter-form input::placeholder {
   color: #aaa;
+}
+
+.newsletter-form input:focus {
+  box-shadow: 0 0 0 3px fade(@color-acento, 45%);
 }
 
 .newsletter-form .button {
@@ -666,19 +667,90 @@
   }
 }
 
-/* ACCESIBILIDAD */
+/* ========================================
+   ANIMACIONES EDITORIALES HERO — STREETHYPE
+   Entrada premium, progresiva y contundente
+   ======================================== */
 
-@media (prefers-reduced-motion: reduce) {
-  .hero-content,
-  .editorial-media {
-    animation: none;
+/* TÍTULO PRINCIPAL: entrada con presencia */
+
+@keyframes heroTituloEntrada {
+  0% {
+    opacity: 0;
+    transform: translateX(-70px) translateY(12px) scale(.92);
   }
 
-  .hero-media img,
-  .product-card,
-  .product-media img,
-  .product-visual img,
-  .category-card {
-    transition: none;
+  65% {
+    opacity: 1;
+    transform: translateX(5px) translateY(0) scale(1.015);
   }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0) translateY(0) scale(1);
+  }
+}
+
+/* IMAGEN: acercamiento cinematográfico */
+
+@keyframes heroImagenEntrada {
+  0% {
+    opacity: 0;
+    transform: scale(1.12) translateX(25px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: scale(1) translateX(0);
+  }
+}
+
+/* TEXTOS Y ELEMENTOS SECUNDARIOS */
+
+@keyframes heroTextoEntrada {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ETIQUETA SUPERIOR */
+
+.hero .eyebrow {
+  animation: heroTextoEntrada .8s ease-out .15s both;
+}
+
+/* TÍTULO: el protagonista */
+
+.hero .hero-content h1 {
+  animation: heroTituloEntrada 1.35s cubic-bezier(.16, 1, .3, 1) .25s both;
+}
+
+/* DESCRIPCIÓN */
+
+.hero .hero-text {
+  animation: heroTextoEntrada .9s ease-out .55s both;
+}
+
+/* BOTONES */
+
+.hero .hero-actions {
+  animation: heroTextoEntrada .85s ease-out .75s both;
+}
+
+/* NOTA INFERIOR */
+
+.hero .hero-note {
+  animation: heroTextoEntrada .85s ease-out .95s both;
+}
+
+/* IMAGEN PRINCIPAL */
+
+.hero .hero-media img {
+  animation: heroImagenEntrada 1.6s cubic-bezier(.16, 1, .3, 1) .1s both;
 }

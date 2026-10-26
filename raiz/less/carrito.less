@@ -786,3 +786,39 @@ a {
     transition-duration: .01ms !important;
   }
 }
+
+/* INTERACCIONES AÑADIDAS — CARRITO */
+
+.cart-item,
+.summary-card,
+.recommendations .product-card {
+  transition: box-shadow .25s ease, transform .25s ease;
+}
+
+.cart-item:hover {
+  box-shadow: 0 6px 18px rgba(0, 0, 0, .06);
+}
+
+.quantity-control button,
+.remove-button,
+.checkout-button,
+.recommendations .add-button {
+  transition: transform .2s ease,
+              background-color .2s ease,
+              color .2s ease;
+}
+
+.quantity-control button:hover,
+.remove-button:hover,
+.checkout-button:hover,
+.recommendations .add-button:hover {
+  transform: translateY(-2px);
+}
+
+.cart-product-image {
+  transition: transform .3s ease;
+}
+
+.cart-item:hover .cart-product-image {
+  transform: scale(1.025);
+}

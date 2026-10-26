@@ -116,6 +116,11 @@ button {
   font-weight: 900;
   letter-spacing: -0.05em;
   text-decoration: none;
+  transition: opacity .2s ease;
+}
+
+.brand:hover {
+  opacity: .82;
 }
 
 .brand__mark {
@@ -164,10 +169,14 @@ button {
   background: transparent;
   font-weight: 800;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color .2s ease, background-color .2s ease;
 }
 
-.site-nav a:hover,
+.site-nav a:hover{
+  transform: translateY(-1px);
+  color: @color-principal;
+}
+
 .site-nav a:focus-visible,
 .site-nav a[aria-current="page"] {
   color: @color-principal;
@@ -361,14 +370,13 @@ select:focus-visible {
   html {
     scroll-behavior: auto;
   }
-
   *,
   *::before,
   *::after {
-    animation-duration: 0.01ms !important;
+    animation-duration: .01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: .01ms !important;
   }
 }
 
@@ -491,4 +499,30 @@ select:focus-visible {
 .footer-grid a:focus-visible,
 .footer-bottom a:focus-visible {
   outline-color: @color-acento;
+}
+
+.button-primary,
+.button--secondary,
+.button-accent,
+.add-button,
+.cart-button {
+  transition: transform .2s ease,
+              background-color .2s ease,
+              color .2s ease,
+              box-shadow .2s ease;
+}
+
+.button-primary:hover,
+.button--secondary:hover,
+.button-accent:hover,
+.add-button:hover {
+  transform: translateY(-2px);
+}
+
+.button-primary:active,
+.button--secondary:active,
+.button-accent:active,
+.add-button:active,
+.cart-button:active {
+  transform: scale(.98);
 }

@@ -525,3 +525,33 @@
     color: #e53935;
     font-weight: 800;
 }
+
+.product-layout .btn-talla {
+  transition: color .2s ease,
+              background-color .2s ease,
+              border-color .2s ease,
+              transform .2s ease;
+}
+
+.product-layout .btn-talla:hover {
+  transform: translateY(-2px);
+}
+
+#producto-boton {
+  transition: transform .2s ease,
+              box-shadow .2s ease,
+              background-color .2s ease;
+}
+
+#producto-boton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 0 fade(@color-acento, 50%);
+}
+
+.product-benefits__item {
+  transition: transform .2s ease, border-color .2s ease;
+}
+
+.product-benefits__item:hover {
+  transform: translateX(3px);
+}
