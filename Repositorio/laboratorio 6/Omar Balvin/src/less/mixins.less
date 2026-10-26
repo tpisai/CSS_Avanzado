@@ -1,0 +1,32 @@
+// src/less/mixins.less 
+.focus-ring(@color: @color-focus) { 
+  outline: .2rem solid @color; 
+  outline-offset: .2rem; 
+} 
+ 
+.surface-card(@background: @color-surface; @radius: @radius-md) { 
+  background: @background; 
+  border: 1px solid @color-border; 
+  border-radius: @radius; 
+  box-shadow: @shadow-card; 
+} 
+ 
+.button-size(@size) when (@size = compact) { 
+  padding: .58rem .85rem; 
+  font-size: .875rem; 
+} 
+ 
+.button-size(@size) when (@size = regular) { 
+  padding: .8rem 1.1rem; 
+  font-size: 1rem; 
+} 
+ 
+.link-reset() { 
+  color: inherit; 
+  text-decoration: none; 
+} 
+ 
+.stack(@gap: 1rem) { 
+  display: grid; 
+  gap: @gap; 
+} 

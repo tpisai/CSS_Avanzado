@@ -1,0 +1,88 @@
+@use "../abstracts" as a;
+
+.hero,
+.section,
+.challenge {
+  padding-block: clamp(3rem, 8vw, 6rem);
+}
+
+.hero {
+  background: linear-gradient(180deg, #f2f6fb 0%, #ffffff 100%);
+}
+
+.hero__layout {
+  display: grid;
+  gap: a.space(6);
+  align-items: center;
+}
+
+.hero h1 {
+  max-inline-size: 18ch;
+  font-size: clamp(2.2rem, 7vw, 4.6rem);
+  line-height: 1.02;
+}
+
+.hero__lead {
+  max-inline-size: 60ch;
+  margin-block: a.space(4) a.space(5);
+  color: a.$color-muted;
+  font-size: clamp(1rem, 2.5vw, 1.2rem);
+}
+
+.hero__panel {
+  padding: a.space(5);
+  @include a.surface-card;
+}
+
+.eyebrow {
+  margin-block-end: a.space(2);
+  color: a.$color-primary-dark;
+  font-size: 0.82rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.section-heading {
+  margin-block-end: a.space(5);
+}
+
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 16rem), 1fr));
+  gap: a.space(5);
+}
+
+.challenge {
+  color: #fff;
+  background: a.$color-footer;
+}
+
+.challenge__inner {
+  justify-content: space-between;
+}
+
+.site-footer {
+  padding-block: a.space(5);
+  color: #fff;
+  background: #071a31;
+}
+
+@include a.respond-min(a.$bp-md) {
+  .hero__layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(16rem, 0.75fr);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}

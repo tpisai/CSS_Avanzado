@@ -1,0 +1,95 @@
+<!doctype html> 
+<html lang="es"> 
+<head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>Ruta Frontend</title> 
+  <link rel="stylesheet" href="dist/css/main.css"> 
+</head> 
+<body> 
+  <a class="skip-link" href="#contenido">Saltar al contenido</a> 
+ 
+  <header class="site-header"> 
+    <div class="container site-header__inner"> 
+      <a class="brand" href="#">Ruta Frontend</a> 
+      <nav aria-label="Navegación principal"> 
+        <ul class="nav-list"> 
+          <li><a href="#rutas">Rutas</a></li> 
+          <li><a href="#agenda">Agenda</a></li> 
+          <li><a href="#recursos">Recursos</a></li> 
+        </ul> 
+      </nav> 
+    </div> 
+  </header> 
+ 
+  <main id="contenido"> 
+    <section class="hero"> 
+      <div class="container hero__layout"> 
+        <div class="hero__content"> 
+          <p class="eyebrow">Laboratorio LESS</p> 
+          <h1>Construye estilos que puedan crecer contigo</h1> 
+          <p class="lead">Organiza tokens, herramientas y componentes sin perder trazabilidad.</p> 
+          <div class="button-group"> 
+            <a class="button button--primary" href="#rutas">Explorar rutas</a> 
+            <a class="button button--secondary button--compact" href="#agenda">Ver agenda</a> 
+          </div> 
+        </div> 
+        <aside class="hero__panel" aria-label="Indicadores del laboratorio"> 
+          <strong>6 módulos Less</strong> 
+          <span>1 punto de entrada</span> 
+          <span>CSS + source map</span> 
+        </aside> 
+      </div>
+       </section> 
+ 
+    <section class="section" id="rutas"> 
+      <div class="container"> 
+        <p class="eyebrow">Rutas de aprendizaje</p> 
+        <h2>Selecciona tu siguiente práctica</h2> 
+        <div class="card-grid"> 
+          <article class="card card--featured"> 
+            <span class="badge">Recomendada</span> 
+            <h3>Interfaces responsivas</h3> 
+            <p>Combina Grid, Flexbox y breakpoints definidos por el contenido.</p> 
+            <a href="#">Abrir ruta</a> 
+          </article> 
+          <article class="card"> 
+            <span class="badge">Arquitectura</span> 
+            <h3>Sistemas de estilos</h3> 
+            <p>Separa tokens, utilidades y componentes con responsabilidades claras.</p> 
+            <a href="#">Abrir ruta</a> 
+          </article> 
+          <article class="card"> 
+            <span class="badge">Calidad</span> 
+            <h3>Pruebas visuales</h3> 
+            <p>Verifica reflujo, foco, zoom, texto largo y comportamiento extremo.</p> 
+            <a href="#">Abrir ruta</a> 
+          </article> 
+        </div> 
+      </div> 
+    </section> 
+ 
+    <section class="section section--tinted" id="agenda"> 
+      <div class="container split-layout"> 
+        <div> 
+          <p class="eyebrow">Agenda técnica</p> 
+          <h2>Lo que debes comprobar hoy</h2> 
+        </div> 
+        <ul class="check-list"> 
+          <li>Build reproducible</li> 
+          <li>Source map operativo</li> 
+          <li>Foco visible</li> 
+          <li>Sin scroll horizontal</li> 
+        </ul> 
+      </div> 
+    </section> 
+  </main> 
+ 
+  <footer class="site-footer" id="recursos"> 
+    <div class="container site-footer__inner"> 
+      <p>Semana 6 · LESS</p> 
+      <a href="#contenido">Volver al contenido</a> 
+    </div> 
+  </footer> 
+</body> 
+</html>

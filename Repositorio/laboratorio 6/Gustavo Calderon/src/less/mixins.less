@@ -1,0 +1,35 @@
+.card-surface() {
+  background: @surface;
+  border: 1px solid @border;
+  border-radius: @radius;
+  box-shadow: @shadow;
+}
+
+.button-style(@background; @color) {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .8rem 1.1rem;
+  border: 1px solid @background;
+  border-radius: .7rem;
+  background: @background;
+  color: @color;
+  font-weight: 700;
+  text-decoration: none;
+  transition: transform .2s ease, background .2s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+  }
+
+  &:focus-visible {
+    outline: 3px solid @accent;
+    outline-offset: 3px;
+  }
+}
+
+.responsive-grid(@minimum) {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(@minimum, 1fr));
+  gap: 1rem;
+}

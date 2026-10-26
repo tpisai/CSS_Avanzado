@@ -1,0 +1,122 @@
+<!doctype html> 
+<html lang="es"> 
+<head> 
+<meta charset="UTF-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<meta 
+name="description" 
+content="Laboratorio de diseño web responsivo con HTML y CSS." 
+> 
+<title>NovaLab | Experiencias web responsivas</title> 
+<link rel="stylesheet" href="css/styles.css"> 
+</head> 
+<body> 
+<header class="site-header"> 
+<div class="container header-content"> 
+<a class="brand" href="#inicio" aria-label="NovaLab, ir al inicio"> 
+Nova<span>Lab</span> 
+</a> 
+<nav class="nav" aria-label="Navegación principal"> 
+<a href="#inicio">Inicio</a> 
+<a href="#principios">Principios</a> 
+<a href="#multimedia">Multimedia</a> 
+</nav> 
+</div> 
+</header>
+ <main id="inicio"> 
+      <section class="hero"> 
+        <div class="container hero-layout"> 
+          <div class="hero-copy"> 
+            <p class="eyebrow">Diseño web adaptable</p> 
+            <h1>Una interfaz clara en cada pantalla</h1> 
+            <p class="hero-text"> 
+              Construimos experiencias que se adaptan al contenido, al espacio 
+              disponible y a las preferencias de cada persona. 
+            </p> 
+            <a class="button" href="#principios">Explorar principios</a> 
+          </div> 
+  
+          <picture class="hero-media"> 
+            <source 
+              media="(min-width: 64rem)" 
+              srcset="https://picsum.photos/id/180/1440/900" 
+            > 
+            <source 
+              media="(min-width: 48rem)" 
+              srcset="https://picsum.photos/id/180/960/1200" 
+            > 
+            <img 
+              src="https://picsum.photos/id/180/640/480" 
+              alt="Interfaz web observada en distintos dispositivos" 
+              width="640" 
+              height="480" 
+              fetchpriority="high" 
+            > 
+          </picture> 
+        </div> 
+      </section> 
+  
+      <section id="principios" class="section"> 
+        <div class="container"> 
+          <header class="section-heading"> 
+            <p class="eyebrow">Tres decisiones esenciales</p> 
+            <h2>Diseñar desde el contenido</h2> 
+            <p> 
+              La interfaz cambia cuando el contenido lo necesita; no cuando 
+              aparece un modelo específico de teléfono o computadora. 
+            </p> 
+          </header>
+           <div class="cards"> 
+            <article class="card"> 
+              <span class="card-number">01</span> 
+              <h3>Base mobile-first</h3> 
+              <p>Primero resolvemos la experiencia en el espacio más limitado.</p> 
+            </article> 
+            <article class="card"> 
+              <span class="card-number">02</span> 
+              <h3>Medidas fluidas</h3> 
+              <p>El contenido crece y se reduce dentro de límites legibles.</p> 
+            </article> 
+            <article class="card"> 
+              <span class="card-number">03</span> 
+              <h3>Breakpoints útiles</h3> 
+              <p>Los cambios se incorporan cuando el diseño deja de funcionar bien.</p> 
+            </article> 
+          </div> 
+        </div> 
+      </section> 
+  
+      <section id="multimedia" class="section section-accent"> 
+        <div class="container media-layout"> 
+          <div> 
+            <p class="eyebrow">Multimedia responsiva</p> 
+            <h2>Contenido visual sin desbordamientos</h2> 
+            <p> 
+              Las imágenes y los videos respetan el ancho de su contenedor y 
+              conservan una relación de aspecto estable. 
+            </p> 
+          </div> 
+  
+          <div class="video-shell"> 
+            <video 
+              controls 
+              preload="metadata" 
+              poster="https://picsum.photos/id/180/1280/720" 
+            > 
+              <source 
+                src="https://interactive-examples.mdn.mozilla.net/media/cc0-videos/flower.mp4" 
+                type="video/mp4" 
+              > 
+              Tu navegador no puede reproducir este video. 
+            </video> 
+          </div> 
+        </div> 
+      </section>
+    </main> 
+<footer class="site-footer"> 
+<div class="container"> 
+<p>Laboratorio académico · CSS avanzado · Semana 1</p> 
+</div> 
+</footer> 
+</body> 
+</html> 
