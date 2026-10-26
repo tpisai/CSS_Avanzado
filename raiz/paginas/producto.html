@@ -58,18 +58,20 @@
           class="product-image-main">
       </div> 
       <!-- Detalles -->
+<!-- Detalles -->
       <div class="product-info">
         <p class="eyebrow">NUEVO INGRESO</p>
-        <h1 id="producto-titulo" class="product-title">Zapatillas Low Street</h1>
-        <!-- Estrellas de Reseña -->
+        <h1 id="producto-titulo" class="product-title">Cargando...</h1>
+        
         <div class="product-reviews" aria-label="5 de 5 estrellas, 42 reseñas verificadas">
           <span class="product-reviews__stars" aria-hidden="true">★★★★★</span>
           <span class="product-reviews__count">(42 reseñas verificadas)</span>
         </div>
-        <p id="producto-precio" class="product-price">S/ 399.00</p>
+        
+        <p id="producto-precio" class="product-price">S/ 0.00</p>
         
         <p id="producto-descripcion" class="product-description">
-          Perfil bajo en Black & White. Diseñadas para la calle, estas zapatillas combinan un estilo clásico con materiales de alta durabilidad para resistir el uso diario urbano.
+          Cargando descripción...
         </p>
 
         <div id="bloque-tallas" class="size-selector">
@@ -79,21 +81,30 @@
           </div>
         </div>
 
-        <button id="producto-boton" class="button add-button btn-full" type="button">
+        <!-- Selector de cantidad -->
+        <div class="product-qty-selector" style="display: flex; align-items: center; gap: 15px; margin-bottom: 1.5rem;">
+            <span style="font-weight: 800; text-transform: uppercase; font-size: 0.9rem;">Cantidad:</span>
+            <div class="qty-controls" style="display: flex; align-items: center; border: 1px solid #111;">
+                <button type="button" id="btn-restar-qty" style="width: 40px; height: 40px; background: #fff; border: none; font-size: 1.2rem; cursor: pointer; font-weight: bold;">-</button>
+                <span id="display-qty" style="width: 40px; text-align: center; font-weight: 800;">1</span>
+                <button type="button" id="btn-sumar-qty" style="width: 40px; height: 40px; background: #fff; border: none; font-size: 1.2rem; cursor: pointer; font-weight: bold;">+</button>
+            </div>
+        </div>
+
+        <!-- Botón de añadir al carrito -->
+        <button id="producto-boton" class="button add-button btn-full" type="button" style="width: 100%; height: 50px; background: #111; color: #fff; border: none; font-weight: 800; cursor: pointer; text-transform: uppercase; font-size: 1.1rem; transition: 0.2s;">
           AÑADIR AL CARRITO
         </button>
-        <!-- Lista de Beneficios -->
+
         <div class="product-benefits">
           <div class="product-benefits__item">
             <span aria-hidden="true">🚚</span>
             <p><strong>Envío express gratis</strong> a todo el Perú</p>
           </div>
-
           <div class="product-benefits__item">
             <span aria-hidden="true">🔒</span>
             <p><strong>Pago 100% seguro</strong> y encriptado</p>
           </div>
-
           <div class="product-benefits__item">
             <span aria-hidden="true">🔄</span>
             <p><strong>Devoluciones sin costo</strong> hasta por 30 días</p>
@@ -227,8 +238,7 @@
     </div>
   </div>
 
-  <script src="../js/productos.js"></script>
-  <script src="../js/compra.js"></script>
   <script src="../js/producto.js"></script>
-</body>
+  <script src="../js/compra.js"></script>
+  </body>
 </html>
