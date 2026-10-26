@@ -1,29 +1,30 @@
 document.addEventListener('DOMContentLoaded', () => {
-    
+  
   // ==========================================
-  // 1. SISTEMA DE CARRITO Y NOTIFICACIONES
+  // 1. SISTEMA DE CARRITO Y REDIRECCIÓN
   // ==========================================
   
-  // Función para guardar en el carrito (Local Storage)
-  function agregarAlCarrito(nombreProducto, precioProducto) {
-      // Obtenemos el carrito actual o creamos uno nuevo vacío
+  function agregarAlCarrito(nombreProducto, precioProducto, talla = 'Única', garantia = 'Ninguna') {
       let carrito = JSON.parse(localStorage.getItem('carritoStore')) || [];
       
-      // Añadimos el nuevo producto
       carrito.push({
           producto: nombreProducto,
           precio: parseFloat(precioProducto),
+          talla: talla,
+          garantia: garantia,
           fecha: new Date().toLocaleDateString()
       });
       
-      // Guardamos de nuevo en el navegador
       localStorage.setItem('carritoStore', JSON.stringify(carrito));
       
-      // Mostramos la notificación visual
-      mostrarNotificacion(`¡Añadido al carrito: ${nombreProducto}! 🛒`);
+      const cartCount = document.querySelector('.cart-count');
+      if (cartCount) {
+          cartCount.textContent = carrito.length;
+      }
+      
+      mostrarNotificacion(`¡Añadido: ${nombreProducto} (Talla: ${talla})! Redirigiendo al carrito... 🛒`, '#10ac84');
   }
 
-  // Notificación flotante animada
   function mostrarNotificacion(mensaje, color = '#10ac84') {
       const toast = document.createElement('div');
       toast.innerText = mensaje;
@@ -46,112 +47,181 @@ document.addEventListener('DOMContentLoaded', () => {
       }, 3500);
   }
 
-  // ==========================================
-  // 2. LÓGICA DE LAS SECCIONES LESS Y SASS
-  // ==========================================
-
-  // Botones de la sección LESS (Catálogo de Novedades)
-  document.querySelectorAll('.btn-novedad').forEach(boton => {
-      boton.addEventListener('click', function() {
-          const producto = this.getAttribute('data-producto');
-          const precio = this.getAttribute('data-precio');
-          const textoOriginal = this.innerText;
-          
-          this.innerText = '¡Añadido! ✓';
-          this.style.backgroundColor = '#2ed573'; 
-          
-          agregarAlCarrito(producto, precio);
-
-          setTimeout(() => {
-              this.innerText = textoOriginal;
-              this.style.backgroundColor = ''; 
-          }, 2000);
-      });
-  });
-
-  // Tarjetas de la sección SASS (Drops Exclusivos)
-  document.querySelectorAll('.producto-nuevo').forEach(producto => {
-      producto.addEventListener('click', function() {
-          const nombre = this.getAttribute('data-producto');
-          const precio = this.getAttribute('data-precio');
-          
-          this.style.transform = 'scale(0.95)';
-          setTimeout(() => { this.style.transform = ''; }, 150);
-          
-          agregarAlCarrito(nombre, precio);
-      });
-  });
+  const carritoInicial = JSON.parse(localStorage.getItem('carritoStore')) || [];
+  const cartCount = document.querySelector('.cart-count');
+  if (cartCount) {
+      cartCount.textContent = carritoInicial.length;
+  }
 
   // ==========================================
-  // 3. LÓGICA DE TU HTML ORIGINAL (MODALES Y TIMER)
+  // 2. MODAL DE SELECCIÓN DE TALLA Y GARANTÍA + REDIRECCIÓN
   // ==========================================
 
-  // Lógica de Modales de Reserva (Próximas Entregas)
   const reservaModal = document.getElementById('reserva-modal');
   const btnCerrarModal = document.getElementById('btn-cerrar-modal');
-  const formReserva = document.getElementById('form-reserva');
-  const modalProductoNombre = document.getElementById('modal-producto-nombre');
-  const modalProductoPrecio = document.getElementById('modal-producto-precio'); // Input oculto
-  
+  const spanNombre = document.getElementById('modal-producto-nombre');
+  const spanPrecioBase = document.getElementById('modal-producto-precio-base');
+  const selectTalla = document.getElementById('compra-talla-select');
+  const btnSinProt = document.getElementById('btn-sin-proteccion');
+  const btnConProt = document.getElementById('btn-con-proteccion');
+
+  let productoSeleccionado = '';
+  let precioSeleccionado = 0;
+
   document.querySelectorAll('.btn-reserva').forEach(btn => {
-    btn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const producto = e.target.getAttribute('data-producto');
-      const precio = e.target.getAttribute('data-precio');
-      
-      if(modalProductoNombre) modalProductoNombre.textContent = producto;
-      if(modalProductoPrecio) modalProductoPrecio.value = precio; // Guardamos el precio en el modal
-      if(reservaModal) reservaModal.classList.add('active');
-    });
+      btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          productoSeleccionado = btn.getAttribute('data-producto');
+          precioSeleccionado = parseFloat(btn.getAttribute('data-precio'));
+
+          if (spanNombre) spanNombre.textContent = productoSeleccionado;
+          if (spanPrecioBase) spanPrecioBase.textContent = precioSeleccionado;
+          if (selectTalla) selectTalla.value = "";
+
+          if (reservaModal) reservaModal.classList.add('active');
+      });
   });
 
-  // Cuando el usuario confirma el formulario en el modal
-  if(formReserva) {
-      formReserva.addEventListener('submit', (e) => {
-          e.preventDefault(); // Evita que la página recargue
-          
-          const producto = modalProductoNombre.textContent;
-          const precio = modalProductoPrecio.value;
-          
-          // Cerramos el modal
+  if (btnCerrarModal && reservaModal) {
+      btnCerrarModal.addEventListener('click', () => {
           reservaModal.classList.remove('active');
-          
-          // Enviamos el pedido al carrito
-          agregarAlCarrito(producto, precio);
-          
-          // Limpiamos el formulario
-          formReserva.reset();
       });
   }
 
-  if(btnCerrarModal && reservaModal) {
-      btnCerrarModal.addEventListener('click', () => reservaModal.classList.remove('active'));
+  function procesarSeleccion(conGarantia) {
+      const talla = selectTalla ? selectTalla.value : '';
+      if (!talla) {
+          mostrarNotificacion('Por favor, elige una talla antes de continuar', '#ff4757');
+          if (selectTalla) selectTalla.focus();
+          return;
+      }
+
+      const costoGarantia = conGarantia ? 45 : 0;
+      const precioFinal = precioSeleccionado + costoGarantia;
+      const garantiaTexto = conGarantia ? '1 Año de Reparación' : 'Sin Garantía';
+
+      agregarAlCarrito(productoSeleccionado, precioFinal, talla, garantiaTexto);
+
+      if (reservaModal) reservaModal.classList.remove('active');
+
+      // Redirección automática al carrito para ver el producto seleccionado
+      setTimeout(() => {
+          window.location.href = 'carrito.html';
+      }, 1200);
   }
 
-  // Lógica del Chat Modal
+  if (btnSinProt) {
+      btnSinProt.addEventListener('click', (e) => {
+          e.preventDefault();
+          procesarSeleccion(false);
+      });
+  }
+
+  if (btnConProt) {
+      btnConProt.addEventListener('click', (e) => {
+          e.preventDefault();
+          procesarSeleccion(true);
+      });
+  }
+
+  // ==========================================
+  // 3. ASISTENTE VIRTUAL BASADO EN REGLAS (ÁRBOL DE DECISIONES)
+  // ==========================================
+
   const chatModal = document.getElementById('chat-modal');
   const btnChat = document.getElementById('btn-chat');
   const btnCerrarChat = document.getElementById('btn-cerrar-chat');
+  const chatMessages = document.getElementById('chat-messages');
+  const chatOptions = document.getElementById('chat-options');
 
-  if(btnChat && chatModal) {
-      btnChat.addEventListener('click', (e) => {
-        e.preventDefault(); chatModal.classList.add('active');
+  // Definición del árbol de decisiones del asistente
+  const arbolDecision = {
+      inicio: {
+          texto: "¡Hola! Bienvenido a STREETHYPE. ¿En qué podemos ayudarte hoy?",
+          opciones: [
+              { texto: "📦 Consultar envíos y plazos", siguiente: "envios" },
+              { texto: "📏 Guía de tallas", siguiente: "tallas" },
+              { texto: "🛡️ Información de garantía", siguiente: "garantia" }
+          ]
+      },
+      envios: {
+          texto: "Realizamos envíos a todo el país. Los pedidos en preventa o drops tardan de 3 a 5 días hábiles en despacharse.",
+          opciones: [
+              { texto: "↩️ Volver al menú principal", siguiente: "inicio" },
+              { texto: "❌ Cerrar chat", siguiente: "cerrar" }
+          ]
+      },
+      tallas: {
+          texto: "Trabajamos con cortes oversize y estándar. Puedes revisar las tallas (S, M, L, XL) directamente al hacer clic en 'Reservar' en cualquier producto.",
+          opciones: [
+              { texto: "↩️ Volver al menú principal", siguiente: "inicio" },
+              { texto: "❌ Cerrar chat", siguiente: "cerrar" }
+          ]
+      },
+      garantia: {
+          texto: "Ofrecemos una garantía opcional de 1 año por S/ 45 que incluye diagnóstico gratuito, reparación experta y recambios originales.",
+          opciones: [
+              { texto: "↩️ Volver al menú principal", siguiente: "inicio" },
+              { texto: "❌ Cerrar chat", siguiente: "cerrar" }
+          ]
+      }
+  };
+
+  function mostrarPasoChat(clavePaso) {
+      if (!chatMessages || !chatOptions) return;
+      chatMessages.innerHTML = '';
+      chatOptions.innerHTML = '';
+
+      const paso = arbolDecision[clavePaso];
+      if (!paso) return;
+
+      // Burbuja de mensaje del bot
+      const msgDiv = document.createElement('div');
+      msgDiv.className = 'chat-bubble bot';
+      msgDiv.innerText = paso.texto;
+      chatMessages.appendChild(msgDiv);
+
+      // Botones de opciones del árbol de decisiones
+      paso.opciones.forEach(op => {
+          const btn = document.createElement('button');
+          btn.className = 'chat-option-btn';
+          btn.innerText = op.texto;
+          btn.addEventListener('click', () => {
+              if (op.siguiente === 'cerrar') {
+                  chatModal.classList.remove('active');
+              } else {
+                  mostrarPasoChat(op.siguiente);
+              }
+          });
+          chatOptions.appendChild(btn);
       });
   }
-  if(btnCerrarChat && chatModal) {
-      btnCerrarChat.addEventListener('click', () => chatModal.classList.remove('active'));
+
+  if (btnChat && chatModal) {
+      btnChat.addEventListener('click', (e) => {
+          e.preventDefault(); 
+          chatModal.classList.add('active');
+          mostrarPasoChat('inicio'); // Iniciar asistente en el nodo raíz
+      });
   }
 
-  // Lógica del Countdown (Timer)
-  const countDownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000); // +3 días
-  const timer = setInterval(() => {
-    const now = new Date().getTime();
-    const distance = countDownDate - now;
-    if(document.getElementById("dias")) {
-        document.getElementById("dias").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
-        document.getElementById("horas").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
-        document.getElementById("minutos").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
-        document.getElementById("segundos").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
-    }
+  if (btnCerrarChat && chatModal) {
+      btnCerrarChat.addEventListener('click', () => {
+          chatModal.classList.remove('active');
+      });
+  }
+
+  // Countdown timer
+  const countDownDate = new Date().getTime() + (3 * 24 * 60 * 60 * 1000);
+  setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countDownDate - now;
+      if (document.getElementById("dias")) {
+          document.getElementById("dias").innerText = String(Math.floor(distance / (1000 * 60 * 60 * 24))).padStart(2, '0');
+          document.getElementById("horas").innerText = String(Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60))).padStart(2, '0');
+          document.getElementById("minutos").innerText = String(Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60))).padStart(2, '0');
+          document.getElementById("segundos").innerText = String(Math.floor((distance % (1000 * 60)) / 1000)).padStart(2, '0');
+      }
   }, 1000);
+
 });
