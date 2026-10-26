@@ -34,28 +34,29 @@
                     <div class="field-group">
                         <label for="card-name">Nombre del titular</label>
                         <input id="card-name" name="card-name" type="text"
-                            placeholder="NOMBRE DEL TITULAR" autocomplete="off" required>
+                            placeholder="NOMBRE DEL TITULAR" autocomplete="cc-name"
+                            minlength="3" required>
                     </div>
                     <div class="field-group">
                         <label for="card-number">Número de tarjeta</label>
                         <input id="card-number" name="card-number" type="text"
                             inputmode="numeric" maxlength="19"
                             placeholder="0000 0000 0000 0000"
-                            autocomplete="off" required>
-                        <small>Solo para demostración visual. No se almacena.</small>
+                            autocomplete="cc-number" aria-describedby="card-number-note" required>
+                        <small id="card-number-note">Solo para demostración visual. No se almacena.</small>
                     </div>
                     <div class="field-row">
                         <div class="field-group">
                             <label for="expiry">Fecha de vencimiento</label>
                             <input id="expiry" name="expiry" type="text"
                                 inputmode="numeric" maxlength="5"
-                                placeholder="MM/AA" autocomplete="off" required>
+                                placeholder="MM/AA" autocomplete="cc-exp" required>
                         </div>
                         <div class="field-group">
                             <label for="cvv">CVV</label>
                             <input id="cvv" name="cvv" type="password"
                                 inputmode="numeric" maxlength="4"
-                                placeholder="000" autocomplete="off" required>
+                                placeholder="000" autocomplete="cc-csc" required>
                         </div>
                     </div>
                     <div class="field-group">
@@ -91,6 +92,7 @@
             <p>Esta es una confirmación de demostración.
               No se realizó ningún cobro y no se almacenaron datos de tarjeta.
             </p>
+            <p class="order-reference">Código de pedido: <strong id="order-reference">SH-000000</strong></p>
             <a class="continue-button" href="../index.html">
                 Seguir explorando
             </a>
