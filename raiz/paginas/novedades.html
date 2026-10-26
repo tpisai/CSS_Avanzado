@@ -5,7 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Drop exclusivo de STREETHYPE. Novedades en streetwear y sneakers.">
   <title>Drop Exclusivo | STREETHYPE</title>
-  <!-- Enlaces a tus CSS según tu estructura de carpetas -->
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/novedades.css">
 </head>
@@ -20,19 +19,16 @@
       </div>
     </div>
     <div class="container header__inner">
-      <a href="../index.html" class="brand"
-        aria-label="STREETHYPE, inicio">
+      <a href="../index.html" class="brand" aria-label="STREETHYPE, inicio">
         <span class="brand__mark">SH</span>
         <span>STREET<span>HYPE</span></span>
       </a>
-      <button class="menu-button" type="button" aria-expanded="false" 
-      aria-controls="site-nav" aria-label="Abrir menú">
+      <button class="menu-button" type="button" aria-expanded="false" aria-controls="site-nav" aria-label="Abrir menú">
         <span class="menu-button__line"></span>
         <span class="menu-button__line"></span>
         <span class="menu-button__line"></span>
       </button>
-      <nav class="site-nav" id="site-nav"
-          aria-label="Navegación principal">
+      <nav class="site-nav" id="site-nav" aria-label="Navegación principal">
         <ul class="site-nav__list">
           <li><a href="../index.html">Inicio</a></li>
           <li><a href="#novedades">Lookbook</a></li>
@@ -41,7 +37,7 @@
       </nav>
       <div class="header-actions">
         <a href="carrito.html" class="cart-button" aria-label="Ver carrito de compras">
-        🛒<span class="cart-count">0</span>
+          🛒<span class="cart-count">0</span>
         </a>
       </div>
     </div>
@@ -118,7 +114,6 @@
         </section>
 
         <section id="novedades" class="lookbook-section">
-          <!-- (Se mantiene tu lookbook original exacto) -->
           <div class="lookbook-header">
             <div>
               <p class="lookbook-subtitle">Editorial</p>
@@ -160,7 +155,6 @@
           </div>
         </section>
 
-        <!-- SECCIÓN DE RESERVAS ORIGINAL CORREGIDA -->
         <section id="productos" class="productos-section">
           <div class="productos-header">
             <div>
@@ -216,22 +210,22 @@
       </div>
     </div>
 
-    <!-- SECCIÓN 1: Controlada por SASS (Banner Destacado Expresivo) -->
     <section class="novedades-destacadas">
       <h2 class="titulo-destacado">Drops Exclusivos de la Semana</h2>
       <div class="grid-productos">
         <div class="producto-nuevo" data-producto="Sneakers Hypebeast X" data-precio="450">
           <h4>Sneakers Hypebeast X</h4>
           <p>Edición limitada. Brilla en la oscuridad con detalles reflectivos.</p>
+          <button class="button btn-reserva" data-producto="Sneakers Hypebeast X" data-precio="450">Reservar S/ 450</button>
         </div>
         <div class="producto-nuevo" data-producto="Jacket Urban Camo" data-precio="320">
           <h4>Jacket Urban Camo</h4>
           <p>Material impermeable de grado militar con corte oversize.</p>
+          <button class="button btn-reserva" data-producto="Jacket Urban Camo" data-precio="320">Reservar S/ 320</button>
         </div>
       </div>
     </section>
 
-    <!-- SECCIÓN 2: Controlada por LESS (Cuadrícula con Botones) -->
     <section class="seccion-novedades">
       <h2>Catálogo de Novedades</h2>
       <div class="contenedor-tarjetas">
@@ -239,14 +233,14 @@
           <div class="imagen-tarjeta cap1"></div>
           <div class="contenido-tarjeta">
             <h3>Gorras Snapback V2</h3>
-            <button class="btn-novedad" data-producto="Gorras Snapback V2" data-precio="89">¡Lo quiero!</button>
+            <button class="button btn-reserva btn-novedad" data-producto="Gorras Snapback V2" data-precio="89">¡Lo quiero!</button>
           </div>
         </div>
         <div class="tarjeta">
           <div class="imagen-tarjeta hood1"></div>
           <div class="contenido-tarjeta">
             <h3>Hoodie Essential</h3>
-            <button class="btn-novedad" data-producto="Hoodie Essential" data-precio="150">¡Lo quiero!</button>
+            <button class="button btn-reserva btn-novedad" data-producto="Hoodie Essential" data-precio="150">¡Lo quiero!</button>
           </div>
         </div>
       </div>
@@ -266,29 +260,73 @@
     <a href="#" id="btn-chat" class="btn-float-chat">💬 Asesor</a>
   </div>
 
-  <!-- MODAL DE RESERVA CORREGIDO -->
+  <!-- MODAL DE GARANTÍA Y TALLAS -->
   <div id="reserva-modal" class="modal-overlay">
-    <div class="modal-content-custom">
-      <h3 id="modal-titulo" class="modal-heading">Confirmar Reserva</h3>
-      <p class="modal-text">Asegura tu <strong id="modal-producto-nombre" class="modal-highlight"></strong> antes del drop.</p>
-      <form id="form-reserva">
-        <input type="email" placeholder="Tu correo electrónico" required class="modal-input">
-        <!-- Input oculto para guardar el precio al enviar el form -->
-        <input type="hidden" id="modal-producto-precio" value="">
-        <div class="modal-actions">
-          <button type="button" class="btn-modal-cancel" id="btn-cerrar-modal">Cancelar</button>
-          <button type="submit" class="btn-modal-confirm">Añadir al Carrito</button>
+    <div class="modal-content modal-garantia-content">
+      <button class="modal-close" id="btn-cerrar-modal">×</button>
+      
+      <div class="modal-header">
+        <h2>Protege tu producto: <span id="modal-producto-nombre" class="modal-highlight"></span></h2>
+        <p class="modal-text">Precio base: S/ <span id="modal-producto-precio-base"></span></p>
+      </div>
+
+      <div class="modal-body-garantia">
+        <div id="compra-tallas" class="compra-tallas">
+          <label for="compra-talla-select">Selecciona tu talla:</label>
+          <select id="compra-talla-select" required>
+            <option value="">Elige una talla</option>
+            <option value="S">S</option>
+            <option value="M">M</option>
+            <option value="L">L</option>
+            <option value="XL">XL</option>
+          </select>
         </div>
-      </form>
+
+        <label class="warranty-option">
+          <input type="radio" name="warranty" value="0" checked>
+          <span>Sin garantía adicional</span>
+          <span class="warranty-price">S/ 0</span>
+        </label>
+        
+        <label class="warranty-option highlighted">
+          <input type="radio" name="warranty" value="45">
+          <div class="warranty-text-col">
+            <span>Garantía de 1 año: Reparación</span>
+            <span class="badge-recomendado">¡Recomendado!</span>
+          </div>
+          <span class="warranty-price">S/ 45</span>
+        </label>
+
+        <div class="warranty-benefits">
+          <p><strong>¿Qué obtienes al agregar protección?</strong></p>
+          <ul>
+            <li>✓ Visita técnica con diagnóstico gratuito.</li>
+            <li>✓ Reparación de expertos con repuestos originales.</li>
+            <li>✓ Cobertura en caso de daño por variación de voltaje.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button class="btn-outline" id="btn-sin-proteccion">Continuar sin protección</button>
+        <button class="btn-solid" id="btn-con-proteccion">Agregar protección</button>
+      </div>
     </div>
   </div>
 
-  <!-- MODAL DE CHAT -->
+  <!-- MODAL DE CHAT INTERACTIVO (ASISTENTE VIRTUAL) -->
   <div id="chat-modal" class="modal-overlay">
     <div class="modal-content-custom modal-chat">
-      <h3 class="modal-heading">🎧 Soporte</h3>
-      <p class="modal-text">Nuestro equipo está ajustando los últimos detalles. Déjanos tu duda.</p>
-      <button type="button" class="btn-modal-confirm w-100" id="btn-cerrar-chat">Entendido</button>
+      <div class="chat-header-flex">
+        <h3 class="modal-heading">🎧 Asistente STREETHYPE</h3>
+        <button type="button" class="modal-close-chat" id="btn-cerrar-chat">×</button>
+      </div>
+      <div id="chat-messages" class="chat-messages-container">
+        <!-- Los mensajes del árbol de decisiones se cargan dinámicamente aquí -->
+      </div>
+      <div id="chat-options" class="chat-options-container">
+        <!-- Los botones de opciones se generan aquí -->
+      </div>
     </div>
   </div>
 
