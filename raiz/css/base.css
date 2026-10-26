@@ -111,6 +111,10 @@ button {
   font-weight: 900;
   letter-spacing: -0.05em;
   text-decoration: none;
+  transition: opacity 0.2s ease;
+}
+.brand:hover {
+  opacity: 0.82;
 }
 .brand__mark {
   display: grid;
@@ -154,9 +158,12 @@ button {
   background: transparent;
   font-weight: 800;
   text-decoration: none;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, background-color 0.2s ease;
 }
-.site-nav a:hover,
+.site-nav a:hover {
+  transform: translateY(-1px);
+  color: #111111;
+}
 .site-nav a:focus-visible,
 .site-nav a[aria-current="page"] {
   color: #111111;
@@ -364,8 +371,8 @@ select:focus-visible {
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 /* Accesibilidad: enlace para saltar al contenido */
@@ -469,4 +476,24 @@ select:focus-visible {
 .footer-grid a:focus-visible,
 .footer-bottom a:focus-visible {
   outline-color: #d7ff00;
+}
+.button-primary,
+.button--secondary,
+.button-accent,
+.add-button,
+.cart-button {
+  transition: transform 0.2s ease, background-color 0.2s ease, color 0.2s ease, box-shadow 0.2s ease;
+}
+.button-primary:hover,
+.button--secondary:hover,
+.button-accent:hover,
+.add-button:hover {
+  transform: translateY(-2px);
+}
+.button-primary:active,
+.button--secondary:active,
+.button-accent:active,
+.add-button:active,
+.cart-button:active {
+  transform: scale(0.98);
 }

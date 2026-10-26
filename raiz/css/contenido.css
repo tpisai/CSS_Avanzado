@@ -332,3 +332,20 @@
     flex-direction: column;
   }
 }
+/* INTERACCIONES AÑADIDAS — CONTACTO Y FAQ */
+.contact-help-link,
+.footer-column a {
+  transition: color 0.2s ease, text-decoration-color 0.2s ease;
+}
+.contact-note__number {
+  transition: transform 0.2s ease, background-color 0.2s ease;
+}
+.contact-note:hover .contact-note__number {
+  transform: translateY(-2px);
+}
+.contact-panel {
+  transition: box-shadow 0.25s ease;
+}
+.contact-panel:focus-within {
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.06);
+}
