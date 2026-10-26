@@ -1,0 +1,28 @@
+.container { 
+width: min(70rem, calc(100% - 2rem)); 
+margin-inline: auto; 
+} 
+.site-header { 
+padding-block: .space(6)[@value]; 
+border-bottom: 1px solid @line; 
+} 
+.header-row { 
+display: flex; 
+flex-wrap: wrap; 
+align-items: center; 
+justify-content: space-between; 
+gap: .space(4)[@value]; 
+} 
+.hero { padding-block: .space(10)[@value]; } 
+.workshops { 
+display: grid; 
+gap: .space(6)[@value]; 
+padding-block-end: .space(10)[@value]; 
+@media (min-width: @wide) { 
+grid-template-columns: repeat(3, minmax(0, 1fr)); 
+} 
+} 
+.site-footer { 
+padding-block: .space(6)[@value]; 
+border-top: 1px solid @line; 
+} 
