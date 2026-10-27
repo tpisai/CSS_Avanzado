@@ -1,3 +1,4 @@
+// out: ../css/producto.css
 @import "variables.less";
 @import "modales-compra.less";
 
@@ -260,13 +261,34 @@
           margin-left: auto;
         }
         // Compatibilidad temporal
-        .btn-circle {
-          display: none;
+//        .btn-circle {
+       //   display: none;
+      //  }
+      .btn-circle {
+            background: @color-principal;
+            color: @color-blanco;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 0; /* Mantenemos diseño recto */
+            cursor: pointer;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: transform 0.2s ease, background-color 0.2s ease;
+
+            &:hover { 
+              transform: scale(1.1); 
+              background: @color-acento;
+              color: @color-principal;
+            }
         }
+      }
       }
     }
   }
-}
+
 
 /* =========================
    RESEÑAS DEL PRODUCTO
@@ -403,6 +425,78 @@
   }
 }
 
+
+/* Selector de cantidad: estilos separados del HTML */
+.product-qty-selector {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 1.5rem;
+
+  > span {
+    font-weight: 800;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+  }
+}
+
+.qty-controls {
+  display: flex;
+  align-items: center;
+  border: 1px solid @color-principal;
+
+  button {
+    width: 40px;
+    height: 40px;
+    border: 0;
+    background: @color-blanco;
+    color: @color-principal;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+  }
+
+  #display-qty {
+    width: 40px;
+    text-align: center;
+    font-weight: 800;
+  }
+}
+
+/* Precios y tallas: la presentación se controla desde LESS */
+.product-price__old {
+  color: #888;
+  text-decoration: line-through;
+  font-size: 1.1rem;
+  margin-right: 10px;
+}
+
+.product-price__current {
+  color: #e53935;
+}
+
+.product-price__badge {
+  margin-left: 10px;
+  padding: 3px 6px;
+  background: @color-acento;
+  color: #000;
+  font-size: 0.8rem;
+  font-weight: 700;
+}
+
+.btn-talla {
+  padding: 10px 15px;
+  border: 1px solid @color-borde;
+  background: @color-blanco;
+  color: @color-principal;
+  cursor: pointer;
+
+  &.talla-activa {
+    background: @color-principal;
+    color: @color-blanco;
+  }
+}
+
 /* RESPONSIVE */
 @media (max-width: @tablet) {
   .product-layout {
@@ -525,33 +619,176 @@
     color: #e53935;
     font-weight: 800;
 }
+/* =========================================
+   MEJORAS VISUALES FINALES
+   ========================================= */
 
-.product-layout .btn-talla {
-  transition: color .2s ease,
-              background-color .2s ease,
-              border-color .2s ease,
-              transform .2s ease;
+/* 1. Fondo para la imagen principal */
+.product-gallery {
+  background-color: #f4f4f4 !important; /* Gris suave para resaltar la ropa */
+  border: 1px solid #111111;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
 }
 
-.product-layout .btn-talla:hover {
-  transform: translateY(-2px);
+/* 2. Selector de cantidad más robusto */
+.qty-controls {
+  height: 50px !important; /* Mismo alto que las tallas */
+  border: 2px solid #111111 !important;
+  
+  button {
+    width: 50px !important;
+    height: 100% !important;
+    font-size: 1.5rem !important;
+    transition: all 0.2s ease;
+    
+    &:hover {
+      background: #d7ff00 !important; /* Hover verde neón */
+    }
+  }
+  
+  #display-qty {
+    width: 50px !important;
+    font-size: 1.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
-#producto-boton {
-  transition: transform .2s ease,
-              box-shadow .2s ease,
-              background-color .2s ease;
+/* 3. Hover neón en los botones de compra */
+.add-button {
+  height: 60px !important;
+  border: 2px solid #111111 !important;
+  transition: background-color 0.3s ease, color 0.3s ease, transform 0.1s ease !important;
+  
+  &:hover {
+    background-color: #d7ff00 !important;
+    color: #111111 !important;
+  }
 }
 
-#producto-boton:hover {
-  transform: translateY(-2px);
-  box-shadow: 0 6px 0 fade(@color-acento, 50%);
+/* Efecto hover en los botones "+" del catálogo inferior */
+.catalog-section .product-card-footer .btn-circle {
+  border-radius: 0 !important; /* Asegurar que sean cuadrados */
+  transition: all 0.2s ease;
+  
+  &:hover {
+    background-color: #d7ff00 !important;
+    color: #111111 !important;
+    border-color: #111111 !important;
+    transform: scale(1.1);
+  }
+}
+/* =========================================
+   CORRECCIÓN: IMAGEN PRINCIPAL LIBRE (Sin caja)
+   ========================================= */
+.product-layout .product-gallery {
+  background-color: transparent !important; /* Quita el fondo gris */
+  border: none !important; /* Quita el borde negro */
+  padding: 0 !important; /* Quita el relleno para que se alinee perfectamente */
+  
+  .product-image-main {
+    width: 100%;
+    height: auto;
+    max-height: 650px; /* Evita que las imágenes muy altas rompan la vista */
+    object-fit: contain;
+    mix-blend-mode: multiply; /* Truco visual: Oculta los fondos blancos puros de las imágenes JPEG para que se fundan con tu página */
+  }
+}
+/* =========================================
+   LAB 9 y 11: ANIMACIÓN DE ENTRADA EN CASCADA
+   ========================================= */
+
+/* 1. Creamos la animación base (Lab 9) */
+@keyframes slideUpFade {
+  from { 
+    opacity: 0; 
+    transform: translateY(30px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
 }
 
-.product-benefits__item {
-  transition: transform .2s ease, border-color .2s ease;
+/* 2. Aplicamos la animación de forma accesible (Lab 11) */
+@media (prefers-reduced-motion: no-preference) {
+  
+  /* La foto entra primero */
+  .product-gallery {
+    animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+  
+  /* El título y precio entran un instante después */
+  .product-info .eyebrow,
+  .product-info .product-title,
+  .product-info .product-reviews,
+  .product-info .product-price,
+  .product-info .product-description {
+    opacity: 0; /* Empiezan invisibles */
+    animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.2s forwards;
+  }
+
+  /* Las tallas, cantidad y botón de compra entran al final */
+  .product-info .size-selector,
+  .product-info .product-qty-selector,
+  .product-info .add-button,
+  .product-info .product-benefits {
+    opacity: 0; /* Empiezan invisibles */
+    animation: slideUpFade 0.7s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+  }
 }
 
-.product-benefits__item:hover {
-  transform: translateX(3px);
+
+/* =========================================
+   LAB 10: TARJETAS CATÁLOGO (Elevación Elegante)
+   ========================================= */
+
+.catalog-section .product-card {
+  /* 1. Eliminamos el borde negro grueso y ponemos uno sutil */
+  border: 1px solid #eaeaea !important; 
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  
+  &:hover {
+    transform: translateY(-8px) !important; 
+    /* 2. Sombra difuminada y moderna en lugar de la mancha negra */
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08) !important; 
+    border-color: #d9d9d6 !important;
+  }
+}
+/* =========================================
+   OPCIÓN A: EFECTO FOCO DE ATENCIÓN (Lab 10)
+   ========================================= */
+/* Cuando pasas el mouse por la grilla, las tarjetas que NO tienen el cursor bajan su opacidad */
+.catalog-section .grid-layout:hover .product-card:not(:hover) {
+  opacity: 0.5;
+  filter: grayscale(20%);
+  transition: opacity 0.3s ease, filter 0.3s ease;
+}
+
+/* Aseguramos que la transición de opacidad conviva con la elevación */
+.catalog-section .grid-layout .product-card {
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.3s ease, 
+              filter 0.3s ease !important;
+}
+
+
+/* =========================================
+   OPCIÓN B: MICRO-LATIDO EN TALLAS (Lab 9)
+   ========================================= */
+/* Animación keyframes para el rebote sutil */
+@keyframes microBounce {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+/* Se activa dinámicamente al seleccionar una talla */
+.product-info .size-selector .btn-talla.talla-activa {
+  animation: microBounce 0.25s ease-in-out !important;
 }
