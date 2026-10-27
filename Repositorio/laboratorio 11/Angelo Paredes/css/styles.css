@@ -1,0 +1,121 @@
+/* BLOQUE 1 Base funcional */ 
+* { box-sizing: border-box; } 
+body { 
+margin: 0; 
+background: #f2f5f9; 
+color: #14283f; 
+font-family: Arial, sans-serif; 
+line-height: 1.6; 
+}
+.wrap { 
+width: 90%; 
+max-width: 70rem; 
+margin: 0 auto; 
+}
+.site-header { padding: 2rem 0 1rem; } 
+h1 { font-size: 2.5rem; } 
+h1, h2, h3 { line-height: 1.2; } 
+.eyebrow { color: #42566d; font-weight: bold; } 
+a { color: #164b8c; } 
+a:focus, input:focus, main:focus { 
+outline: 3px solid #8b3600; 
+outline-offset: 4px; 
+}
+.skip-link { 
+position: absolute; 
+top: -5rem; 
+left: 1rem; 
+padding: 0.6rem 1rem; 
+background: white; 
+z-index: 10; 
+}
+.skip-link:focus { top: 1rem; } 
+input { width: 1.2rem; height: 1.2rem; } 
+label { margin-right: 1rem; } 
+.control-help { color: #42566d; } 
+.site-footer { padding: 2rem 0; }
+/* BLOQUE 2 Tarjetas en una columna */ 
+.cards { display: block; } 
+.tile { margin: 0 0 1rem; } 
+.card { 
+height: 100%; 
+padding: 1.25rem; 
+border: 2px solid #b9c6d5; 
+border-radius: 1rem; 
+background: white; 
+}
+.card h3, .card p { overflow-wrap: break-word; } 
+.button { 
+display: inline-block; 
+max-width: 100%; 
+min-height: 2.75rem; 
+padding: 0.65rem 0.8rem; 
+border-radius: 0.5rem; 
+background: #164b8c; 
+color: white; 
+font-weight: bold; 
+text-decoration: none; 
+overflow-wrap: break-word; 
+}
+.button:focus { background: #103766; } 
+.button:active { background: #0a274d; } 
+@media (hover: hover) and (pointer: fine) { 
+.button:hover { background: #103766; } 
+}
+.readings { margin: 2rem 0; } 
+.base-note, .motion-note { display: none; } 
+/* BLOQUE 3 Mejoras según capacidades */ 
+@supports (display: grid) { 
+.cards { 
+display: grid; 
+grid-template-columns: minmax(0, 1fr); 
+gap: 1.25rem; 
+}
+.tile { min-width: 0; margin: 0; } 
+@media (min-width: 40rem) { 
+.cards { grid-template-columns: repeat(2, minmax(0, 1fr)); } 
+}
+@media (min-width: 64rem) { 
+.cards { grid-template-columns: repeat(3, minmax(0, 1fr)); } 
+}
+}
+@supports (color: color-mix(in srgb, #164b8c 35%, white)) { 
+.card { border-color: color-mix(in srgb, #164b8c 35%, white); } 
+}
+/* BLOQUE 4 Movimiento y modo de comprobación */ 
+@keyframes card-reveal { 
+from { transform: translateY(0.5rem); } 
+to { transform: translateY(0); } 
+}
+@media (prefers-reduced-motion: no-preference) { 
+.card { transition: transform 220ms ease-out; } 
+.button { transition: background-color 180ms ease-out; } 
+.card:focus-within { transform: translateY(-0.25rem); } 
+@media (hover: hover) and (pointer: fine) { 
+.card:hover { transform: translateY(-0.25rem); } 
+}
+#entrada:checked ~ .stage .tile { 
+animation: card-reveal 600ms ease-out 1 backwards; 
+}
+#entrada:checked ~ .stage .tile:nth-child(2) { 
+animation-delay: 100ms; 
+}
+#entrada:checked ~ .stage .tile:nth-child(3) { 
+animation-delay: 200ms; 
+}
+}
+@media (prefers-reduced-motion: reduce) { 
+.motion-note { display: block; } 
+}
+#base:checked ~ .stage .cards { display: block; } 
+#base:checked ~ .stage .tile { 
+margin: 0 0 1rem; 
+animation: none; 
+}
+#base:checked ~ .stage .card { 
+border-color: #b9c6d5; 
+transform: none; 
+transition: none; 
+}
+#base:checked ~ .stage .button { transition: none; } 
+#base:checked ~ .stage .base-note { display: block; }
