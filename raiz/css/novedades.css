@@ -281,10 +281,15 @@
   transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.35s ease;
   animation: cardFadeInUp 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-.metric-card:nth-child(1) { animation-delay: 0.1s; }
-.metric-card:nth-child(2) { animation-delay: 0.2s; }
-.metric-card:nth-child(3) { animation-delay: 0.3s; }
-
+.metric-card:nth-child(1) {
+  animation-delay: 0.1s;
+}
+.metric-card:nth-child(2) {
+  animation-delay: 0.2s;
+}
+.metric-card:nth-child(3) {
+  animation-delay: 0.3s;
+}
 .metric-card:hover {
   transform: translateY(-6px) rotate(0.5deg) scale(1.02);
   box-shadow: 0 16px 32px rgba(0, 0, 0, 0.12);
@@ -416,7 +421,7 @@
 }
 .lookbook-img-box:hover {
   transform: scale(1.01) translateY(-2px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.18);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
 }
 .lookbook-img-box:hover .img-fluid {
   transform: scale(1.08) rotate(1deg);
@@ -849,73 +854,158 @@
   }
 }
 @keyframes modalOverlayFade {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 @keyframes heroEntrance {
-  0% { opacity: 0; transform: translateY(30px) scale(0.98); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
+  0% {
+    opacity: 0;
+    transform: translateY(30px) scale(0.98);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
 }
 @keyframes titleSlideUp {
-  0% { opacity: 0; transform: translateY(20px); }
-  100% { opacity: 1; transform: translateY(0); }
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes tagGlow {
-  0%, 100% { text-shadow: 0 0 5px rgba(215, 255, 0, 0.2); }
-  50% { text-shadow: 0 0 15px rgba(215, 255, 0, 0.8); }
+  0%,
+  100% {
+    text-shadow: 0 0 5px rgba(215, 255, 0, 0.2);
+  }
+  50% {
+    text-shadow: 0 0 15px rgba(215, 255, 0, 0.8);
+  }
 }
 @keyframes floatCard {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-6px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
 }
 @keyframes numberPulse {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.03); color: #fff; }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+    color: #fff;
+  }
 }
 @keyframes cardFadeInUp {
-  from { opacity: 0; transform: translateY(25px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(25px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 @keyframes darkCardPulse {
-  0%, 100% { border-color: #202124; }
-  50% { border-color: rgba(215, 255, 0, 0.4); }
+  0%,
+  100% {
+    border-color: #202124;
+  }
+  50% {
+    border-color: rgba(215, 255, 0, 0.4);
+  }
 }
 @keyframes progressLoad {
-  from { width: 0%; }
-  to { width: 98%; }
+  from {
+    width: 0%;
+  }
+  to {
+    width: 98%;
+  }
 }
 @keyframes badgePop {
-  0% { transform: scale(0); opacity: 0; }
-  80% { transform: scale(1.1); }
-  100% { transform: scale(1); opacity: 1; }
+  0% {
+    transform: scale(0);
+    opacity: 0;
+  }
+  80% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 @keyframes badgePulseSlow {
-  0%, 100% { transform: scale(1); }
-  50% { transform: scale(1.05); background-color: #2b2b2b; }
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+    background-color: #2b2b2b;
+  }
 }
 @keyframes hotBadgeBounce {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  50% { transform: translateY(-4px) rotate(3deg); }
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(3deg);
+  }
 }
 @keyframes floatButton {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-4px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-4px);
+  }
 }
 @keyframes floatChatBtn {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-5px); }
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-5px);
+  }
 }
 @keyframes sidebarFloatIn {
-  from { opacity: 0; transform: translateX(-20px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 @keyframes pulseAlert {
-  0%, 100% { border-color: #e4e7d9; }
-  50% { border-color: #d7ff00; }
+  0%,
+  100% {
+    border-color: #e4e7d9;
+  }
+  50% {
+    border-color: #d7ff00;
+  }
 }
-
 /* SISTEMA DE CONTROL DE ANIMACIONES SIN JS (Checkbox + Hermanos Generales) */
-/* Si deseas habilitar un interruptor HTML para congelar o acelerar animaciones, usa #anim-toggle:checked ~ body */
 #anim-toggle {
   position: absolute;
   opacity: 0;
@@ -927,7 +1017,6 @@
   animation-play-state: paused !important;
   transition: none !important;
 }
-
 /* RESPONSIVE */
 @media (max-width: 1100px) {
   .layout-grid {
@@ -1077,7 +1166,6 @@
     bottom: 12px;
   }
 }
-
 /* ACCESIBILIDAD Y MOVIMIENTO REDUCIDO (Semana 9) */
 @media (prefers-reduced-motion: reduce) {
   *,
@@ -1090,7 +1178,6 @@
     transform: none !important;
   }
 }
-
 /* ==================================================
    ESTILOS EXCLUSIVOS: MODAL DE TALLA Y GARANTÍA
    ================================================== */
@@ -1107,7 +1194,6 @@
   animation: modal-pop 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
   transform-origin: center;
 }
-
 .modal-close {
   background: transparent;
   border: none;
@@ -1119,28 +1205,23 @@
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
 }
-
 .modal-close:hover {
   color: #ffffff;
   transform: scale(1.1) rotate(90deg);
 }
-
 .modal-header h2 {
   font-size: 1.35rem;
   margin: 0 0 8px;
   font-weight: 800;
   color: #ffffff;
 }
-
 .modal-body-garantia {
   margin: 20px 0;
   text-align: left;
 }
-
 .compra-tallas {
   margin-bottom: 22px;
 }
-
 .compra-tallas label {
   display: block;
   margin-bottom: 8px;
@@ -1148,7 +1229,6 @@
   font-weight: 700;
   color: #d0d0d0;
 }
-
 .compra-tallas select {
   width: 100%;
   padding: 12px 14px;
@@ -1160,12 +1240,10 @@
   outline: none;
   transition: border-color 0.25s ease, box-shadow 0.25s ease;
 }
-
 .compra-tallas select:focus {
   border-color: #d7ff00;
   box-shadow: 0 0 0 3px rgba(215, 255, 0, 0.25);
 }
-
 .warranty-option {
   display: flex;
   align-items: center;
@@ -1178,22 +1256,18 @@
   border: 1px solid #2e2e2e;
   transition: border-color 0.25s ease, background 0.25s ease, transform 0.2s ease;
 }
-
 .warranty-option:hover {
   background: #202020;
   transform: translateX(4px);
 }
-
 .warranty-option input[type="radio"] {
   accent-color: #d7ff00;
   transform: scale(1.2);
 }
-
 .warranty-option.highlighted {
   border-color: #d7ff00;
   background: rgba(215, 255, 0, 0.05);
 }
-
 .warranty-text-col {
   display: flex;
   flex-direction: column;
@@ -1201,20 +1275,17 @@
   flex: 1;
   margin-left: 12px;
 }
-
 .badge-recomendado {
   font-size: 0.72rem;
   color: #d7ff00;
   font-weight: 800;
   text-transform: uppercase;
 }
-
 .warranty-price {
   font-weight: 800;
   color: #ffffff;
   font-size: 0.95rem;
 }
-
 .warranty-benefits {
   font-size: 0.82rem;
   color: #aaaaaa;
@@ -1224,37 +1295,30 @@
   border-radius: 8px;
   border: 1px solid #242424;
 }
-
 .warranty-benefits p {
   margin: 0 0 6px;
   color: #ffffff;
 }
-
 .warranty-benefits ul {
   list-style: none;
   padding-left: 0;
   margin: 0;
 }
-
 .warranty-benefits li {
   margin-bottom: 4px;
   line-height: 1.4;
 }
-
 .modal-footer {
   display: flex;
   gap: 12px;
   margin-top: 24px;
 }
-
 .modal-footer button {
   flex: 1;
 }
-
 .modal-overlay.active {
   display: flex !important;
 }
-
 /* ==================================================
    ESTILOS NUEVOS: ASISTENTE VIRTUAL Y MODAL DE TALLAS
    ================================================== */
@@ -1264,14 +1328,12 @@
   text-align: left;
   border: 1px solid #282828;
 }
-
 .chat-header-flex {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
 }
-
 .modal-close-chat {
   background: transparent;
   border: none;
@@ -1280,12 +1342,10 @@
   cursor: pointer;
   transition: color 0.2s ease, transform 0.2s ease;
 }
-
 .modal-close-chat:hover {
   color: #fff;
   transform: rotate(90deg);
 }
-
 .chat-messages-container {
   min-height: 120px;
   max-height: 200px;
@@ -1293,7 +1353,6 @@
   margin-bottom: 15px;
   padding-right: 5px;
 }
-
 .chat-bubble.bot {
   background: #1c1c1c;
   color: #f0f0f0;
@@ -1304,13 +1363,11 @@
   border: 1px solid #2a2a2a;
   animation: chatBubbleIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) both;
 }
-
 .chat-options-container {
   display: flex;
   flex-direction: column;
   gap: 8px;
 }
-
 .chat-option-btn {
   background: #1a1a1a;
   color: #d7ff00;
@@ -1323,28 +1380,32 @@
   cursor: pointer;
   transition: all 0.25s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
-
 .chat-option-btn:hover {
   background: #d7ff00;
   color: #111;
   border-color: #d7ff00;
   transform: translateX(6px) scale(1.02);
 }
-
 @keyframes chatBubbleIn {
-  from { opacity: 0; transform: translateY(10px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-
 /* ==================================================
    MEJORA PROGRESIVA Y @SUPPORTS (Semana 11)
    ================================================== */
 @supports (display: grid) {
-  .layout-grid, .resource-grid, .metrics-grid {
+  .layout-grid,
+  .resource-grid,
+  .metrics-grid {
     display: grid;
   }
 }
-
 @supports (background: color-mix(in srgb, #171717 50%, #d7ff00)) {
   .button:hover {
     background: color-mix(in srgb, #d7ff00 85%, #ffffff 15%);

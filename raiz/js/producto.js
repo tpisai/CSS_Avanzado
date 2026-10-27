@@ -1,33 +1,29 @@
 document.addEventListener("DOMContentLoaded", () => {
     
-    // ==========================================
-    // 1. FILTROS DEL CATÁLOGO (Aislado para evitar errores)
-    // ==========================================
+    /* ==========================================
+    1. FILTROS DEL CATÁLOGO
+    Compatible con productos renderizados dinámicamente
+    ========================================== */
     const inicializarFiltros = () => {
-        const botonesFiltro = document.querySelectorAll('.filter-btn');
-        const productosCatalogo = document.querySelectorAll('.product-card');
-
-        if (botonesFiltro.length > 0) {
-            botonesFiltro.forEach(boton => {
-                boton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    // Quitar clase 'active' a todos
-                    botonesFiltro.forEach(btn => btn.classList.remove('active'));
-                    // Añadir 'active' al botón clickeado
-                    boton.classList.add('active');
-                    // Obtener la categoría
-                    const categoriaSeleccionada = boton.getAttribute('data-filter');
-                    // Filtrar productos
-                    productosCatalogo.forEach(producto => {
-                        const categoriaProducto = producto.dataset.category;
-                        producto.style.display = categoriaSeleccionada === "todos" || 
-                        categoriaProducto === categoriaSeleccionada ? "" : "none";
-                    });
+        const botonesFiltro = document.querySelectorAll(".filter-btn");
+        botonesFiltro.forEach(boton => {
+            boton.addEventListener("click", e => {
+                e.preventDefault();
+                botonesFiltro.forEach(btn => btn.classList.remove("active"));
+                boton.classList.add("active");
+                const categoriaSeleccionada = (boton.dataset.filter || "todos").toLowerCase().trim();
+                // Consultar las tarjetas después de renderizar el catálogo.
+                const productosCatalogo = document.querySelectorAll(
+                    "#catalogo-grid .product-card");
+                productosCatalogo.forEach(producto => {
+                    const categoriaProducto = (producto.dataset.category || "").toLowerCase().trim();
+                    const mostrar = categoriaSeleccionada === "todos" ||
+                        categoriaProducto === categoriaSeleccionada;
+                    producto.style.display = mostrar ? "" : "none";
                 });
             });
-        }
+        });
     };
-    // Inicializamos los filtros inmediatamente
     inicializarFiltros();
 
     // ==========================================
