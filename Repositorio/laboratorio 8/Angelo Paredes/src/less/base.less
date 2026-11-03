@@ -1,0 +1,31 @@
+:root { --brand: @brand; --surface: @surface; --ink: @ink; 
+} 
+* { box-sizing: border-box; } 
+body { 
+margin: 0; 
+font-family: system-ui, sans-serif; 
+line-height: 1.6; 
+color: var(--ink); 
+background: @page; 
+} 
+h1, h2, h3 { line-height: 1.2; } 
+p { margin-block: 0 1rem; } 
+a { color: var(--brand); } 
+:focus-visible { 
+outline: 3px solid var(--brand); 
+outline-offset: 4px; 
+} 
+.skip-link { 
+position: absolute; 
+inset-block-start: -10rem; 
+inset-inline-start: 1rem; 
+padding: 0.75rem; 
+background: white; 
+z-index: 10; 
+&:focus { inset-block-start: 1rem; } 
+} 
+.muted { color: @muted; } 
+.info-panel {
+  .surface(2rem); // padding distinto
+  margin-top: 1.5rem;
+}

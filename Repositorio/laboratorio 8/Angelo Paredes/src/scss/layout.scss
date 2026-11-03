@@ -1,0 +1,33 @@
+@use "abstracts" as a; 
+.container { 
+width: min(70rem, calc(100% - 2rem)); 
+margin-inline: auto; 
+} 
+.site-header { 
+padding-block: a.space(6); 
+border-bottom: 1px solid a.$line; 
+} 
+.header-row { 
+display: flex; 
+flex-wrap: wrap; 
+align-items: center; 
+justify-content: space-between; 
+gap: a.space(4); 
+} 
+.hero { padding-block: a.space(10); } 
+.workshops { 
+display: grid; 
+gap: a.space(6); 
+padding-block-end: a.space(10); 
+@include a.wide { 
+grid-template-columns: repeat(3, minmax(0, 1fr)); 
+} 
+} 
+.site-footer { 
+padding-block: a.space(6); 
+border-top: 1px solid a.$line; 
+} 
+.info-panel {
+    @include a.surface(space(8));
+    margin-top:space(6);
+}

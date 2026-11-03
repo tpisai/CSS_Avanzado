@@ -1,0 +1,37 @@
+@use "abstracts" as a; 
+.card { 
+@include a.surface; 
+min-width: 0; 
+display: flex; 
+flex-direction: column; 
+gap: a.space(3); 
+overflow-wrap: anywhere; 
+&__title { margin: 0; } 
+&__action { margin-block-start: auto; } 
+} 
+.badge { 
+align-self: flex-start; 
+padding: a.space(1) a.space(3); 
+border-radius: 999px; 
+font-weight: 700; 
+background: #e8eefc; 
+color: a.$brand; 
+&--open { background: #dcfce7; color: #14532d; } 
+&--full { background: #fee2e2; color: #7f1d1d; }
+&--soon { background: #fef3c7; color: #a2741f; }
+} 
+.button { 
+display: inline-flex; 
+justify-content: center; 
+align-items: center; 
+min-height: 2.75rem; 
+padding: a.space(3) a.space(5); 
+border: 2px solid var(--brand); 
+border-radius: a.$radius; 
+background: var(--brand); 
+color: white; 
+font-weight: 700; 
+text-decoration: none; 
+&:hover { text-decoration: underline; } 
+&--outline { background: transparent; color: var(--brand); } 
+} 

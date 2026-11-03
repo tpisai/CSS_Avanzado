@@ -1,0 +1,259 @@
+/* BLOQUE 1 Base y navegación */ 
+:root { 
+    --ink: #14283f; 
+    --muted: #42566d; 
+    --brand: #164b8c; 
+    --brand-dark: #103766; 
+    --paper: #f2f5f9; 
+    --line: #b9c6d5; 
+    --focus: #8b3600; 
+}
+
+* { 
+    box-sizing: border-box; 
+} 
+
+body { 
+    margin: 0; 
+    color: var(--ink); 
+    background: var(--paper); 
+    font-family: system-ui, sans-serif; 
+    line-height: 1.6; 
+}
+
+.wrap { 
+    width: min(70rem, calc(100% - 2rem)); 
+    margin-inline: auto; 
+}
+
+.site-header { 
+    padding-block: 2rem 1rem; 
+} 
+
+h1 { 
+    font-size: clamp(2rem, 6vw, 3rem); 
+} 
+
+h1, h2, h3 { 
+    line-height: 1.2; 
+} 
+
+.eyebrow { 
+    color: var(--muted); 
+    font-weight: 700; 
+} 
+
+a { 
+    color: var(--brand); 
+} 
+
+:focus-visible { 
+    outline: 3px solid var(--focus); 
+    outline-offset: 4px; 
+}
+
+.skip-link { 
+    position: absolute; 
+    top: -5rem; 
+    left: 1rem; 
+    padding: 0.6rem 1rem; 
+    background: white; 
+    z-index: 10; 
+}
+
+.skip-link:focus { 
+    top: 1rem; 
+} 
+
+.site-footer { 
+    padding-block: 2rem; 
+}
+
+/* BLOQUE 2 Tarjetas y estados visuales */ 
+.cards { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 1.25rem; 
+    margin-block: 1.5rem; 
+}
+
+.card { 
+    display: flex; 
+    flex-direction: column; 
+    min-width: 0; 
+    padding: 1.25rem; 
+    border: 2px solid var(--line); 
+    border-radius: 1rem; 
+    background: white; 
+}
+
+.card h3, .card p { 
+    overflow-wrap: anywhere; 
+} 
+
+.card:focus-within { 
+    border-color: var(--brand); 
+} 
+
+.button { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center; 
+    gap: 0.4rem; 
+    min-height: 2.75rem; 
+    margin-top: auto; 
+    padding: 0.65rem 0.8rem; 
+    border-radius: 0.5rem; 
+    background: var(--brand); 
+    color: white; 
+    font-weight: 700; 
+    text-decoration: none; 
+    text-align: center; 
+    overflow-wrap: anywhere; 
+}
+
+.button:focus-visible { 
+    background: var(--brand-dark); 
+} 
+
+.button:active { 
+    background: #0a274d; 
+} 
+
+.arrow { 
+    display: inline-block; 
+    flex-shrink: 0; 
+} 
+
+@media (hover: hover) and (pointer: fine) { 
+    .card:hover { 
+        border-color: var(--brand); 
+    } 
+    .button:hover { 
+        background: var(--brand-dark); 
+    } 
+}
+/* BLOQUE 3 Escena y diseño responsivo */ 
+.experiment, .details { 
+    margin-block: 2rem; 
+} 
+
+.lab { 
+    min-width: 0; 
+    margin: 0; 
+    padding: 1rem; 
+    border: 1px solid var(--line); 
+    border-radius: 0.75rem; 
+    background: white; 
+}
+
+.lab legend { 
+    font-weight: 700; 
+} 
+
+.lab input {
+    width: 1.2rem; 
+    height: 1.2rem; 
+} 
+
+.lab label { 
+    margin-right: 1rem; 
+} 
+
+.board { 
+    display: grid; 
+    grid-template-columns: 1fr; 
+    gap: 1rem; 
+    margin-top: 1rem; 
+}
+
+.frame { 
+    min-width: 0; 
+    min-height: 13rem; 
+    padding: 1rem; 
+    border: 1px dashed var(--muted); 
+}
+
+.frame p { 
+    margin-block: 0 1.5rem; 
+} 
+
+.sample { 
+    display: grid; 
+    place-items: center; 
+    width: 4rem; 
+    height: 4rem; 
+    margin-inline: auto; 
+    background: var(--brand); 
+    color: white; 
+    font-weight: 700; 
+    transform-origin: center; 
+}
+
+.reduce-note { 
+    display: none; 
+} 
+
+@media (min-width: 48rem) { 
+    .cards { 
+        grid-template-columns: repeat(3, minmax(0, 1fr)); 
+    } 
+    .board { 
+        grid-template-columns: repeat(2, minmax(0, 1fr)); 
+    } 
+}
+
+/* BLOQUE 4 Movimiento como mejora progresiva */ 
+@media (prefers-reduced-motion: no-preference) { 
+    .card { 
+        transform: translateY(0); 
+        transition: transform 10000ms ease-out, 
+        border-color 900ms ease-out; 
+    }
+    .button { 
+        transition: background-color 180ms ease-out; 
+    } 
+    .arrow { 
+        transform: translateX(0); 
+        transition: transform 180ms ease-out; 
+    }
+    .sample { 
+        transition: transform 500ms ease-in-out; 
+    } 
+    .card:focus-within { 
+        transform: translateY(-0.25rem); 
+    } 
+    .button:focus-visible .arrow { 
+        transform: translateX(0.2rem); 
+    } 
+    #origen:checked ~ .board .sample { 
+        transform-origin: left top; 
+    } 
+    #transformar:checked ~ .board .sample-a { 
+        transform: translateX(2rem) rotate(20deg); 
+    }
+    #transformar:checked ~ .board .sample-b { 
+        transform: rotate(20deg) translateX(2rem); 
+    }
+    @media (hover: hover) and (pointer: fine) { 
+        .card:hover { 
+            transform: translateY(-0.25rem); 
+        } 
+        .button:hover .arrow { 
+            transform: translateX(0.2rem); 
+        } 
+    }
+}
+@media (prefers-reduced-motion: reduce) { 
+    .card, .arrow, .sample { 
+        transform: none; 
+        transition: none; 
+    } 
+    .button { 
+        transition: none; 
+    } 
+    .reduce-note { 
+        display: block; 
+    } 
+}
+

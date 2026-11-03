@@ -1,0 +1,76 @@
+<!doctype html> 
+<html lang="es"> 
+<head> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<title>MotionLab 11 | Compatibilidad entre navegadores</title> 
+<link rel="stylesheet" href="css/styles.css"> 
+</head> 
+<body> 
+<a class="skip-link" href="#contenido">Saltar al contenido</a> 
+<header class="wrap site-header"> 
+<p class="eyebrow">CSS Avanzado · Semana 11</p> 
+<h1>MotionLab 11</h1> 
+<p>Un catálogo funcional con mejoras según las capacidades del navegador.</p> 
+</header> 
+<main id="contenido" class="wrap" tabindex="-1"> 
+<h2>Controles de comprobación</h2> 
+<p>Las casillas son independientes. La vista básica tiene prioridad.</p> 
+<input id="base" type="checkbox"> 
+<label for="base">Forzar vista básica de prueba</label> 
+<input id="entrada" type="checkbox"> 
+<label for="entrada">Activar entrada breve de tarjetas</label> 
+<p class="control-help">Desmarca y vuelve a marcar la entrada para repetirla.</p> 
+<div class="stage"> 
+<p class="base-note">La vista básica de prueba conserva una columna. 
+Es una simulación visual, no una emulación de un navegador antiguo.</p> 
+<p class="motion-note">Con movimiento reducido, el contenido permanece 
+estático aunque marques la entrada.</p> 
+<section aria-labelledby="catalogo"> 
+<h2 id="catalogo">Catálogo de talleres</h2> 
+<div class="cards"> 
+<div class="tile"> 
+<article class="card"> 
+<p class="eyebrow">Taller 01</p> 
+<h3>Base funcional</h3> 
+<p>Lee y navega aunque las mejoras no estén disponibles.</p> 
+<a class="button" href="#lectura-base">Ver base funcional</a> 
+</article> 
+</div>  
+<div class="tile"> 
+<article class="card"> 
+<p class="eyebrow">Taller 02</p> 
+<h3>Mejoras condicionales</h3> 
+<p>Organiza columnas y colores cuando exista soporte.</p> 
+<a class="button" href="#lectura-mejoras">Ver mejoras</a> 
+</article> 
+</div> 
+<div class="tile"> 
+<article class="card"> 
+<p class="eyebrow">Taller 03</p> 
+<h3>Pruebas reproducibles</h3> 
+<p>Registra entorno, pasos, resultado y corrección.</p> 
+<a class="button" href="#lectura-pruebas">Ver pruebas</a> 
+</article> 
+</div> 
+</div> 
+</section> 
+<section class="readings" aria-labelledby="lecturas"> 
+<h2 id="lecturas">Lecturas del catálogo</h2> 
+<h3 id="lectura-base">Base funcional</h3> 
+<p>El HTML conserva la información y los enlaces. La base CSS 
+presenta una columna legible, sin depender de Grid.</p> 
+<h3 id="lectura-mejoras">Mejoras condicionales</h3> 
+<p>Las consultas de características habilitan mejoras concretas. 
+El resultado final se verifica en cada entorno objetivo.</p> 
+<h3 id="lectura-pruebas">Pruebas reproducibles</h3> 
+<p>Compara lectura, navegación, foco, anchuras y movimiento. 
+Anota lo que observaste y deja como pendiente lo no ejecutado.</p> 
+</section> 
+</div> 
+</main> 
+<footer class="wrap site-footer"> 
+<p>Laboratorio educativo. Todos los enlaces navegan dentro de esta página.</p> 
+</footer> 
+</body> 
+</html>

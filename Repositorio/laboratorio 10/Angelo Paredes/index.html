@@ -1,0 +1,100 @@
+<!doctype html> 
+<html lang="es"> 
+    <head> 
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1"> 
+        <title>MotionLab 10 | Transiciones y transformaciones</title> 
+        <link rel="stylesheet" href="css/styles.css"> 
+    </head> 
+    <body> 
+        <a class="skip-link" href="#contenido">Saltar al contenido</a> 
+        <header class="site-header wrap"> 
+            <p class="eyebrow">CSS Avanzado · Semana 10</p> 
+            <h1>MotionLab 10</h1> 
+            <p>Explora estados de interfaz y transformaciones en dos dimensiones.</p> 
+        </header> 
+        <main id="contenido" class="wrap" tabindex="-1"> 
+            <section aria-labelledby="catalogo"> 
+                <h2 id="catalogo">Catálogo de talleres</h2> 
+                <p>Usa los enlaces con Tab o con el puntero. Todo el contenido 
+                permanece disponible sin movimiento.</p> 
+                <div class="cards"> 
+                    <article class="card"> 
+                        <p class="eyebrow">Taller 01</p> 
+                        <h3>Transiciones</h3> 
+                        <p>Relaciona un cambio de estado con su duración y ritmo.</p> 
+                        <a class="button" href="#tema-transiciones"> 
+                        Ver transiciones <span class="arrow" aria-hidden="true">→</span> 
+                        </a> 
+                    </article> 
+                    <article class="card"> 
+                        <p class="eyebrow">Taller 02</p> 
+                        <h3>Transformaciones</h3> 
+                        <p>Traslada, rota y escala sin reorganizar las tarjetas.</p> 
+                        <a class="button" href="#tema-transformaciones"> 
+                        Ver transformaciones <span class="arrow" aria-hidden="true">→</span> 
+                        </a> 
+                    </article> 
+                    <article class="card"> 
+                        <p class="eyebrow">Taller 03</p> 
+                        <h3>Movimiento accesible</h3> 
+                        <p>Conserva el foco y respeta las preferencias del sistema.</p> 
+                        <a class="button" href="#tema-accesibilidad"> 
+                        Ver accesibilidad <span class="arrow" aria-hidden="true">→</span> 
+                        </a> 
+                    </article> 
+                    <article class="card">
+                        <p class="eyebrow">Taller 04</p>
+                        <h3>Orden y origen</h3>
+                        <p>Compara el efecto de cambiar el orden y el origen de las transformaciones.</p>
+                        <a class="button" href="#tema-orden-origen">
+                            Ver orden y origen <span class="arrow" aria-hidden="true">→</span>
+                        </a>
+                    </article>
+                </div> 
+            </section>
+            <section class="experiment" aria-labelledby="experimento"> 
+                <h2 id="experimento">Orden y origen de las transformaciones</h2> 
+                <p>Las casillas conservan su estado. Primero compara A y B con 
+                origen central; después cambia el origen de ambas cajas.</p> 
+                <fieldset class="lab"> 
+                    <legend>Controles del experimento</legend> 
+                    <input id="transformar" type="checkbox"> 
+                    <label for="transformar">Aplicar transformaciones</label> 
+                    <input id="origen" type="checkbox"> 
+                    <label for="origen">Usar origen superior izquierdo</label> 
+                    <div class="board"> 
+                        <div class="frame"> 
+                            <p>A · Trasladar y rotar</p> 
+                            <div class="sample sample-a" aria-hidden="true">A</div> 
+                        </div> 
+                        <div class="frame"> 
+                            <p>B · Rotar y trasladar</p> 
+                            <div class="sample sample-b" aria-hidden="true">B</div> 
+                        </div> 
+                    </div> 
+                    <p class="reduce-note">Movimiento reducido activo. Las cajas 
+                    conservan su posición original; consulta los valores en CSS.</p> 
+                </fieldset> 
+            </section> 
+            <section class="details" aria-labelledby="lecturas"> 
+                <h2 id="lecturas">Lecturas del catálogo</h2> 
+                <h3 id="tema-transiciones">Transiciones</h3> 
+                <p>Una transición interpola valores cuando cambia el estado. 
+                Declárala en la regla base para suavizar entrada y retorno.</p> 
+                <h3 id="tema-transformaciones">Transformaciones</h3> 
+                <p>La lista de funciones y su origen determinan el resultado. 
+                El espacio reservado por el layout se conserva.</p> 
+                <h3 id="tema-accesibilidad">Movimiento accesible</h3> 
+                <p>El foco visible y el contenido no dependen del movimiento. 
+                Con movimiento reducido, las respuestas de color son inmediatas.</p> 
+                <h3 id="tema-orden-origen">Orden y origen</h3> 
+                <p>El orden de las funciones y el origen de la transformación
+                afectan el resultado. La posición de las cajas se conserva.</p>
+            </section> 
+        </main> 
+        <footer class="wrap site-footer"> 
+            <p>Laboratorio educativo. Los enlaces llevan a lecturas de esta página.</p> 
+        </footer> 
+    </body> 
+</html>

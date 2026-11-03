@@ -1,0 +1,21 @@
+.space(@steps) { 
+@value: (@steps * 0.25rem); 
+} 
+.surface(@padding: 1.5rem) { 
+padding: @padding; 
+background: var(--surface); 
+border: 1px solid @line; 
+border-radius: @radius; 
+} 
+.status(@state) when (@state = open) { 
+background: #dcfce7; 
+color: #14532d; 
+} 
+.status(@state) when (@state = full) { 
+background: #fee2e2; 
+color: #7f1d1d; 
+} 
+.status(@state) when (@state = soon) {
+background: #fef3c7;
+color: #a2741f;
+}
