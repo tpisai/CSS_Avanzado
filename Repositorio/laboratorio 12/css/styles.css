@@ -1,0 +1,304 @@
+/* =========================================
+   BLOQUE 1: BASE DE LA PÁGINA Y FOCO
+========================================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    color: #14283f;
+    background: #f2f5f9;
+    font-family: Arial, sans-serif;
+    line-height: 1.6;
+}
+
+.wrap {
+    width: 90%;
+    max-width: 70rem;
+    margin: 0 auto;
+}
+
+.site-header {
+    padding: 2rem 0 1rem;
+}
+
+h1 {
+    font-size: 2.5rem;
+}
+
+h1, h2, h3 {
+    line-height: 1.2;
+}
+
+.eyebrow {
+    color: #42566d;
+    font-weight: bold;
+}
+
+a {
+    color: #164b8c;
+}
+
+/* Foco visible para teclado */
+
+a:focus,
+input:focus,
+main:focus {
+    outline: 3px solid #8b3600;
+    outline-offset: 4px;
+}
+
+.skip-link {
+    position: absolute;
+    top: -5rem;
+    left: 1rem;
+    padding: 0.6rem 1rem;
+    background: white;
+    z-index: 10;
+}
+
+.skip-link:focus {
+    top: 1rem;
+}
+
+input {
+    width: 1.2rem;
+    height: 1.2rem;
+}
+
+label {
+    margin-right: 1rem;
+}
+
+.site-footer {
+    padding: 2rem 0;
+}
+
+
+/* =========================================
+   BLOQUE 2: CONTENIDO ESTÁTICO DEL CATÁLOGO
+========================================= */
+
+.cards {
+    display: block;
+}
+
+.tile {
+    margin: 0 0 1.25rem;
+}
+
+.card {
+    height: 100%;
+    padding: 1.25rem;
+    border: 2px solid #b9c6d5;
+    border-radius: 1rem;
+    background: white;
+}
+
+.card h3,
+.card p {
+    overflow-wrap: break-word;
+}
+
+.button {
+    display: inline-block;
+    max-width: 100%;
+    min-height: 2.75rem;
+    padding: 0.65rem 0.8rem;
+    border-radius: 0.5rem;
+    background: #164b8c;
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+    overflow-wrap: break-word;
+}
+
+.button:focus {
+    background: #103766;
+}
+
+.button:active {
+    background: #0a274d;
+}
+
+@media (hover: hover) and (pointer: fine) {
+    .button:hover {
+        background: #103766;
+    }
+}
+
+.decoration {
+    color: #42566d;
+}
+
+.marker {
+    display: inline-block;
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+    border-radius: 50%;
+    background: #164b8c;
+}
+
+.readings {
+    margin: 2rem 0;
+}
+
+
+/* =========================================
+   PASO 1: MEJORA RESPONSIVA CON GRID
+========================================= */
+
+@supports (display: grid) {
+
+    .cards {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
+    }
+
+    .tile {
+        margin: 0;
+    }
+
+    @media (min-width: 40rem) {
+
+        .cards {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+    }
+
+    @media (min-width: 64rem) {
+
+        .cards {
+            grid-template-columns: repeat(3, 1fr);
+        }
+
+    }
+
+}
+
+
+/* =========================================
+   PASO 2: DEFINICIÓN DE FOTOGRAMAS
+========================================= */
+
+/* Entrada vertical de las tarjetas */
+
+@keyframes entrada {
+    from {
+        transform: translateY(0.75rem);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+/* Movimiento vertical del punto decorativo */
+
+@keyframes recorrido {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(-0.25rem);
+    }
+}
+
+
+/* =========================================
+   PASO 3: ACTIVACIÓN Y ENTRADAS ESCALONADAS
+========================================= */
+
+@media (prefers-reduced-motion: no-preference) {
+
+    /* Activación de las tres tarjetas */
+
+    #activar:checked ~ .scene .tile {
+        animation-name: entrada;
+        animation-duration: 600ms;
+        animation-timing-function: ease-out;
+        animation-iteration-count: 1;
+        animation-direction: normal;
+        animation-fill-mode: backwards;
+    }
+
+    /* Primera tarjeta: 0ms */
+
+    #activar:checked ~ .scene .tile:nth-child(1) {
+        animation-delay: 0ms;
+    }
+
+    /* Segunda tarjeta: 120ms */
+
+    #activar:checked ~ .scene .tile:nth-child(2) {
+        animation-delay: 120ms;
+    }
+
+    /* Tercera tarjeta: 240ms */
+
+    #activar:checked ~ .scene .tile:nth-child(3) {
+        animation-delay: 240ms;
+    }
+
+    /* Movimiento repetido del punto */
+
+    #activar:checked ~ .scene .marker {
+        animation-name: recorrido;
+        animation-duration: 1200ms;
+        animation-timing-function: ease-in-out;
+        animation-iteration-count: infinite;
+        animation-direction: alternate;
+    }
+
+}
+
+
+/* =========================================
+   PASO 4: TRANSICIONES E INTERACCIÓN
+========================================= */
+
+/* Transición de transformación de las tarjetas */
+
+.card {
+    transition: transform 220ms ease-out 0s;
+}
+
+/* Efecto cuando un elemento interno recibe el foco */
+
+.card:focus-within {
+    transform: translateY(-0.25rem) scale(1.02);
+}
+
+/* Efecto cuando el puntero está sobre la tarjeta */
+
+@media (hover: hover) and (pointer: fine) {
+
+    .card:hover {
+        transform: translateY(-0.25rem) scale(1.02);
+    }
+
+}
+
+/* Transición del fondo de los enlaces */
+
+.button {
+    transition: background-color 180ms ease-out;
+}
+
+
+/* =========================================
+   PASO 5: CONTROL DE PAUSA Y MOVIMIENTO REDUCIDO
+========================================= */
+
+/* Pausar conserva el avance de las animaciones */
+
+#pausar:checked ~ .scene .tile,
+#pausar:checked ~ .scene .marker {
+    animation-play-state: paused;
+}
