@@ -1,0 +1,31 @@
+/* Identidad del catálogo y lectura */ 
+.lab14 { 
+background: #f6f8fb; 
+color: #182536; 
+} 
+.lab14 .hero-panel { 
+background: #173450; 
+color: #fff; 
+} 
+.lab14 .lab-intro { max-width: 58ch; } 
+.lab14 .card { --bs-card-border-color: #c4d1df; } 
+.lab14 .card-title, 
+.lab14 .card-text { overflow-wrap: anywhere; } 
+/* Estados del componente, con el mismo color en fondo y borde */ 
+.lab14 .btn-primary { --bs-btn-bg: #0f6b68; --bs-btn-border-color: #0f6b68; --bs-btn-hover-bg: #095451; --bs-btn-hover-border-color: #095451; --bs-btn-active-bg: #073f3e; --bs-btn-active-border-color: #073f3e; 
+} 
+/* Foco de teclado y enlace de salto */ 
+.lab14 :where(a, button):focus-visible, 
+.lab14 main:focus { 
+outline: 3px solid #963d14; 
+outline-offset: 4px; 
+} 
+.lab14 .hero-panel button:focus-visible { outline-color: #fff; } 
+.lab14 .skip-link { 
+position: absolute; 
+z-index: 10; 
+top: .5rem; 
+left: .5rem; 
+padding: .5rem 1rem; 
+background: #fff; 
+}
