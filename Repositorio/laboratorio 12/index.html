@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="es">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>CampusMotion | Agenda de talleres</title>
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="wrap site-header">
+        <p class="eyebrow">CSS Avanzado · Semana 12 · PC3</p>
+        <h1>CampusMotion</h1>
+        <p>Explora tres talleres y consulta sus contenidos.</p>
+    </header>
+
+    <main id="contenido" class="wrap" tabindex="-1">
+
+        <h2>Control del movimiento</h2>
+
+        <input id="activar" type="checkbox">
+        <label for="activar">Activar animaciones</label>
+
+        <input id="pausar" type="checkbox">
+        <label for="pausar">Pausar animaciones</label>
+
+        <p>Desmarca Activar para detener y volver a la vista estática.</p>
+
+        <div class="scene">
+
+            <p class="decoration">
+                <span class="marker" aria-hidden="true"></span>
+                Detalle decorativo del laboratorio
+            </p>
+
+            <section aria-labelledby="agenda">
+
+                <h2 id="agenda">Agenda de talleres</h2>
+
+                <div class="cards">
+
+                    <div class="tile">
+                        <article class="card">
+                            <p class="eyebrow">Taller 01</p>
+                            <h3>Interfaces responsivas</h3>
+                            <p>Organiza contenido para distintos tamaños de pantalla.</p>
+                            <a class="button" href="#tema-layout">
+                                Ver contenido
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="tile">
+                        <article class="card">
+                            <p class="eyebrow">Taller 02</p>
+                            <h3>Movimiento con propósito</h3>
+                            <p>Usa el tiempo y la geometría para explicar un cambio.</p>
+                            <a class="button" href="#tema-motion">
+                                Ver contenido
+                            </a>
+                        </article>
+                    </div>
+
+                    <div class="tile">
+                        <article class="card">
+                            <p class="eyebrow">Taller 03</p>
+                            <h3>Acceso y compatibilidad</h3>
+                            <p>Comprueba teclado, preferencias y presentación básica.</p>
+                            <a class="button" href="#tema-acceso">
+                                Ver contenido
+                            </a>
+                        </article>
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="readings" aria-labelledby="lecturas">
+
+                <h2 id="lecturas">Contenidos de los talleres</h2>
+
+                <h3 id="tema-layout">Interfaces responsivas</h3>
+                <p>Una distribución flexible conserva la lectura en móvil y escritorio.</p>
+
+                <h3 id="tema-motion">Movimiento con propósito</h3>
+                <p>La persona controla las secuencias y mantiene acceso al contenido.</p>
+
+                <h3 id="tema-acceso">Acceso y compatibilidad</h3>
+                <p>El foco y los enlaces funcionan aunque no haya movimiento.</p>
+
+            </section>
+
+        </div>
+
+    </main>
+
+    <footer class="wrap site-footer">
+        <p>Proyecto educativo. Los enlaces llevan a contenidos de esta página.</p>
+    </footer>
+
+</body>
+</html>
