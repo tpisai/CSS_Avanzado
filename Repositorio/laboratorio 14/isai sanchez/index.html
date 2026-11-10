@@ -1,0 +1,143 @@
+<!doctype html> 
+<html lang="es"> 
+<head> 
+  <meta charset="utf-8"> 
+  <meta name="viewport" content="width=device-width, initial-scale=1"> 
+  <title>FrameworkLab | Talleres de desarrollo web</title> 
+  <link rel="stylesheet" href="vendor/bootstrap.min.css"> 
+  <link rel="stylesheet" href="css/ajustes.css"> 
+</head> 
+<body class="lab14"> 
+  <a class="skip-link visually-hidden-focusable" href="#contenido"> 
+    Saltar al contenido 
+  </a> 
+  <header class="border-bottom bg-white"> 
+    <nav class="navbar navbar-expand-lg" aria-label="Navegación principal"> 
+      <div class="container"> 
+        <a class="navbar-brand fw-bold" href="#inicio">FrameworkLab</a> 
+        <button class="navbar-toggler" type="button" 
+          data-bs-toggle="collapse" data-bs-target="#menu-principal" 
+          aria-controls="menu-principal" aria-expanded="false" 
+          aria-label="Mostrar u ocultar el menú"> 
+          <span class="navbar-toggler-icon" aria-hidden="true"></span> 
+        </button> 
+        <div class="collapse navbar-collapse" id="menu-principal"> 
+          <ul class="navbar-nav ms-auto"> 
+            <li class="nav-item"> 
+              <a class="nav-link" href="#talleres">Talleres</a> 
+            </li> 
+            <li class="nav-item"> 
+              <a class="nav-link" href="#lecturas">Lecturas</a> 
+            </li> 
+          </ul> 
+        </div> 
+      </div> 
+    </nav> 
+  </header> 
+  
+  <main id="contenido" class="container py-4 py-lg-5" tabindex="-1"> 
+    <section class="hero-panel rounded-4 p-4 p-lg-5 mb-5" 
+      aria-labelledby="inicio"> 
+      <p class="small text-uppercase fw-semibold mb-2">Semana 14</p> 
+      <h1 id="inicio" class="display-5 fw-bold">Talleres de desarrollo web</h1> 
+      <p class="lead lab-intro">Explora diseño responsivo, componentes 
+        reutilizables y formas de comprobar que una interfaz funciona.</p> 
+      <button class="btn btn-light" type="button" 
+        data-bs-toggle="modal" data-bs-target="#guia-entrega"> 
+        Ver criterios de entrega 
+      </button> 
+    </section> 
+  <section class="mb-5" aria-labelledby="talleres"> 
+      <h2 id="talleres" class="mb-3">Explora los talleres</h2> 
+      <div class="row g-4"> 
+        <div class="col-12 col-md-6 col-lg-4"> 
+          <article class="card h-100" aria-labelledby="taller-01"> 
+            <div class="card-body d-flex flex-column"> 
+              <p class="mb-2"><span class="badge text-bg-light">Taller 01</span></p> 
+              <h3 id="taller-01" class="card-title h5">Diseño responsivo</h3> 
+              <p class="card-text">Organiza columnas con Grid o con 
+                clases de una rejilla.</p> 
+              <a class="btn btn-primary mt-auto align-self-start" 
+                href="#tema-layout">Leer sobre diseño</a> 
+            </div> 
+          </article> 
+        </div> 
+        <div class="col-12 col-md-6 col-lg-4"> 
+          <article class="card h-100" aria-labelledby="taller-02"> 
+            <div class="card-body d-flex flex-column"> 
+              <p class="mb-2"><span class="badge text-bg-light">Taller 02</span></p> 
+              <h3 id="taller-02" class="card-title h5">Componentes reutilizables</h3> 
+              <p class="card-text">Repite una estructura de tarjeta 
+                con estilos consistentes.</p> 
+              <a class="btn btn-primary mt-auto align-self-start" 
+                href="#tema-componentes">Leer sobre componentes</a> 
+            </div> 
+          </article> 
+        </div> 
+        <div class="col-12 col-md-6 col-lg-4"> 
+          <article class="card h-100" aria-labelledby="taller-03"> 
+            <div class="card-body d-flex flex-column"> 
+              <p class="mb-2"><span class="badge text-bg-light">Taller 03</span></p> 
+              <h3 id="taller-03" class="card-title h5">Acceso y mantenimiento</h3> 
+              <p class="card-text">Comprueba foco, lectura y cambios 
+                sin editar dependencias.</p> 
+              <a class="btn btn-primary mt-auto align-self-start" 
+                href="#tema-acceso">Leer sobre accesibilidad</a> 
+            </div> 
+          </article> 
+        </div> 
+        <div class="col-12 col-md-6 col-lg-4"> 
+          <article class="card h-100" aria-labelledby="taller-04"> 
+            <div class="card-body d-flex flex-column"> 
+              <p class="mb-2"><span class="badge text-bg-light">Taller 04</span></p> 
+              <h3 id="taller-04" class="card-title h5">Variables CSS y temas</h3> 
+              <p class="card-text">Utiliza variables CSS para gestionar colores, tipografías y espaciados de manera consistente.</p> 
+              <a class="btn btn-primary mt-auto align-self-start" 
+                href="#guia-entrega" data-bs-toggle="modal">Identificar variables de CSS</a> 
+            </div> 
+          </article>
+
+        </div>
+      </div> 
+    </section> 
+ <section aria-labelledby="lecturas"> 
+      <h2 id="lecturas">Lecturas de los talleres</h2> 
+      <h3 id="tema-layout" class="h5 mt-3">Diseño responsivo</h3> 
+      <p>El contenido se organiza para distintos anchos de pantalla.</p> 
+      <h3 id="tema-componentes" class="h5 mt-3">Componentes reutilizables</h3> 
+      <p>Una tarjeta repetible conserva jerarquía, separación y enlaces.</p> 
+      <h3 id="tema-acceso" class="h5 mt-3">Acceso y mantenimiento</h3> 
+      <p>El foco visible y las rutas correctas se comprueban en cada versión.</p> 
+    </section> 
+  </main> 
+  <div class="modal fade" id="guia-entrega" tabindex="-1" 
+    aria-labelledby="titulo-entrega" aria-hidden="true"> 
+    <div class="modal-dialog modal-dialog-centered"> 
+      <div class="modal-content"> 
+        <div class="modal-header"> 
+          <h2 id="titulo-entrega" class="modal-title fs-5">Criterios de entrega</h2> 
+          <button class="btn-close" type="button" data-bs-dismiss="modal" 
+            aria-label="Cerrar diálogo"></button> 
+        </div> 
+        <div class="modal-body"> 
+          <ol class="mb-0"> 
+            <li>Comprueba el catálogo en tres anchos.</li> 
+            <li>Recorre el menú, los enlaces y el diálogo con teclado.</li> 
+            <li>Explica una decisión de diseño con evidencia.</li> 
+          </ol> 
+        </div> 
+        <div class="modal-footer"> 
+          <button class="btn btn-primary" type="button" 
+            data-bs-dismiss="modal">Entendido</button> 
+        </div> 
+      </div> 
+    </div> 
+  </div> 
+  
+  <footer class="container border-top py-3"> 
+    <p class="mb-1">FrameworkLab · Laboratorio de Hojas de Estilo en Cascada</p> 
+    <a href="#inicio">Volver al inicio</a> 
+  </footer> 
+  <script src="vendor/bootstrap.bundle.min.js"></script>
+</body> 
+</html>
