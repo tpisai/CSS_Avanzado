@@ -1,0 +1,10 @@
+@import "tailwindcss" source(none);
+
+@source "./index.html";
+
+@theme { 
+    --color-marca-50: #ecf9f7; 
+    --color-marca-700: #0f6b68; 
+    --color-marca-800: #095451; 
+    --color-marca-950: #123432; 
+}
