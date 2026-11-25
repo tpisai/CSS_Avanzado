@@ -1,0 +1,51 @@
+/* Personalización del proyecto después del framework */
+.demo13 {
+  color: #14283f;
+  background: #f2f5f9;
+}
+
+.demo13 .eyebrow {
+  color: #42566d;
+  font-weight: 700;
+}
+
+.demo13 nav a { color: #164b8c; }
+
+.demo13 nav a[aria-current="page"] { font-weight: 700; }
+
+.demo13 a:focus, .demo13 main:focus {
+  outline: 3px solid #8b3600;
+  outline-offset: 4px;
+}
+
+.demo13 .skip-link {
+  position: absolute;
+  top: -5rem;
+  left: 1rem;
+  z-index: 10;
+  padding: 0.6rem 1rem;
+  background: white;
+}
+
+.demo13 .skip-link:focus { top: 1rem; }
+
+.demo13 .card { --bs-card-border-color: #b9c6d5; }
+
+.demo13 .card-title, .demo13 .card-text {
+  overflow-wrap: break-word;
+}
+
+.demo13 .btn-primary {
+  --bs-btn-bg: #164b8c;
+  --bs-btn-border-color: #164b8c;
+  --bs-btn-hover-bg: #103766;
+  --bs-btn-hover-border-color: #103766;
+  --bs-btn-active-bg: #0a274d;
+  --bs-btn-active-border-color: #0a274d;
+  max-width: 100%;
+  overflow-wrap: break-word;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .demo13 .btn { transition: none; }
+}
