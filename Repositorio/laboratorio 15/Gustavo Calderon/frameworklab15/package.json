@@ -1,0 +1,16 @@
+{
+    "name":"frameworklab15",
+    "version":"1.0.0",
+    "private":true,
+    "scripts":{
+        "dev":"tailwindcss -i ./src/entrada.css -o ./dist/estilos.css --watch",
+        "build":"tailwindcss -i ./src/entrada.css -o ./dist/estilos.css --minify"
+    },
+    "devDependencies":{
+        "@tailwindcss/cli":"4.3.0",
+        "tailwindcss":"^4.3.0"
+    },
+    "dependencies":{
+        "@tailwindcss/vite":"^4.3.5"
+    }
+}

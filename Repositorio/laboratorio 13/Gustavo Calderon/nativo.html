@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FrameworkLab | CSS propio</title>
+  <link rel="stylesheet" href="css/nativo.css">
+</head>
+<body class="native13">
+  <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+  <header class="wrap site-header">
+    <p class="eyebrow">CSS Avanzado · Semana 13</p>
+    <h1>FrameworkLab</h1>
+    <p>El mismo catálogo construido con dos estrategias de estilos.</p>
+    <nav class="version-nav" aria-label="Versiones del catálogo">
+      <a href="nativo.html" aria-current="page">CSS propio</a>
+      <a href="framework.html">Bootstrap</a>
+    </nav>
+  </header>
+
+  <main id="contenido" class="wrap" tabindex="-1">
+    <section aria-labelledby="catalogo">
+      <h2 id="catalogo">Talleres de desarrollo web</h2>
+      <p>Versión de esta página: CSS propio. Consulta cada contenido.</p>
+
+      <div class="catalogo">
+        <article class="demo-card">
+          <div class="demo-body">
+            <p class="eyebrow">Taller 01</p>
+            <h3 class="demo-title">Diseño responsivo</h3>
+            <p>Organiza columnas con Grid o con clases de una rejilla.</p>
+            <a class="demo-button" href="#tema-layout">Ver contenido</a>
+          </div>
+        </article>
+
+        <article class="demo-card">
+          <div class="demo-body">
+            <p class="eyebrow">Taller 02</p>
+            <h3 class="demo-title">Componentes reutilizables</h3>
+            <p>Repite una estructura de tarjeta con estilos consistentes.</p>
+            <a class="demo-button" href="#tema-componentes">Ver contenido</a>
+          </div>
+        </article>
+
+        <article class="demo-card">
+          <div class="demo-body">
+            <p class="eyebrow">Taller 03</p>
+            <h3 class="demo-title">Acceso y mantenimiento</h3>
+            <p>Comprueba foco, lectura y cambios sin editar dependencias.</p>
+            <a class="demo-button" href="#tema-acceso">Ver contenido</a>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="readings" aria-labelledby="lecturas">
+      <h2 id="lecturas">Contenidos de los talleres</h2>
+
+      <article>
+        <h3 id="tema-layout">Diseño responsivo</h3>
+        <p>Una interfaz responsiva adapta la distribución del contenido al espacio disponible. En esta versión se utiliza CSS Grid para organizar las tarjetas en una, dos o tres columnas.</p>
+      </article>
+
+      <article>
+        <h3 id="tema-componentes">Componentes reutilizables</h3>
+        <p>Una tarjeta reúne una estructura de contenido y un conjunto de reglas visuales. Reutilizar el mismo patrón permite mantener una presentación coherente y facilita los cambios.</p>
+      </article>
+
+      <article>
+        <h3 id="tema-acceso">Acceso y mantenimiento</h3>
+        <p>El contenido debe poder recorrerse con teclado, conservar un foco visible y seguir siendo legible al ampliar la página. Separar los estilos del HTML facilita su mantenimiento.</p>
+      </article>
+    </section>
+  </main>
+
+  <footer class="wrap site-footer">
+    <p>FrameworkLab · Laboratorio 13 · CSS Avanzado</p>
+  </footer>
+</body>
+</html>
