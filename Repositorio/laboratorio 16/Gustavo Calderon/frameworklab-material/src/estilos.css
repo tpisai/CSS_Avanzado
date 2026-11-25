@@ -1,0 +1,109 @@
+/* 1. Tokens semánticos: base didáctica inspirada en Material 3. */ 
+:root { 
+  color-scheme: light; 
+  font-family: Roboto, system-ui, sans-serif; 
+  --md-sys-color-primary: #006a6a; 
+  --md-sys-color-on-primary: #ffffff; 
+  --md-sys-color-primary-container: #6ff7f6; 
+  --md-sys-color-on-primary-container: #002020; 
+  --md-sys-color-background: #f5fbfa; 
+  --md-sys-color-on-background: #191c1c; 
+  --md-sys-color-surface: #f5fbfa; 
+  --md-sys-color-on-surface: #191c1c; 
+  --md-sys-color-surface-container: #e9efee; 
+  --md-sys-color-on-surface-variant: #3f4948; 
+  --md-sys-color-secondary-container: #cce8e7; 
+  --md-sys-color-on-secondary-container: #051f1f; 
+  --md-sys-color-outline: #6f7979; 
+  --espacio: 1rem; 
+  --radio-tarjeta: 1.5rem; 
+  --taller-borde: var(--md-sys-color-outline); 
+} 
+  
+/* 2. Tema oscuro: cambia roles; no reescribe componentes. */ 
+:root[data-theme="dark"] { 
+  color-scheme: dark; 
+  --md-sys-color-primary: #4cdada; 
+  --md-sys-color-on-primary: #003737; 
+  --md-sys-color-primary-container: #005050; 
+  --md-sys-color-on-primary-container: #6ff7f6; 
+  --md-sys-color-background: #101918; 
+  --md-sys-color-on-background: #dfeae8; 
+  --md-sys-color-surface: #101918; 
+  --md-sys-color-on-surface: #dfeae8; 
+  --md-sys-color-surface-container: #253230; 
+  --md-sys-color-on-surface-variant: #c1cfcd; 
+  --md-sys-color-secondary-container: #334b49; 
+  --md-sys-color-on-secondary-container: #cce8e7; 
+  --md-sys-color-outline: #91a19e;
+  --taller-borde: var(--md-sys-color-outline); 
+} 
+  
+/* 3. Estructura y estilo visual propios. */ 
+* { box-sizing: border-box; } 
+body { 
+  margin: 0; 
+  background: var(--md-sys-color-background); 
+  color: var(--md-sys-color-on-background); 
+  line-height: 1.55; 
+} 
+button, md-filled-button, md-outlined-button, md-text-button { 
+  font: inherit; 
+} 
+[hidden] { display: none !important; } 
+.envoltura { width: min(100% - 2rem, 70rem); margin-inline: auto; } 
+.salto { 
+  position: absolute; left: 1rem; top: -5rem; z-index: 10; 
+  padding: .65rem 1rem; background: var(--md-sys-color-primary); 
+  color: var(--md-sys-color-on-primary); 
+} 
+.salto:focus { top: .5rem; } 
+.cabecera { 
+  padding: 2rem 0; 
+  background: var(--md-sys-color-primary-container); 
+  color: var(--md-sys-color-on-primary-container); 
+} 
+.cabecera-interior { display: flex; gap: 1rem; 
+  align-items: center; justify-content: space-between; flex-wrap: wrap; } 
+.marca, .sobretitulo { font-size: .78rem; letter-spacing: .09em; 
+  text-transform: uppercase; font-weight: 700; } 
+h1 { font-size: clamp(1.9rem, 5vw, 3.1rem); line-height: 1.14; 
+  margin: .45rem 0; } 
+h2 { font-size: clamp(1.5rem, 3vw, 2rem); margin: .3rem 0; } 
+h3 { font-size: 1.2rem; margin: .7rem 0 .4rem; } 
+p { margin: .4rem 0 .8rem; } 
+.subtitulo { max-width: 40ch; } 
+.introduccion { display: flex; gap: 1.5rem; align-items: end; 
+  justify-content: space-between; flex-wrap: wrap; padding: 2rem 0 1.5rem; } 
+#buscar { width: min(100%, 22rem); } 
+.rejilla { display: grid; grid-template-columns: 1fr; gap: var(--espacio); } 
+.tarjeta { display: flex; flex-direction: column; min-width: 0; 
+  background: var(--md-sys-color-surface-container); 
+  border-radius: var(--radio-tarjeta); padding: 1.4rem; 
+  border: 1px solid var(--taller-borde); } 
+.tarjeta p { flex: 1; color: var(--md-sys-color-on-surface-variant); } 
+.etiqueta { align-self: start; padding: .2rem .65rem; border-radius: 999px; 
+  background: var(--md-sys-color-secondary-container); 
+  color: var(--md-sys-color-on-secondary-container); 
+  font-weight: 650; font-size: .82rem; } 
+.tarjeta-acciones { display: flex; flex-wrap: wrap; gap: .6rem; margin-top: 1rem; } 
+.estado, .vacio { margin: 1.6rem 0; padding: 1rem 1.2rem; 
+  border-radius: 1rem; background: var(--md-sys-color-surface-container); } 
+.enlace-taller { align-self: start; margin-top: 1rem; 
+  color: var(--md-sys-color-primary); font-weight: 650; } 
+.notas { margin: 2rem 0; padding: 1.5rem; border-radius: 1.5rem; 
+  background: var(--md-sys-color-surface-container); } 
+.notas section { margin-top: 1rem; scroll-margin-top: 1.5rem; } 
+md-dialog { max-width: min(92vw, 30rem); } 
+:focus-visible { outline: 3px solid var(--md-sys-color-primary); 
+  outline-offset: 3px; } 
+@media (min-width: 42rem) { 
+  .rejilla { grid-template-columns: repeat(2, minmax(0, 1fr)); } 
+} 
+@media (min-width: 62rem) { 
+  .rejilla { grid-template-columns: repeat(3, minmax(0, 1fr)); } 
+} 
+@media (prefers-reduced-motion: no-preference) { 
+  .tarjeta { transition: transform 160ms ease; } 
+  .tarjeta:hover { transform: translateY(-3px); } 
+}
