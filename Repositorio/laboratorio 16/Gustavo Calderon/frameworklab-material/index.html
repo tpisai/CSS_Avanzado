@@ -1,0 +1,119 @@
+<!doctype html> 
+<html lang="es"> 
+<head> 
+  <meta charset="UTF-8" /> 
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
+  <meta name="description" content="Catálogo FrameworkLab con Material Design 3" /> 
+  <title>FrameworkLab | Material Design 3</title> 
+  <link rel="stylesheet" href="/src/estilos.css" /> 
+</head> 
+<body> 
+  <a class="salto" href="#contenido">Saltar al contenido</a> 
+  <header class="cabecera"> 
+    <div class="envoltura cabecera-interior"> 
+      <div> 
+        <p class="marca">FrameworkLab · Unidad 4</p> 
+        <h1>Explora nuestros talleres</h1> 
+        <p class="subtitulo">Cuatro experiencias. Una interfaz adaptable.</p> 
+      </div> 
+      <md-outlined-button id="cambiar-tema">Tema oscuro</md-outlined-button> 
+    </div> 
+  </header> 
+  
+  <main id="contenido" class="envoltura"> 
+    <section class="introduccion" aria-labelledby="catalogo-titulo"> 
+      <div> 
+        <p class="sobretitulo">Material Design 3</p> 
+        <h2 id="catalogo-titulo">Catálogo de talleres</h2> 
+        <p>Compara decisiones de color, forma y componentes.</p> 
+      </div> 
+      <md-outlined-text-field 
+        id="buscar" type="search" label="Buscar taller" 
+        supporting-text="Filtra por tema o palabra clave"> 
+      </md-outlined-text-field> 
+    </section> 
+  
+    <section class="rejilla" aria-label="Lista de talleres"> 
+      <article class="tarjeta" data-palabras="diseño responsivo rejilla layout"> 
+        <span class="etiqueta">Diseño</span> 
+        <h3>Diseño responsivo</h3> 
+        <p>Organiza el catálogo con una rejilla que cambia según el ancho.</p> 
+        <div class="tarjeta-acciones"> 
+          <md-outlined-button class="detalle">Ver detalles</md-outlined-button> 
+          <md-filled-button class="inscribir">Inscribirme</md-filled-button> 
+        </div> 
+        <a class="enlace-taller" href="#tema-layout">Leer sobre diseño</a> 
+      </article> 
+  
+      <article class="tarjeta" data-palabras="componentes reutilizables utilidades consistencia"> 
+        <span class="etiqueta">Componentes</span> 
+        <h3>Componentes reutilizables</h3> 
+        <p>Combina utilidades para mantener una estructura coherente.</p> 
+        <div class="tarjeta-acciones"> 
+          <md-outlined-button class="detalle">Ver detalles</md-outlined-button> 
+          <md-filled-button class="inscribir">Inscribirme</md-filled-button> 
+        </div> 
+        <a class="enlace-taller" href="#tema-componentes">Leer sobre componentes</a> 
+      </article> 
+  
+      <article class="tarjeta" data-palabras="acceso mantenimiento foco paleta accesibilidad"> 
+        <span class="etiqueta">Accesibilidad</span> 
+        <h3>Acceso y mantenimiento</h3> 
+        <p>Comprueba el foco visible y mantén la paleta en un solo archivo.</p> 
+        <div class="tarjeta-acciones"> 
+          <md-outlined-button class="detalle">Ver detalles</md-outlined-button> 
+          <md-filled-button class="inscribir">Inscribirme</md-filled-button> 
+        </div> 
+        <a class="enlace-taller" href="#tema-acceso">Leer sobre accesibilidad</a> 
+      </article> 
+      <article class="tarjeta" data-palabras="variables css temas tokens paleta claro oscuro"> 
+        <span class="etiqueta">CSS</span> 
+        <h3>Variables CSS y temas</h3> 
+        <p>Define tokens semánticos y de componente para adaptar la interfaz a cada tema.</p> 
+        <div class="tarjeta-acciones"> 
+          <md-outlined-button class="detalle">Ver detalles</md-outlined-button> 
+          <md-filled-button class="inscribir">Inscribirme</md-filled-button> 
+        </div> 
+        <a class="enlace-taller" href="#tema-variables">Leer sobre variables</a> 
+      </article> 
+    </section> 
+  
+    <p id="sin-resultados" class="vacio" hidden> 
+      No hay talleres que coincidan con la búsqueda. 
+    </p> 
+    <p id="estado" class="estado" role="status" aria-live="polite"> 
+      Aún no hay inscripciones en esta sesión. 
+    </p> 
+  
+    <section class="notas" aria-labelledby="notas-titulo"> 
+      <h2 id="notas-titulo">Lecturas breves por taller</h2> 
+      <section id="tema-layout"> 
+        <h3>Diseño responsivo</h3> 
+        <p>Una misma estructura debe adaptarse a pantallas pequeñas y grandes.</p> 
+      </section> 
+      <section id="tema-componentes"> 
+        <h3>Componentes reutilizables</h3> 
+        <p>Un patrón compartido reduce duplicación y facilita la revisión.</p> 
+      </section> 
+      <section id="tema-acceso"> 
+        <h3>Acceso y mantenimiento</h3> 
+        <p>El foco y los tokens ayudan a conservar interfaces operables.</p> 
+      </section>
+      <section id="tema-variables">
+        <h3>Variables CSS y temas</h3>
+        <p>Los tokens semánticos <code>--md-sys-color-surface-container</code> y <code>--md-sys-color-on-surface</code> ajustan fondo y texto según el tema. Elegí <code>--taller-borde</code> como token de componente para poder modificar el borde de las tarjetas sin alterar el resto de superficies; centralizarlo reduce deuda técnica al evitar estilos duplicados.</p>
+      </section> 
+    </section> 
+  </main> 
+  
+  <md-dialog id="dialogo"> 
+    <div slot="headline" id="dialogo-titulo">Detalle del taller</div> 
+    <div slot="content" id="dialogo-contenido"></div> 
+    <div slot="actions"> 
+      <md-text-button id="cerrar-dialogo">Cerrar</md-text-button> 
+    </div> 
+  </md-dialog> 
+  
+  <script type="module" src="/src/main.js"></script> 
+</body> 
+</html>
