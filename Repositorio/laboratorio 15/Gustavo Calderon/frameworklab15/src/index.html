@@ -1,0 +1,151 @@
+<!doctype html> 
+<html lang="es"> 
+<head> 
+<meta charset="utf-8"> 
+<meta name="viewport" content="width=device-width, initial-scale=1"> 
+<title>FrameworkLab | Semana 15</title> 
+<link rel="stylesheet" href="../dist/estilos.css"> 
+</head> 
+<body class="bg-slate-50 text-slate-900"> 
+<a href="#contenido" 
+class="sr-only focus:not-sr-only focus:absolute focus:top-3 
+focus:left-3 focus:z-10 focus:rounded-md focus:bg-white 
+focus:px-4 focus:py-2 focus:outline-2 focus:outline-marca-800"> 
+Saltar al contenido 
+</a> 
+<header class="border-b border-slate-200 bg-white"> 
+<div class="mx-auto flex max-w-6xl flex-wrap items-center 
+justify-between gap-3 px-4 py-4 sm:px-6"> 
+<span class="font-bold text-marca-950">FrameworkLab</span> 
+<nav aria-label="Navegación principal" class="flex flex-wrap gap-4"> 
+<a href="#talleres" class="underline underline-offset-4 
+focus-visible:outline-2 focus-visible:outline-offset-4 
+          focus-visible:outline-marca-800">Talleres</a> 
+        <a href="#lecturas" class="underline underline-offset-4 
+          focus-visible:outline-2 focus-visible:outline-offset-4 
+          focus-visible:outline-marca-800">Lecturas</a> 
+      </nav> 
+    </div> 
+  </header> 
+ 
+  <main id="contenido" tabindex="-1" 
+    class="mx-auto max-w-6xl px-4 py-6 sm:px-6 lg:py-10"> 
+    <section aria-labelledby="inicio" 
+      class="mb-8 rounded-2xl bg-marca-950 p-5 text-white sm:p-8"> 
+      <p class="mb-2 text-sm font-semibold text-marca-50">Semana 15</p> 
+      <h1 id="inicio" class="text-3xl font-bold sm:text-4xl"> 
+        Talleres de desarrollo web 
+      </h1> 
+      <p class="mt-3 max-w-prose leading-relaxed"> 
+        Construye una interfaz adaptable con utilidades de Tailwind CSS. 
+      </p> 
+    </section> 
+ 
+    <section aria-labelledby="talleres" class="mb-8"> 
+      <h2 id="talleres" class="mb-4 text-2xl font-bold">Explora los talleres</h2> 
+      <div class="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3"> 
+        <article aria-labelledby="taller-diseno" 
+          class="flex flex-col rounded-xl border border-slate-200 
+            bg-white p-5"> 
+          <p class="mb-2 self-start rounded-full bg-marca-50 px-3 py-1 
+            text-sm font-semibold text-marca-950">Taller 01</p> 
+          <h3 id="taller-diseno" class="mb-2 text-lg font-semibold"> 
+            Diseño responsivo 
+          </h3> 
+          <p class="mb-4 text-slate-700"> 
+            Organiza el catálogo con una rejilla que cambia según el ancho. 
+          </p> 
+          <a href="#tema-layout" 
+            class="mt-auto self-start rounded-lg bg-marca-700 px-4 py-2 
+              font-semibold text-white hover:bg-marca-800 
+              focus-visible:outline-2 focus-visible:outline-offset-4 
+              focus-visible:outline-marca-800 motion-safe:transition-colors"> 
+            Leer sobre diseño 
+          </a> 
+        </article> 
+ 
+        <article aria-labelledby="taller-componentes" 
+          class="flex flex-col rounded-xl border border-slate-200 
+            bg-white p-5"> 
+          <p class="mb-2 self-start rounded-full bg-marca-50 px-3 py-1 
+            text-sm font-semibold text-marca-950">Taller 02</p> 
+          <h3 id="taller-componentes" class="mb-2 text-lg font-semibold"> 
+            Componentes reutilizables 
+          </h3> 
+          <p class="mb-4 text-slate-700"> 
+            Combina utilidades para mantener una estructura coherente. 
+          </p> 
+          <a href="#tema-componentes" 
+            class="mt-auto self-start rounded-lg bg-marca-700 px-4 py-2 
+              font-semibold text-white hover:bg-marca-800 
+              focus-visible:outline-2 focus-visible:outline-offset-4 
+              focus-visible:outline-marca-800 motion-safe:transition-colors"> 
+            Leer sobre componentes 
+          </a> 
+        </article> 
+ 
+        <article aria-labelledby="taller-acceso" 
+          class="flex flex-col rounded-xl border border-slate-200 
+            bg-white p-5"> 
+          <p class="mb-2 self-start rounded-full bg-marca-50 px-3 py-1 
+            text-sm font-semibold text-marca-950">Taller 03</p> 
+          <h3 id="taller-acceso" class="mb-2 text-lg font-semibold"> 
+            Acceso y mantenimiento 
+          </h3> 
+          <p class="mb-4 text-slate-700"> 
+            Comprueba el foco visible y mantén la paleta en un solo archivo. 
+          </p> 
+          <a href="#tema-acceso" 
+            class="mt-auto self-start rounded-lg bg-marca-700 px-4 py-2 
+              font-semibold text-white hover:bg-marca-800 
+              focus-visible:outline-2 focus-visible:outline-offset-4 
+              focus-visible:outline-marca-800 motion-safe:transition-colors"> 
+            Leer sobre accesibilidad 
+          </a> 
+        </article> 
+      </div> 
+    </section> 
+ 
+    <section aria-labelledby="lecturas" class="mb-8 space-y-4"> 
+      <h2 id="lecturas" class="text-2xl font-bold">Lecturas de los talleres</h2> 
+      <div> 
+        <h3 id="tema-layout" class="text-lg font-semibold">Diseño responsivo</h3> 
+        <p class="text-slate-700">La rejilla define cuántas tarjetas caben 
+          en cada fila y las envía a la siguiente cuando corresponde.</p> 
+      </div> 
+      <div> 
+        <h3 id="tema-componentes" class="text-lg font-semibold"> 
+          Componentes reutilizables 
+        </h3> 
+        <p class="text-slate-700">Todas las tarjetas conservan el mismo 
+          orden: identificador, título, descripción y enlace de lectura.</p> 
+      </div> 
+      <div> 
+        <h3 id="tema-acceso" class="text-lg font-semibold"> 
+          Acceso y mantenimiento 
+        </h3> 
+        <p class="text-slate-700">La navegación por teclado debe permitir 
+          distinguir el foco y llegar a las mismas lecturas.</p> 
+      </div> 
+    </section> 
+ 
+    <details class="rounded-xl border border-slate-200 bg-white p-4 
+      open:bg-marca-50"> 
+      <summary class="cursor-pointer rounded-sm font-semibold 
+        focus-visible:outline-2 focus-visible:outline-offset-4 
+        focus-visible:outline-marca-800">Criterios de entrega</summary> 
+      <ul class="mt-3 list-disc space-y-1 pl-5 text-slate-800"> 
+        <li>Comprueba una, dos y tres columnas.</li> 
+<li>Recorre los enlaces y abre el panel con el teclado.</li> 
+<li>Explica el cambio de un color con evidencia.</li> 
+</ul> 
+</details> 
+</main> 
+<footer class="mx-auto max-w-6xl border-t border-slate-200 
+px-4 py-4 sm:px-6"> 
+<a href="#inicio" class="underline underline-offset-4 
+focus-visible:outline-2 focus-visible:outline-offset-4 
+focus-visible:outline-marca-800">Volver al inicio</a> 
+</footer> 
+</body> 
+</html>
