@@ -5,6 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Carrito de compras de STREET HYPE">
   <title>STREETHYPE | Carrito</title>
+  <!-- Tailwind se usa únicamente en el flujo de compra de Gustavo. -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      corePlugins: { preflight: false }
+    };
+  </script>
   <link rel="stylesheet" href="../css/base.css">
   <link rel="stylesheet" href="../css/carrito.css">
 </head>
@@ -50,6 +57,12 @@
     <h1 class="page-title">Tu selección<br>para la calle.</h1>
     <p class="page-intro">Este es el segundo avance del carrito. Ya puedes agregar prendas, modificar cantidades y conservar tu selección mientras navegas.</p>
 
+    <nav class="mt-8 grid grid-cols-3 overflow-hidden border border-black bg-white text-center text-xs font-black uppercase tracking-wider" aria-label="Progreso de compra">
+      <span class="bg-black px-3 py-3 text-white" aria-current="step">1. Carrito</span>
+      <span class="border-l border-black px-3 py-3 text-neutral-500">2. Pago</span>
+      <span class="border-l border-black px-3 py-3 text-neutral-500">3. Confirmación</span>
+    </nav>
+
     <div class="cart-layout">
       <section class="cart-list" aria-labelledby="cart-title">
         <div class="list-heading">
@@ -81,6 +94,16 @@
         <div class="summary-row total-row">
           <span>Total</span>
           <strong id="total">S/ 0.00</strong>
+        </div>
+        <div class="mt-6 border-t border-black pt-4 text-xs font-bold uppercase tracking-wider" role="status" aria-live="polite">
+          <div class="mb-2 flex items-center justify-between gap-4">
+            <span>Progreso de envío gratis</span>
+            <strong id="shipping-progress-label">S/ 0.00 / S/ 399.00</strong>
+          </div>
+          <div class="h-2 overflow-hidden border border-black bg-white" aria-hidden="true">
+            <span id="shipping-progress-bar" class="block h-full bg-lime-300 transition-all duration-500 ease-out" style="width: 0%"></span>
+          </div>
+          <p id="shipping-progress-message" class="mt-2 normal-case font-normal tracking-normal text-neutral-600">Agrega productos para activar el envío gratis.</p>
         </div>
         <button id="checkout-button" class="checkout-button" type="button" disabled>Proceder al pago</button>
         <p class="summary-note">Envío gratis en compras desde S/ 399.00.</p>
