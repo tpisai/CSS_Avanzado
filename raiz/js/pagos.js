@@ -15,7 +15,9 @@
     const successMessage = document.querySelector("#success-message");
     const paymentLayout = document.querySelector(".payment-layout");
     const orderReference = document.querySelector("#order-reference");
+    const successTotal = document.querySelector("#success-total");
 
+    const cardName = document.querySelector("#card-name");
     const cardNumber = document.querySelector("#card-number");
     const expiry = document.querySelector("#expiry");
     const cvv = document.querySelector("#cvv");
@@ -110,6 +112,25 @@
             : SHIPPING_COST;
     }
 
+    function passesLuhnCheck(digits) {
+        let sum = 0;
+        let doubleDigit = false;
+
+        for (let index = digits.length - 1; index >= 0; index -= 1) {
+            let digit = Number(digits[index]);
+
+            if (doubleDigit) {
+                digit *= 2;
+                if (digit > 9) digit -= 9;
+            }
+
+            sum += digit;
+            doubleDigit = !doubleDigit;
+        }
+
+        return sum % 10 === 0;
+    }
+
     function renderOrder() {
         const cart = getCart();
 
@@ -182,6 +203,10 @@
         payButton.disabled = false;
     }
 
+    cardName?.addEventListener("input", () => {
+        cardName.setCustomValidity("");
+    });
+
     // Formato del número de tarjeta para la demostración.
     cardNumber?.addEventListener("input", () => {
         cardNumber.setCustomValidity("");
@@ -220,11 +245,31 @@
     function validarTarjeta() {
         const digits = cardNumber?.value.replace(/\D/g, "") || "";
 
+        const holderName = cardName?.value.trim() || "";
+
+        if (!cardName || !/^[A-Za-zÁÉÍÓÚÜÑáéíóúüñ' -]{3,}$/.test(holderName)) {
+            cardName?.setCustomValidity(
+                "Ingresa el nombre completo del titular."
+            );
+            cardName?.reportValidity();
+            return false;
+        }
+
+        cardName.setCustomValidity("");
+
         if (!cardNumber || ![15, 16].includes(digits.length)) {
             cardNumber?.setCustomValidity(
                 "Ingresa 15 o 16 dígitos para la demostración."
             );
             cardNumber?.reportValidity();
+            return false;
+        }
+
+        if (!passesLuhnCheck(digits)) {
+            cardNumber.setCustomValidity(
+                "Revisa el número de tarjeta de demostración."
+            );
+            cardNumber.reportValidity();
             return false;
         }
 
@@ -276,7 +321,9 @@
         event.preventDefault();
 
         // No se permite confirmar una compra sin productos.
-        if (getCart().length === 0) {
+        const cart = getCart();
+
+        if (cart.length === 0) {
             renderOrder();
             return;
         }
@@ -285,13 +332,21 @@
             return;
         }
 
+        const subtotal = getSubtotal(cart);
+        const total = subtotal + getShipping(subtotal);
+        const reference = createOrderReference();
+
         // Demostración académica: no se envían ni guardan datos bancarios.
         localStorage.removeItem(STORAGE_KEY);
 
         form.reset();
 
         if (orderReference) {
-            orderReference.textContent = createOrderReference();
+            orderReference.textContent = reference;
+        }
+
+        if (successTotal) {
+            successTotal.textContent = `Total de demostración: ${money(total)}`;
         }
 
         if (paymentLayout) {
