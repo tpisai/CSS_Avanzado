@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="Finaliza tu compra en STREET HYPE. Pago de demostración académica.">
     <title>STREETHYPE | Pago</title>
+    <!-- Tailwind se usa únicamente en el flujo de compra de Gustavo. -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            corePlugins: { preflight: false }
+        };
+    </script>
     <link rel="stylesheet" href="../css/base.css">
     <link rel="stylesheet" href="../css/pagos.css">
     <script src="../js/pagos.js" defer></script>
@@ -23,9 +30,14 @@
         <section class="payment-heading">
             <p class="eyebrow">STREET HYPE / PAGO SEGURO</p>
             <h1>Último paso.<br>Completa tu compra.</h1>
-            <p>Esta pantalla es una demostración académica.
+            <p class="mb-8 mt-[18px] max-w-[560px] text-neutral-600">Esta pantalla es una demostración académica.
               No procesa cobros ni guarda datos de tarjeta.
             </p>
+            <nav class="grid grid-cols-3 overflow-hidden border border-black bg-white text-center text-xs font-black uppercase tracking-wider" aria-label="Progreso de compra">
+                <a class="px-3 py-3 text-neutral-500 no-underline transition-colors hover:bg-lime-300 hover:text-black" href="carrito.html">1. Carrito</a>
+                <span class="border-l border-black bg-black px-3 py-3 text-white" aria-current="step">2. Pago</span>
+                <span class="border-l border-black px-3 py-3 text-neutral-500">3. Confirmación</span>
+            </nav>
         </section>
         <div class="payment-layout">
             <section class="payment-card" aria-labelledby="payment-title">
@@ -93,6 +105,7 @@
               No se realizó ningún cobro y no se almacenaron datos de tarjeta.
             </p>
             <p class="order-reference">Código de pedido: <strong id="order-reference">SH-000000</strong></p>
+            <p id="success-total" class="mb-5 text-sm font-bold uppercase tracking-wider">Total de demostración: S/ 0.00</p>
             <a class="continue-button" href="../index.html">
                 Seguir explorando
             </a>

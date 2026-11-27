@@ -14,6 +14,9 @@
   const totalElement = document.querySelector("#total");
   const checkoutButton = document.querySelector("#checkout-button");
   const toast = document.querySelector("#toast");
+  const shippingProgressBar = document.querySelector("#shipping-progress-bar");
+  const shippingProgressLabel = document.querySelector("#shipping-progress-label");
+  const shippingProgressMessage = document.querySelector("#shipping-progress-message");
   const MAX_PER_PRODUCT = 4;
 
   function normalizeSize(size) {
@@ -118,6 +121,29 @@
 
   function getShipping(subtotal) {
     return subtotal === 0 || subtotal >= FREE_SHIPPING_FROM ? 0 : SHIPPING_COST;
+  }
+
+  function renderShippingProgress(subtotal) {
+    const progress = Math.min((subtotal / FREE_SHIPPING_FROM) * 100, 100);
+    const pending = Math.max(FREE_SHIPPING_FROM - subtotal, 0);
+
+    if (shippingProgressBar) {
+      shippingProgressBar.style.width = `${progress}%`;
+    }
+
+    if (shippingProgressLabel) {
+      shippingProgressLabel.textContent = `${money(Math.min(subtotal, FREE_SHIPPING_FROM))} / ${money(FREE_SHIPPING_FROM)}`;
+    }
+
+    if (!shippingProgressMessage) return;
+
+    if (subtotal === 0) {
+      shippingProgressMessage.textContent = "Agrega productos para activar el envío gratis.";
+    } else if (pending > 0) {
+      shippingProgressMessage.textContent = `Te faltan ${money(pending)} para obtener envío gratis.`;
+    } else {
+      shippingProgressMessage.textContent = "¡Envío gratis activado para este pedido!";
+    }
   }
 
   function showToast(message) {
@@ -260,6 +286,7 @@
     shippingElement.textContent = shipping === 0 ? "Gratis" : money(shipping);
     totalElement.textContent = money(total);
     checkoutButton.disabled = cart.length === 0;
+    renderShippingProgress(subtotal);
     renderRecommendations();
   }
 
